@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig : {
+    apiKey: "AIzaSyDzfqV_B4ZXra9c3IwJwzhnt6UzgHYZ7xU",
+    authDomain: "tinder-fake-7fc95.firebaseapp.com",
+    databaseURL: 'https://tinder-fake-7fc95-default-rtdb.firebaseio.com/',
+    projectId: "tinder-fake-7fc95",
+    storageBucket: "tinder-fake-7fc95.appspot.com",
+    messagingSenderId: "910340431254",
+    appId: "1:910340431254:web:140cbb53d4555959d4d1b7",
+    measurementId: "G-9J51G2ERW1"
+  }
 };
 
 /*
