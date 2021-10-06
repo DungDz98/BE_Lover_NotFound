@@ -1,0 +1,94 @@
+<div class="col-12" *ngIf="hidden">
+  <div class="card table-card">
+    <div class="card-header">
+      <h5>Danh Sách Đơn Thuê Của Bạn</h5>
+    </div>
+    <div class="card-body px-0 py-0">
+      <div class="table-responsive">
+        <div class="session-scroll" style="height:478px;position:relative;">
+          <table class="table table-hover m-b-0">
+            <thead>
+            <tr>
+              <th><span>Người Thuê</span></th>
+              <th><span>Thời gian Nhận Đơn <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Thời gian bắt đầu <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Tổng Số Thời gian <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Tổng Số Tiền <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Trạng Thái <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Chi Tiết Người Thuê <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of rents; index as i">
+              <td>{{item.userRent?.name}}</td>
+              <td>{{item.rentDate | date : 'dd/MM/YYYY' }}</td>
+              <td>{{item.startTime | date : ' hh:mm dd/MM' }}</td>
+              <td>{{item.time}}  giờ</td>
+              <td>{{item.totalMoney}}</td>
+              <td>{{item.status}}</td>
+              <td><button class="btn btn-outline-danger" (click)="viewDetail(); getRentById(item.id)" >Xem chi tiết đơn thuê</button></td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-xl-8 col-md-6" *ngIf="hidden == false">
+  <div class="card table-card">
+    <div class="card-header">
+      <h5>Chi tiết đơn hàng</h5>
+    </div>
+    <div class="card-body px-0 py-0">
+      <div class="table-responsive">
+        <div class="session-scroll" style="height:478px;position:relative;">
+          <table class="table table-hover m-b-0">
+            <thead>
+            <tr>
+              <th><span>Người Thuê</span></th>
+              <th><span>Thời gian Nhận Đơn <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Thời gian bắt đầu <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Tổng Số Thời gian <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Tổng Số Tiền <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Trạng Thái <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Chi Tiết Người Thuê <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>{{rent.userRent?.name}}</td>
+              <td>{{rent.rentDate | date : 'dd/MM/YYYY' }}
+              </td>
+              <td>{{rent.startTime | date : ' hh:mm dd/MM' }}
+              </td>
+              <td>{{rent.time}}  giờ
+
+              </td>
+              <td>{{rent.totalMoney}}
+              </td><td>{{rent.status}}
+              </td>
+              <td ><button class="btn btn-outline-danger" (click)="viewDetail();">Trở về</button>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
