@@ -37,4 +37,9 @@ export class RentService {
     return this.http.put<Rent>(`${RENT_API}/${id}`, rent);
   }
 
+  changeStatus(id : number, status : number) : Observable<Rent> {
+    // @ts-ignore
+    return this.http.put<Rent>(`${RENT_API}/${id}` + '?newStatus=' + status);
+  }
+
 }

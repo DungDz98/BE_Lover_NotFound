@@ -50,4 +50,12 @@ export class RentComponent implements OnInit {
     this.hidden = !this.hidden;
   }
 
+  changeStatus(id: any, status: number) {
+    this.rentService.changeStatus(id ,status).subscribe(data =>{
+      this.rent = data;
+      alert('Thao tác thành công');
+      window.location.reload()
+    })
+  }
+
 }

@@ -22,6 +22,8 @@
                 class="feather icon-help-circle f-16"></i></a></span></th>
               <th><span>Chi Tiết Người Thuê <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
                 class="feather icon-help-circle f-16"></i></a></span></th>
+            <th colspan="2"><span>Tuỳ chọn <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
             </tr>
             </thead>
             <tbody>
@@ -31,8 +33,16 @@
               <td>{{item.startTime | date : ' hh:mm dd/MM' }}</td>
               <td>{{item.time}}  giờ</td>
               <td>{{item.totalMoney}}</td>
-              <td>{{item.status}}</td>
+              <td *ngIf="item.status == 0">Chờ phản hồi</td>
+              <td *ngIf="item.status == 1">Đã tiếp nhận</td>
+              <td *ngIf="item.status == 2">Đã hoàn thành</td>
+              <td *ngIf="item.status == 3">Đã báo cáo</td>
               <td><button class="btn btn-outline-danger" (click)="viewDetail(); getRentById(item.id)" >Xem chi tiết đơn thuê</button></td>
+              <td *ngIf="item.status == 0"><button class="btn btn-outline-danger" (click)="changeStatus(item.id, 1);">Tiếp nhận đơn</button></td>
+              <td *ngIf="item.status == 0"><button class="btn btn-outline-warning">Huỷ đơn</button></td>
+              <td *ngIf="item.status == 1" colspan="2"><button class="btn btn-outline-danger" (click)="changeStatus(item.id,2); " >Nhận tiền</button></td>
+              <td *ngIf="item.status == 2" colspan="2"><button class="btn btn-outline-danger" (click)="changeStatus(item.id,3);" >Báo cáo phản hồi</button></td>
+              <td *ngIf="item.status == 3" colspan="2"><button class="btn btn-outline-danger" disabled>Done</button></td>
             </tr>
 
             </tbody>
@@ -64,7 +74,9 @@
                 class="feather icon-help-circle f-16"></i></a></span></th>
               <th><span>Trạng Thái <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
                 class="feather icon-help-circle f-16"></i></a></span></th>
-              <th><span>Chi Tiết Người Thuê <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+              <th><span>Các dịch vụ sử dụng <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Tuỳ chọn <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
                 class="feather icon-help-circle f-16"></i></a></span></th>
             </tr>
             </thead>
@@ -78,11 +90,16 @@
               <td>{{rent.time}}  giờ
 
               </td>
-              <td>{{rent.totalMoney}}
-              </td><td>{{rent.status}}
+              <td>{{rent.totalMoney}}.000
               </td>
-              <td ><button class="btn btn-outline-danger" (click)="viewDetail();">Trở về</button>
+              <td *ngIf="rent.status == 0">Chờ phản hồi</td>
+              <td *ngIf="rent.status == 1">Đã tiếp nhận</td>
+              <td *ngIf="rent.status == 2">Đã hoàn thành</td>
+              <td *ngIf="rent.status == 3">Đã báo cáo</td>
+                <td>
+                <p *ngFor="let s of rent.services">+ {{s.name}}</p>
               </td>
+              <td ><button class="btn btn-outline-danger" (click)="viewDetail();">Trở về</button></td>
             </tr>
 
             </tbody>

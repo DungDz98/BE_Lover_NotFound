@@ -9,6 +9,6 @@ export interface Rent {
   totalMoney?:number;
   time?: number;
   status?: number;
-  service?: any;
+  services?: any;
   feedback?: string;
 }
