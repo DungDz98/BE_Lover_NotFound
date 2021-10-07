@@ -1,0 +1,62 @@
+
+
+  .filter-player {
+    height: 127px;
+  }
+
+  .filter-player {
+    margin: 20px 0;
+    height: 32px;
+  }
+
+  a, button, div, p, span {
+    font-family: Poppins;
+  }
+
+  *, :after, :before {
+    box-sizing: border-box;
+  }
+
+  user agent stylesheet
+  div {
+    display: block;
+  }
+
+
+  .filter-player .form-control.gender {
+    width: 25%;
+  }
+
+  .filter-player .form-control.gender {
+    width: 85px;
+  }
+
+.filter-player .form-control.gender {
+  width: 85px;
+}
+.filter-player .form-control {
+  border-radius: 25px;
+  font-size: 11px;
+  padding: 5px;
+  height: 32px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+  max-width: 160px;
+  float: left;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+  .filter-player .form-control.btn-filter {
+    width: 100px;
+    float: right;
+    margin: 0;
+    background: #f0564a;
+    color: #fff;
+    padding-top: 7px;
+  }
+
+  .filter-player .form-control city {
+    width: 85px;
+  }
+

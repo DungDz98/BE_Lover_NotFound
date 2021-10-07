@@ -28,9 +28,9 @@ export class ListCcdvComponent implements OnInit {
 
 
   getListCity(){
-    return this.http.get<City[]>('https://provinces.open-api.vn/api/p/').subscribe((data)=>{
+    this.select.findCity().subscribe((data)=>{
       this.city = data;
-    });
+    })
   }
 
 }
