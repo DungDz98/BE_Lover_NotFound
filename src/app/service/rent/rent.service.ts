@@ -42,4 +42,8 @@ export class RentService {
     return this.http.put<Rent>(`${RENT_API}/${id}` + '?newStatus=' + status);
   }
 
+  changeStatusAndFeedback(id : number, status : number, feedback: any) : Observable<Rent> {
+    // @ts-ignore
+    return this.http.put<Rent>(`${RENT_API}/feedback/${id}` + '?newStatus=' + status, feedback);
+  }
 }

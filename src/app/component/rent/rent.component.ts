@@ -57,5 +57,19 @@ export class RentComponent implements OnInit {
       window.location.reload()
     })
   }
+  changeStatusAndFeedback(id: any, status: number) {
+    this.rentService.changeStatusAndFeedback(id ,status, this.feedback).subscribe(data =>{
+      this.rent = data;
+      alert('Thao tác thành công');
+      window.location.reload()
+    })
+  }
+
+
+  feedback: string = '';
+  idFeedback!: number;
+  open(idFeedback: any) {
+    this.idFeedback = idFeedback;
+  }
 
 }
