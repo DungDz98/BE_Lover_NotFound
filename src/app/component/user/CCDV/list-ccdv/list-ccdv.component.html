@@ -1,0 +1,119 @@
+<!--<script src="../../../personalpage/upload.js"></script>-->
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-2">
+      <div class="input-group">
+        <select class="form-select" id="gender">
+          <option selected>Giới tính</option>
+          <option value="Nam">Nam</option>
+          <option value="Nữ">Nữ</option>
+          <option value="Khác">Khác</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class=" input-group">
+        <select class="form-select" id="city">
+          <option selected>Thành Phố</option>
+          <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="range">
+        <input type="text" class="form-control" placeholder="Nhập tên" id="name"/>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="form-group col-md-3">
+        <button type="submit" class="btn btn-primary" style="width: 100px">Tìm kiếm</button>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="listUserCCDV.length !== 0">
+    <div class="col-3 " *ngFor="let userCCDV of listUserCCDV | paginate : {
+                itemsPerPage: 8,
+                currentPage: page,
+                totalItems: size
+              };">
+      <a style="text-decoration: none; cursor: pointer"
+         [routerLink]="['/usersCCDV/', userCCDV.id]">
+        <div class="card text-black mt-3" style="border-radius: 10px">
+          <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0px 0px" size=""
+               src="{{userCCDV.avatar}}">
+          <div class="card-img-overlay">
+            <button class="btn-danger btn-md"
+                    style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDV.price}}đ/h
+            </button>
+          </div>
+          <div class="row pl-3 mb-3">
+
+            <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>
+            <div class="col-12" style="color: gray">{{userCCDV.description}}</div>
+            <div class="col-12" style="color: gray">{{userCCDV.requestToPayer}}</div>
+
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="mt-5 d-flex justify-content-center">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+  <div class="row" *ngIf="listUserCCDV.length == 0">
+
+    <h2 class="mt-4">Mới nhất</h2>
+    <hr>
+<!--    <div class="col-3 " *ngFor="let userCCDV of usersTopNew">-->
+<!--      <a style="text-decoration: none; cursor: pointer" [routerLink]="['/usersCCDV/', userCCDV.id]">-->
+<!--        <div class="card text-black mt-3" style="border-radius: 10px">-->
+<!--          <img style="height: 300px; width: 298px ; border-radius: 10px 10px 0px 0px" size=""-->
+<!--               src="{{userCCDV.avatar}}">-->
+<!--          <div class="card-img-overlay">-->
+<!--            <button class="btn-danger btn-md"-->
+<!--                    style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDV.price}}-->
+<!--            </button>-->
+<!--          </div>-->
+<!--          <div class="row pl-3 mb-3">-->
+<!--            &lt;!&ndash;          <ul class="list-group-flush" style="padding-left: -15px !important;">&ndash;&gt;-->
+<!--            <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>-->
+<!--            <div class="col-12">{{userCCDV.description}}</div>-->
+<!--            <div class="col-12">{{userCCDV.requestToPayer}}</div>-->
+<!--            &lt;!&ndash;          </ul>&ndash;&gt;-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </a>-->
+<!--    </div>-->
+  </div>
+
+  <div class="row mt-5" *ngIf="listUserCCDV.length == 0  ">
+    <h2>Danh sách</h2>
+    <hr>
+    <div class="col-3" *ngFor="let userCCDV of listUserCCDV| paginate : {
+                itemsPerPage: 8,
+                currentPage: page,
+                totalItems: size
+              };
+       ">
+      <a style="text-decoration: none; cursor: pointer" [routerLink]="['/usersCCDV/', userCCDV.id]">
+        <div class="card text-black mt-3" style="border-radius: 10px">
+          <img style="height: 300px; width: 298px" size=""
+               src="{{userCCDV.avatar}}">
+          <div class="card-img-overlay">
+            <button class="btn-danger btn-md"
+                    style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDV.price}}</button>
+          </div>
+          <div class="row pl-3 mb-3">
+            <!--          <ul class="list-group-flush" style="padding-left: -15px !important;">-->
+            <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>
+            <div class="col-12">{{userCCDV.description}}</div>
+            <div class="col-12">{{userCCDV.requestToPayer}}</div>
+            <!--          </ul>-->
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
