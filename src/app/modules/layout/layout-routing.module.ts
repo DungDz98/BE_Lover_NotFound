@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ListCcdvComponent} from "../../component/user/CCDV/list-ccdv/list-ccdv.component";
+import {LayoutComponent} from "../../component/layout/layout.component";
 
 const routes: Routes = [
   {
