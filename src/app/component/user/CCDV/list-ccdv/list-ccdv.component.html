@@ -35,7 +35,7 @@
   <form [formGroup]="userForm">
     <div class="filter-player">
       <select class="form-control gender " formControlName="gender" (change)="getByGender()">
-        <option value="Giới tính">Giới tính</option>
+        <option>Giới tính</option>
         <option value="nu">Nữ</option>
         <option value="nam">Nam</option>
       </select>
@@ -65,41 +65,60 @@
   </form>
 
   <!--  b-->
-  <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Danh Sách</p>
-  <div class="row" *ngIf="listUserCCDV.length !== 0">
-    <div class="col-3 " *ngFor="let userCCDV of listUserCCDV | paginate : {
+<!--  x-->
+
+  <div *ngIf="status == 'true'">
+    <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Danh Sách Tìm Kiếm</p>
+    <div class="row" *ngIf="listUserCCDV.length !== 0">
+      <div class="col-3 " *ngFor="let userCCDV of listUserCCDV | paginate : {
                 itemsPerPage: 8,
                 currentPage: page,
-                totalItems: size,
+                totalItems: size1,
                 id: 'first'
               };">
-      <a style="text-decoration: none; cursor: pointer"
-         [routerLink]="['/usersCCDV/', userCCDV.id]">
-        <div class="card text-black mt-3" style="border-radius: 10px">
-          <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0" src="{{userCCDV.avatar}}">
-          <div class="card-img-overlay">
-            <button class="btn-danger btn-md"
-                    style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDV.price}}đ/h
-            </button>
-          </div>
-          <div class="row pl-3 mb-3">
+        <a style="text-decoration: none; cursor: pointer"
+           [routerLink]="['/usersCCDV/', userCCDV.id]">
+          <div class="card text-black mt-3" style="border-radius: 10px">
+            <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0" src="{{userCCDV.avatar}}">
+            <div class="card-img-overlay">
+              <button class="btn-danger btn-md"
+                      style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDV.price}}đ/h
+              </button>
+            </div>
+            <div class="row pl-3 mb-3">
 
-            <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>
-            <div class="col-12" style="color: gray">{{userCCDV.description}}</div>
-            <div class="col-12" style="color: gray">{{userCCDV.requestToPayer}}</div>
+              <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>
+              <div class="col-12" style="color: gray">{{userCCDV.description}}</div>
+              <div class="col-12" style="color: gray">{{userCCDV.requestToPayer}}</div>
 
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-5 d-flex justify-content-center">
+      <pagination-controls (pageChange)="page = $event" id='first'></pagination-controls>
     </div>
   </div>
-  <div class="mt-5 d-flex justify-content-center">
-    <pagination-controls (pageChange)="page = $event" id = 'first'></pagination-controls>
+  <div *ngIf="status == 'falseGender'">
+    <p style = "font-family:courier,arial,helvetica; text-align: center">
+      Cak Cak Cak...... <br>
+      Not Found, u should come back if no u are gay
+    </p>
+  </div>
+  <div *ngIf="status == 'falseName'">
+    <p style = "font-family:courier,arial,helvetica; text-align: center">
+      Cak Cak Cak...... <br>
+      Có vẻ hiện tại không có ai trùng với tên này rồi!
+    </p>
   </div>
 
+<!--z-->
+  <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Hót hòn họt</p>
   <div class="row" *ngIf="listUserCCDVHaveCategory.length !== 0">
     <div class="col-3 " *ngFor="let userCCDVCategory of listUserCCDVHaveCategory | paginate : {
-                itemsPerPage: 8,
+                itemsPerPage: 12,
                 currentPage: page2,
                 totalItems: size2,
                 id: 'second'
@@ -126,7 +145,7 @@
     </div>
   </div>
   <div class="mt-5 d-flex justify-content-center">
-    <pagination-controls (pageChange)="page2 = $event" id = 'second'></pagination-controls>
+    <pagination-controls (pageChange)="page2 = $event" id='second'></pagination-controls>
   </div>
 
 </div>

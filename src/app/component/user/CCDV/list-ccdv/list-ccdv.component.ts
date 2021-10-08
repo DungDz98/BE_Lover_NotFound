@@ -19,14 +19,16 @@ export class ListCcdvComponent implements OnInit {
   page = 1;
   page2 = 1;
   size!: number;
+  size1!: number;
   size2!: number;
+  status!: String;
   userForm!: FormGroup;
 
   constructor(private select: SelectService, private http: HttpClient) {
   }
 
   ngOnInit(): void {
-    this.getAll()
+    this.status = 'false';
     this.getUserCategory()
     this.getListCity();
     this.userForm = new FormGroup({
@@ -34,15 +36,25 @@ export class ListCcdvComponent implements OnInit {
       gender: new FormControl('Giới tính'),
       city: new FormControl('Thành Phố'),
     })
-    this.getAll(),
-      this.getUserCategory()
   }
+
+  // test feature
+
+  resetValue(){
+    this.userForm.get('name')?.setValue('');
+    this.userForm.get('gender')?.setValue('Giới tính');
+    this.userForm.get('city')?.setValue('Thành Phố');
+  }
+
+  //------
 
   // select ra homepage
   getAll() {
     this.select.getAllSelectRequest().subscribe((data) => {
       this.listUserCCDV = data;
       this.size = data.length
+      this.page = 1;
+      this.status = 'true';
     })
   }
 
@@ -50,7 +62,7 @@ export class ListCcdvComponent implements OnInit {
     this.select.findUserHaveCategory().subscribe((data)=>{
       this.listUserCCDVHaveCategory = data;
       this.size2 = data.length;
-      console.log(data)
+      this.page = 1
     })
   }
 
@@ -60,16 +72,19 @@ export class ListCcdvComponent implements OnInit {
     this.select.findCity().subscribe((data) => {
         this.city = data;
         this.size = data.length
-      },
-      error => {
-        this.getAll()
+      this.page = 1
       })
   }
 
   getAllByName() {
     this.select.findByName(this.userForm.get('name')?.value).subscribe((data) => {
         this.listUserCCDV = data;
-        this.size = data.length
+        this.size = data.length;
+        this.page = 1;
+        this.status = 'true';
+        if (data.length == 0){
+          this.status = 'falseName';
+        }
       },
       error => {
         this.getAll()
@@ -80,9 +95,11 @@ export class ListCcdvComponent implements OnInit {
     this.select.findUserByGender(this.userForm.get('gender')?.value).subscribe((data) => {
         this.listUserCCDV = data;
         this.size = data.length;
-      },
-      error => {
-        this.getAll()
+        this.page = 1;
+        this.status = 'true';
+      if (data.length == 0){
+        this.status = 'falseGender';
+      }
       })
   }
 
