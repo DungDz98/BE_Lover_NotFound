@@ -1,4 +1,34 @@
-
+<!--<div class="row">-->
+<!--  <app-navbar></app-navbar>-->
+<!--</div>-->
 <app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<button class="btn btn-outline-danger" type="button"
+        [routerLink]="['/rents/provider/2']">
+  Xem Danh Sách Các Đơn Đặt Hàng(Người CCDV)
+
+</button>
+
+<button class="btn btn-outline-danger" type="button"
+        [routerLink]="['/rents/payer/11']">
+  Xem Danh Sách Các Đơn Đặt Hàng(Người SDDV)
+
+</button>
+<button class="btn btn-outline-danger" type="button"
+        [routerLink]="['/provider-profile/1']">
+  Vào profile của 1 người CCDV
+
+</button>
+<div class="row" style="margin-top: 6%">
+  <div class="col-12">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<!--<div class="row">-->
+<!--  <app-footer></app-footer>-->
+<!--</div>-->
+<!--sao nhỉ-->
+
+
+
+
 <app-footer></app-footer>

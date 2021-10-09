@@ -1,0 +1,352 @@
+<!--<div class="container">-->
+<!--    <div class="row mt-5">-->
+<!--      <div class="col-3">-->
+<!--        &lt;!&ndash;        <div class="card text-black mt-3" style="border-radius: 10px">&ndash;&gt;-->
+<!--        <img style="height: 300px; width: 298px; position: center; border-radius: 10px"-->
+<!--             [src]="user.avatar">-->
+<!--        <div>-->
+<!--          <ul class="list-group-flush" style="position: center">-->
+<!--            <div *ngIf="user.statusCCDV === 1">-->
+<!--              <h4 class="card-title text-center" style="color: green">Đang sẵn sàng</h4>-->
+<!--            </div>-->
+
+<!--            <div *ngIf="user.statusCCDV === 2">-->
+<!--              <h4 class="card-title text-center" style="color: red">Đang bận</h4>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <i style="color: green" class="card-title text-center">Đã tham gia-->
+<!--                ngày: {{user.createAt | date:'dd/MM/YYYY'}}</i>-->
+<!--            </div>-->
+
+<!--            <div class="row">-->
+<!--              &lt;!&ndash;                <div class="col-2"></div>&ndash;&gt;-->
+<!--              <div class="col-3"></div>-->
+<!--              <div class="col-3 text-center" *ngIf="user.linkFb !== null">-->
+<!--                <a id="img" [href]="user.linkFb" style="cursor: pointer">-->
+<!--                  <img src="https://img.icons8.com/fluency/48/000000/facebook-circled.png"/></a></div>-->
+<!--              <div class="col-3 text-center"><a style="cursor: pointer"><img-->
+<!--                src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/></a></div>-->
+
+<!--              <div class="col-3"></div>-->
+<!--              &lt;!&ndash;                <div class="col-2"></div>&ndash;&gt;-->
+<!--            </div>-->
+
+<!--          </ul>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      </div>-->
+<!--      <div class="col-6">-->
+<!--        <div class="row mt-1">-->
+<!--          <h2 class="card-title">{{user.name}}</h2>-->
+<!--          <div class="row mt-5">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="row mt-5">-->
+<!--          <h4>Thông tin</h4>-->
+<!--          <div class="card">-->
+<!--            <div class="card-body">-->
+
+<!--              <h6 class="card-text"><img style="height: 20px; width: 20px"-->
+<!--                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Mô-->
+<!--                Tả: {{user.description}}</h6>-->
+<!--              <h6 class="card-text"><img style="height: 20px; width: 20px"-->
+<!--                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Sở-->
+<!--                thích: {{user.hobby}}</h6>-->
+<!--              <h6 class="card-text"><img style="height: 20px; width: 20px"-->
+<!--                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Quê-->
+<!--                Quán: {{user.city}}</h6>-->
+<!--              <h6 class="card-text"><img style="height: 20px; width: 20px"-->
+<!--                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Yêu-->
+<!--                cầu: {{user.requestToPayer}}</h6>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--      <div class="col-3">-->
+<!--        <div class="card" style="width: 18rem; border-radius: 10px">-->
+<!--          <div class="card-header">-->
+<!--            <h4 class="card-title text-center" style="color: red">{{user.price}}đ/giờ</h4>-->
+<!--          </div>-->
+<!--          <ul class="list-group list-group-flush">-->
+<!--            <button class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal"-->
+<!--                    data-bs-whatever="@mdo" (click)="rent1()">Thuê-->
+<!--            </button>-->
+<!--            <button class="btn btn-outline-danger">Donate</button>-->
+<!--            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">Chat-->
+<!--            </button>-->
+
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Title</title>-->
+
+<!--  &lt;!&ndash;    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.0/css/all.min.css">&ndash;&gt;-->
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+
+<!--  &lt;!&ndash; jQuery library &ndash;&gt;-->
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+
+<!--  &lt;!&ndash; Latest compiled JavaScript &ndash;&gt;-->
+<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+<!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.0/css/all.min.css">-->
+<!--</head>-->
+<!--<body>-->
+
+<!-- UI mới -->
+<div id="root">
+  <div class="wrapper">
+    <div class="container player-infomation">
+      <div class="row">
+      <div class="player-profile-left-wrap col-md-3">
+        <div class="avt-player">
+          <div class="avt avt-lg"><img
+            [src]="user.avatar"
+            class="avt-img" alt="PD"></div>
+        </div>
+        <div class="rent-time-wrap" *ngIf="user.statusCCDV === 1"><p class="ready" style="color: green">Đang sẵn sàng</p></div>
+        <div class="rent-time-wrap" *ngIf="user.statusCCDV === 2"><p class="ready" style="color: red">Đang bận</p></div>
+        <div class="social-icon">
+          <div class="icon-wrap facebook"><a [href]="user.linkFb" target="_blank"
+                                             rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+          </div>
+        </div>
+        <div class="member-since"><span>Ngày tham gia:</span><span><span>{{user.createAt | date:'dd/MM/YYYY'}}</span></span></div>
+      </div>
+        <div class="player-profile-main-wrap col-md-6 col-md-pull-3">
+          <div>
+            <div class="row">
+              <div class="center-item col-md-12"><span
+                class="name-player-profile hidden-over-name">{{user.name}} </span>
+<!--                <button class="btn-follow-player"><i class="fas fa-heart"></i>&nbsp;<span-->
+<!--                  class="plus"><span>Theo dõi</span></span>-->
+<!--                </button>-->
+              </div>
+            </div>
+            <div class="nav-player-profile row">
+              <div class="col-md-3 col-xs-6">
+                <div class="item-nav-name"><span>Số người theo dõi</span></div>
+                <div class="item-nav-value">324 <span>người</span></div>
+              </div>
+              <div class="col-md-3 col-xs-6">
+                <div class="item-nav-name"><span>Đã được thuê</span></div>
+                <div class="item-nav-value">1467&nbsp;<span>giờ</span></div>
+              </div>
+              <div class="col-md-3 col-xs-6">
+                <div class="item-nav-name"><span>Tỷ lệ hoàn thành</span></div>
+                <div class="item-nav-value">95.63&nbsp;%</div>
+              </div>
+              <div class="col-md-3 col-xs-6">
+                <div class="item-nav-name"><span>Số lượt thuê</span></div>
+                <div class="item-nav-value"><i class="fas fa-ban"></i></div>
+              </div>
+            </div>
+            <hr>
+            <div class="title-player-profile row">
+              <div class="col-xs-6"><span>Thông tin</span></div>
+            </div>
+            <div class="content-player-profile"><p>Cao thủ <strong>Liên quân Mobile</strong></p>
+              <div class="album-of-player">
+                <div>
+                  <a href="https://playerduo.com/api/upload-service/images/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__a1951bc0-1c83-11ec-851f-6161af46f080__player_album.jpg"
+                     style="display: block;"><img
+                    src="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__a1951bc0-1c83-11ec-851f-6161af46f080__player_album.jpg"
+                    class=""
+                    alt="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__a1951bc0-1c83-11ec-851f-6161af46f080__player_album.jpg"></a><a
+                  href="https://playerduo.com/api/upload-service/images/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__dc062760-1141-11ec-875c-19bbd41ebdea__player_album.jpg"
+                  style="display: block;"><img
+                  src="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__dc062760-1141-11ec-875c-19bbd41ebdea__player_album.jpg"
+                  class=""
+                  alt="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__dc062760-1141-11ec-875c-19bbd41ebdea__player_album.jpg"></a><a
+                  href="https://playerduo.com/api/upload-service/images/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__9a75c450-afb6-11eb-8579-85f3e8fd334e__player_album.jpg"
+                  style="display: block;"><img
+                  src="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__9a75c450-afb6-11eb-8579-85f3e8fd334e__player_album.jpg"
+                  class=""
+                  alt="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__9a75c450-afb6-11eb-8579-85f3e8fd334e__player_album.jpg"></a><a
+                  href="https://playerduo.com/api/upload-service/images/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__d525bdb0-ad88-11eb-8601-cf63b3d9233c__player_album.jpg"
+                  style="display: block;"><img
+                  src="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__d525bdb0-ad88-11eb-8601-cf63b3d9233c__player_album.jpg"
+                  class=""
+                  alt="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__d525bdb0-ad88-11eb-8601-cf63b3d9233c__player_album.jpg"></a><a
+                  href="https://playerduo.com/api/upload-service/images/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__fbed8180-7b3d-11eb-b33d-fdadf423b3d4__player_album.jpg"
+                  style="display: block;"><img
+                  src="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__fbed8180-7b3d-11eb-b33d-fdadf423b3d4__player_album.jpg"
+                  class=""
+                  alt="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__fbed8180-7b3d-11eb-b33d-fdadf423b3d4__player_album.jpg">
+                  <div class="fadeDiv"><span style="font-family: Arial;">+1</span></div>
+                </a><a href="https://playerduo.com/api/upload-service/images/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__c4025200-7b3d-11eb-b33d-fdadf423b3d4__player_album.jpg"
+                       style="display: none;"><img
+                  src="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__c4025200-7b3d-11eb-b33d-fdadf423b3d4__player_album.jpg"
+                  class=""
+                  alt="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__c4025200-7b3d-11eb-b33d-fdadf423b3d4__player_album.jpg"></a>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <p>⚜️ Quốc tịch: {{user.nationality}}</p>
+              <p>💘 Năm sinh: {{user.dateOfBirth | date:'YYYY'}}</p>
+              <p>⚜️ Giới tính: {{user.gender}}</p>
+              <p>⚜️ Thành phố: {{user.city}}</p>
+              <p>⚜️ Chiều cao: {{user.height}} cm</p>
+              <p>⚜️ Cân nặng: {{user.weight}} kg</p>
+              <p>💘️ Sở thích: {{user.hobby}}</p>
+              <p>💘️ Mô tả bản thân: {{user.description}}</p>
+              <p>💘️ Yêu cầu với người thuê: {{user.requestToPayer}}</p>
+              <p>Link fb: <a target="_blank" [href]="user.linkFb">{{user.linkFb}}</a>
+              </p>
+            </div>
+            <hr>
+            <hr>
+          </div>
+        </div>
+      <div class="player-profile-right-wrap col-md-3 col-md-push-6">
+        <div class="right-player-profile"><p class="price-player-profile">{{user.price}},000 đ/h</p>
+<!--          <div class="rateting-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i-->
+<!--            class="fas fa-star"></i><i class="fas fa-star"></i><i-->
+<!--            class="fas fa-star"></i>&nbsp;<span>35 <span>Đánh giá</span></span></div>-->
+          <div class="text-center">
+            <button class="btn-my-style red" data-toggle="modal" data-target="#rentModal"
+                    data-bs-whatever="@mdo" (click)="rent1()">Thuê</button>
+<!--            <button class="btn-my-style white">Donate</button>-->
+            <button class="btn-my-style white" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">💬 Chat</button>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal tạo đơn-->
+<div *ngIf="idUs !== 0" class="modal fade" id="rentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form [formGroup]="rentForm">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Thông tin phiếu thuê</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-6">
+              <h6 class="mt-3">Người cung cấp dịch vụ:</h6>
+
+              <h6 class="mt-3">Ngày Hẹn</h6>
+              <h6 class="mt-5">Thời gian bắt đầu hẹn:</h6>
+              <h6 class="mt-5">Thời gian muốn thuê::</h6>
+            </div>
+            <div class="col-6">
+              <div class="mt-3">
+                <h6>{{user.name}}</h6>
+              </div>
+              <div class="mt-3">
+
+                <input formControlName="rentDate" id="b" (change)="change1()"
+                       *ngIf="((date.getMonth() + 1) > 9) && (date.getDate() > 9)" type="date" min="{{date2}}">
+
+                <input formControlName="rentDate" id="a" (change)="change()"
+                       *ngIf="((date.getMonth() + 1) < 10) && (date.getDate() <10)" type="date" min="{{date3}}">
+
+                <input formControlName="rentDate" id="c" (change)="change2()"
+                       *ngIf="((date.getMonth() + 1) > 9) && (date.getDate() < 10)" type="date" min="{{date4}}">
+
+                <input formControlName="rentDate" id="d" (change)="change3()"
+                       *ngIf="((date.getMonth() + 1) < 10) && (date.getDate() > 9)" type="date" min="{{date5}}">
+
+              </div>
+              <div class="mt-3">
+                <div *ngIf="rentForm.get('rentDate')?.touched"><p *ngIf="rentForm.get('rentDate')?.errors?.required">
+                  Ngày hẹn không được để trống</p></div>
+              </div>
+              <div class="mt-4" *ngIf="date.getDate() === checkDate.getDate() ">
+                <select formControlName="startDate">
+                  <option selected disabled>Chọn giờ</option>
+
+                  <option *ngFor="let item of arr1 " value="{{item}}">{{item}} giờ</option>
+
+                </select>
+
+
+              </div>
+              <div class="mt-3"><p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để
+                trống</p></div>
+              <div class="mt-3" *ngIf="date.getDate() !== checkDate.getDate() ">
+                <select formControlName="startDate">
+                  <option selected disabled>Chọn giờ</option>
+                  <option *ngFor="let item of arr " value="{{item}}">{{item}} giờ</option>
+
+                </select>
+                <div><p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để trống</p>
+                </div>
+              </div>
+
+              <div class="mt-3">
+                <select formControlName="time" id="price" (change)="checkPrice()">
+
+                  <option selected *ngFor="let item of arr" value="{{item + 1}}">{{item + 1}} giờ</option>
+                </select>
+                <div><p *ngIf="rentForm.get('time')?.errors?.required">Thời gian thuê không được để trống</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3">Danh sách dịch vụ mở rộng</div>
+<!--          <div class="row" *ngFor="let service of listUserService">-->
+<!--            <div class="row" *ngIf="service.service?.typeService === 'Mở rộng'">-->
+<!--              <div class="col-6">-->
+<!--                <input type="checkbox" [value]="service.id"-->
+<!--                       (change)="onCheckboxChange($event)"> {{service.service?.name}}-->
+<!--              </div>-->
+<!--              <div class="col-6">-->
+<!--                <div>{{service.price}} Vnd</div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+          <div class="mt-3">Danh sách dịch vụ cơ bản, miễn phí</div>
+<!--          <div class="row" *ngFor="let service of listUserService">-->
+<!--            <div class="row"-->
+<!--                 *ngIf="service.service?.typeService === 'Cơ bản' || service.service?.typeService === 'Miễn phí'">-->
+<!--              <div class="col-6">-->
+<!--                <input type="checkbox" [value]="service.id"-->
+<!--                       (change)="onCheckboxChange($event)"> {{service.service?.name}}-->
+<!--              </div>-->
+<!--              <div class="col-6">-->
+<!--                <div>{{service.price}} Vnd</div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+          <div class="row mt-3">
+            <div class="col-6">
+              <h6>Tổng tiền: </h6>
+            </div>
+            <div class="col-6">
+              {{total}} Vnd
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Tin nhắn:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button data-dismiss="modal"
+                  class="btn btn-primary" (click)="saveRent()">Gửi
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+<!--</body>-->
+<!--</html>-->
+

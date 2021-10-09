@@ -13,6 +13,8 @@ import {FooterComponent} from "../../component/blocks/footer/footer.component";
 import {ListCcdvComponent} from "../../component/user/CCDV/list-ccdv/list-ccdv.component";
 import {NgxPaginationModule} from "ngx-pagination";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {RentComponent} from "../../component/rent/rent.component";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     LayoutComponent,
     NavbarComponent,
     FooterComponent,
-    ListCcdvComponent
+    ListCcdvComponent,
+    RentComponent,
   ],
   imports: [
     CommonModule,

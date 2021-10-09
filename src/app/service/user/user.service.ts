@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { User } from 'src/app/models/user/user';
 import { environment } from 'src/environments/environment';
+import {environment} from "../../../environments/environment.prod";
 const API_URL = environment.API_URL + '/ccdv';
+const USER_API = `${environment.API_URL}/users`;
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +22,8 @@ export class UserService {
   }
   getById(id: number): Observable<User> {
     return this.httpClient.get<User>(API_URL + `/${id}`)
+  }
+  getUserById(id: number): Observable<User> {
+    return this.httpClient.get<User>(`${USER_API}/${id}`);
   }
 }

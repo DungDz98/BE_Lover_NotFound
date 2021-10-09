@@ -1,0 +1,170 @@
+<div class="col-12" *ngIf="hidden">
+  <div class="card table-card">
+    <div class="card-header">
+      <h5>Danh Sách Đơn Thuê Của Bạn</h5>
+    </div>
+    <div class="card-body px-0 py-0">
+      <div class="table-responsive">
+        <div class="session-scroll" style="height:478px;position:relative;">
+          <table class="table table-hover m-b-0">
+            <thead>
+            <tr>
+              <th><span>Người Thuê</span></th>
+              <th><span>Ngày <a class="help" data-toggle="popover" title="Popover title"
+                                              data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Thời gian bắt đầu <a class="help" data-toggle="popover" title="Popover title"
+                                             data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Tổng Số Thời gian <a class="help" data-toggle="popover" title="Popover title"
+                                             data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Tổng Số Tiền <a class="help" data-toggle="popover" title="Popover title"
+                                        data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Trạng Thái <a class="help" data-toggle="popover" title="Popover title"
+                                      data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Chi Tiết Người Thuê <a class="help" data-toggle="popover" title="Popover title"
+                                               data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th colspan="2"><span>Hành động <a class="help" data-toggle="popover" title="Popover title"
+                                                data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of rents; index as i">
+              <td>{{item.userRent?.userName}}</td>
+              <td>{{item.rentDate | date : 'dd/MM/YYYY' }}</td>
+              <td>{{item.startTime | date : ' hh:mm dd/MM/YYYY' }}</td>
+              <td>{{item.time}}  giờ</td>
+              <td>{{item.totalMoney}}.000</td>
+              <td *ngIf="item.status == 0">Chờ phản hồi</td>
+              <td *ngIf="item.status == 1">Đã tiếp nhận</td>
+              <td *ngIf="item.status == 2">Đã hoàn thành</td>
+              <td *ngIf="item.status == 3">Đã thanh toán</td>
+              <td *ngIf="item.status == 4">Đã báo cáo</td>
+              <td>
+                <button class="btn btn-outline-danger" (click)="viewDetail(); getRentById(item.id)">Xem chi tiết đơn
+                  thuê
+                </button>
+              </td>
+              <td *ngIf="item.status == 0">
+                <button class="btn btn-outline-danger" (click)="changeStatus(item.id, 1);">Tiếp nhận đơn</button>
+              </td>
+              <td *ngIf="item.status == 0">
+                <button class="btn btn-outline-warning">Huỷ đơn</button>
+              </td>
+              <td *ngIf="item.status == 1">
+                <button class="btn btn-outline-warning" disabled>Đang đợi người sử dụng dịch vụ xác nhận</button>
+              </td>
+              <td *ngIf="item.status == 2" colspan="2">
+                <button class="btn btn-outline-danger" (click)="changeStatus(item.id,3); ">Nhận tiền</button>
+              </td>
+              <td *ngIf="item.status == 3" colspan="2">
+                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#feedbackModal" (click)="open(item.id)">Báo cáo phản hồi</button>
+              </td>
+              <td *ngIf="item.status == 4" colspan="2">
+                <button class="btn btn-outline-danger" disabled>Done</button>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- The Modal Feedback -->
+<div class="modal" id="feedbackModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Báo cáo phản hồi</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <textarea [(ngModel)]="feedback" name="" id="" cols="30" rows="10"></textarea>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="changeStatusAndFeedback(idFeedback, 4);">Xong</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="col-xl-8 col-md-6" *ngIf="hidden == false">
+  <div class="card table-card">
+    <div class="card-header">
+      <h5>Chi tiết đơn hàng</h5>
+    </div>
+    <div class="card-body px-0 py-0">
+      <div class="table-responsive">
+        <div class="session-scroll" style="height:478px;position:relative;">
+          <table class="table table-hover m-b-0">
+            <thead>
+            <tr>
+              <th><span>Người Thuê</span></th>
+              <th><span>Ngày <a class="help" data-toggle="popover" title="Popover title"
+                                              data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Thời gian bắt đầu <a class="help" data-toggle="popover" title="Popover title"
+                                             data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Tổng Số Thời gian <a class="help" data-toggle="popover" title="Popover title"
+                                             data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Tổng Số Tiền(VNĐ) <a class="help" data-toggle="popover" title="Popover title"
+                                        data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Trạng Thái <a class="help" data-toggle="popover" title="Popover title"
+                                      data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Các dịch vụ sử dụng <a class="help" data-toggle="popover" title="Popover title"
+                                               data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Phản hồi về người thuê <a class="help" data-toggle="popover" title="Popover title"
+                                                  data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+              <th><span>Tuỳ chọn <a class="help" data-toggle="popover" title="Popover title"
+                                    data-content="And here's some amazing content. It's very engaging. Right?"><i
+                class="feather icon-help-circle f-16"></i></a></span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>{{rent.userRent?.userName}}</td>
+              <td>{{rent.rentDate | date : 'dd/MM/YYYY' }}</td>
+              <td>{{rent.startTime | date : ' hh:mm dd/MM/YYYY' }}</td>
+              <td>{{rent.time}}  giờ</td>
+              <td>{{rent.totalMoney}}.000</td>
+              <td *ngIf="rent.status == 0">Chờ phản hồi</td>
+              <td *ngIf="rent.status == 1">Đã tiếp nhận</td>
+              <td *ngIf="rent.status == 2">Đã hoàn thành</td>
+              <td *ngIf="rent.status == 3">Đã thanh toán</td>
+              <td *ngIf="rent.status == 4">Đã báo cáo</td>
+              <td>
+                <p *ngFor="let s of rent.services">+ {{s.name}}</p>
+              </td>
+              <td>{{rent.feedback}}</td>
+              <td>
+                <button class="btn btn-outline-danger" (click)="viewDetail();">Trở về</button>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

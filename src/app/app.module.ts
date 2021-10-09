@@ -18,12 +18,20 @@ import { SignUpComponent } from './component/sign-up/sign-up.component';
 import {NgxPaginationModule} from "ngx-pagination";
 
 
+import { RentComponent } from './component/rent/rent.component';
+import {HttpClientModule} from "@angular/common/http";
+import { LayoutComponent } from './component/layout/layout.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { RentPayerComponent } from './component/rent-payer/rent-payer.component';
+import { ProfileProviderComponent } from './component/profile-provider/profile-provider.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     SignUpComponent,
+    RentPayerComponent,
+    ProfileProviderComponent
   ],
   imports: [
     BrowserModule,
