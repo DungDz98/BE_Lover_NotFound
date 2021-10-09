@@ -36,9 +36,12 @@ const routes: Routes = [
     path : 'provider-profile/:id',
     component : ProfileProviderComponent
   },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LayoutRoutingModule { }
+export class LayoutRoutingModule {
+
+}

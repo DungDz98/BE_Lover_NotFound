@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { User } from 'src/app/models/user/user';
-import { environment } from 'src/environments/environment';
 import {environment} from "../../../environments/environment.prod";
+
 const API_URL = environment.API_URL + '/ccdv';
 const USER_API = `${environment.API_URL}/users`;
 

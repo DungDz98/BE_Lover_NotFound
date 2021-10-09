@@ -4,8 +4,7 @@ import {DetailCcdvComponent} from "../../component/user/CCDV/detail-ccdv/detail-
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../../../environments/environment";
-import {ReactiveFormsModule} from "@angular/forms";
-
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LayoutRoutingModule} from './layout-routing.module';
 import {LayoutComponent} from "../../component/layout/layout.component";
 import {NavbarComponent} from "../../component/blocks/navbar/navbar.component";
@@ -14,8 +13,6 @@ import {ListCcdvComponent} from "../../component/user/CCDV/list-ccdv/list-ccdv.c
 import {NgxPaginationModule} from "ngx-pagination";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {RentComponent} from "../../component/rent/rent.component";
-import {FormsModule} from "@angular/forms";
-
 
 @NgModule({
   declarations: [
@@ -34,7 +31,8 @@ import {FormsModule} from "@angular/forms";
     HttpClientModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 
