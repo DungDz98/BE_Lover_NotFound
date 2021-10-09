@@ -23,4 +23,7 @@ export class UserServiceService {
   findByUserId(id: number): Observable<UserService[]> {
     return this.httpClient.get<UserService[]>(API_URL + `/${id}`);
   }
+  updatePrice(id: number, usService: UserService): Observable<UserService>{
+    return this.httpClient.put<UserService>(API_URL + `/${id}`,usService);
+  }
 }

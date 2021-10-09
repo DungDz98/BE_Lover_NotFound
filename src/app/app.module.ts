@@ -24,7 +24,7 @@ import {RouterModule} from "@angular/router";
     SignInComponent,
     SignUpComponent,
     RentPayerComponent,
-    ProfileProviderComponent
+    ProfileProviderComponent,
   ],
   imports: [
     BrowserModule,

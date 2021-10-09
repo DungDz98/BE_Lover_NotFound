@@ -52,7 +52,7 @@ export class DetailCcdvComponent implements OnInit {
   saveUser(id: number) {
     this.userService.saveUser(id,this.ccdvForm.value).subscribe((data) => {
       alert("Bạn đã trở thành người cung cấp dịch vụ")
-      this.router.navigate([""]);
+      this.router.navigate(["/serviceccdv"]);
     })
   }
   showEditUser(id: number) {
