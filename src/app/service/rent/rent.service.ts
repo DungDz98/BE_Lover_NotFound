@@ -22,7 +22,7 @@ export class RentService {
   }
 
   getAllRentForProvider(id: number): Observable<Rent[]> {
-    return this.http.get<Rent[]>(RENT_API + `/provider/${id}`);
+    return this.http.get<Rent[]>(`${RENT_API}/provider/${id}`);
   }
 
   getAllRentForPayer(id: number): Observable<Rent[]> {

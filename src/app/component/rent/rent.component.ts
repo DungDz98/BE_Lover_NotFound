@@ -37,10 +37,6 @@ export class RentComponent implements OnInit {
     this.rentService.getAllRentForProvider(id).subscribe(rents => this.rents = rents);
   }
 
-  getAllRentForPayer(id: number) {
-    this.rentService.getAllRentForPayer(id).subscribe(rents => this.rents = rents);
-  }
-
   getRentById(id: any) {
     this.rentService.getRentById(id).subscribe(rent => this.rent = rent);
   }
