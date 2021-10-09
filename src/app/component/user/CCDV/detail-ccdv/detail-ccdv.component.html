@@ -1,81 +1,108 @@
-<!--Trở thành người cung cấp dịch vụ-->
-<h2 style="color: aqua">Cung cấp dịch vụ</h2>
+<h2 style="color: aqua">Đăng ký trở thành người cung cấp dịch vụ</h2>
 <div class="container">
   <form [formGroup]="ccdvForm" (ngSubmit)="saveUser(id)">
+    <table style="width: 100%">
+      <tr>
+        <td>
+          <div class="form-group">
+            <h5 for="email">Họ và tên : </h5>
+            <input type="email" class="form-control" formControlName="name" placeholder="nhập tên của bạn" id="email" style="width: 250px">
+            <p *ngIf="!ccdvForm.get('name')?.valid && ccdvForm.get('name')?.touched " style="color: red">không thể để trống</p>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <h5>Ngày sinh : </h5>
+            <input type="date" style="width: 250px" class="form-control" placeholder="nhập ngày sinh của bạn" formControlName="dateOfBirth">
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <h5> Giới tính : </h5>
+            <div>
+              <select name="" id="" formControlName="gender">
+                <option value="Nam">Nam</option>
+                <option value="Nu">Nữ</option>
+              </select></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-group">
+            <p>Thành Phố :</p>
+            <select formControlName="city" style="width: 250px" >
+              <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
+            </select>
+            <p *ngIf="!ccdvForm.get('city')?.valid && ccdvForm.get('city')?.touched" style="color: red">không thể để trống</p>
+          </div></td>
+        <td>
+
+          <div class="form-group">
+            <h5>Quốc gia : </h5>
+            <input style="width: 250px" class="form-control" placeholder="Nhập quốc gia" formControlName="nationality">
+            <p *ngIf="!ccdvForm.get('nationality')?.valid && ccdvForm.get('nationality')?.touched" style="color: red">không thể để trống</p>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <h5>Ảnh : </h5>
+            <input style="width: 250px" class="form-control" placeholder="Nhập link ảnh" formControlName="avatar">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-group">
+            <h5>Chiều cao : </h5>
+            <input style="width: 250px" type="number" class="form-control" placeholder="Nhập chiều cao" formControlName="height">
+            <p *ngIf="!ccdvForm.get('height')?.valid && ccdvForm.get('height')?.touched" style="color: red">phải cao hơn 1m</p>
+
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <h5>Cân nặng : </h5>
+            <input style="width: 250px" type="number" class="form-control" placeholder="Nhập cân nặng" formControlName="weight">
+            <p *ngIf="!ccdvForm.get('weight')?.valid && ccdvForm.get('weight')?.touched" style="color: red">phải nặng hơn 30 kg</p>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <h5>Sở thích : </h5>
+            <input style="width: 250px" class="form-control" placeholder="Nhập sở thích" formControlName="hobby">
+            <p *ngIf="!ccdvForm.get('hobby')?.valid && ccdvForm.get('hobby')?.touched" style="color: red">ít nhất 10 kí tự</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-group">
+            <h5>Yêu cầu : </h5>
+            <input style="width: 250px" class="form-control" placeholder="Nhập yêu cầu" formControlName="requestToPayer">
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <h5>Link facebook : </h5>
+            <input style="width: 250px" class="form-control" placeholder="Nhập linkFb" formControlName="linkFb">
+            <p *ngIf="!ccdvForm.get('linkFb')?.valid && ccdvForm.get('linkFb')?.touched" style="color: red">k đc để trống</p>
+          </div>
+        </td><td>
+        <div class="form-group">
+          <h5>Giá : </h5>
+          <input  style="width: 250px" type="number" class="form-control" placeholder="Nhập giá" formControlName="price">
+          <p *ngIf="!ccdvForm.get('price')?.valid && ccdvForm.get('price')?.touched" style="color: red">ít nhất 70k nhiều nhất 500k</p>
+        </div>
+      </td>
+      </tr>
+    </table>
     <div class="form-group">
-      <label for="email">Name : </label>
-      <input type="email" class="form-control" formControlName="name" placeholder="Enter name" id="email">
-      <p *ngIf="!ccdvForm.get('name')?.valid" style="color: red">không thể để trống</p>
-    </div>
-    <div class="form-group">
-      <label>Date of birth : </label>
-      <input  type="date" class="form-control" placeholder="Enter your birthday" formControlName="dateOfBirth" >
-    </div>
-    <div class="form-group">
-      <label> Gender : </label>
-      <select name="" id="" formControlName="gender">
-        <option value="Nam">Nam</option>
-        <option value="Nu">Nữ</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>City : </label>
-      <select formControlName="city" >
-        <option >Thành Phố</option>
-        <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
-      </select>
-<!--      <input class="form-control" placeholder="Enter your city" formControlName="city" >-->
-<!--      <p *ngIf="!ccdvForm.get('city')?.valid" style="color: red">không thể để trống</p>-->
-    </div>
-    <div class="form-group">
-      <label>Nationality : </label>
-      <input  class="form-control" placeholder="Enter your nationality" formControlName="nationality" >
-    <p *ngIf="!ccdvForm.get('nationality')?.valid" style="color: red">không thể để trống</p>
+      <h5>Miêu tả : </h5>
+      <input class="form-control" placeholder="Nhập mô tả về bạn" formControlName="description">
+      <p *ngIf="!ccdvForm.get('description')?.valid && ccdvForm.get('description')?.touched" style="color: red">ít nhất 10 kí tự</p>
 
     </div>
-    <div class="form-group">
-      <label>Avatar : </label>
-      <input  class="form-control" placeholder="Enter your avatar" formControlName="avatar" >
-    </div>
-  <div class="form-group">
-      <label>height : </label>
-      <input type="number" class="form-control" placeholder="Enter your height" formControlName="height" >
-    <p *ngIf="!ccdvForm.get('height')?.valid" style="color: red">phải cao hơn 1m</p>
-
-  </div>
-    <div class="form-group">
-      <label>weight : </label>
-      <input type="number" class="form-control" placeholder="Enter your weight" formControlName="weight" >
-      <p *ngIf="!ccdvForm.get('weight')?.valid" style="color: red">phải nặng hơn 30 kg</p>
-    </div>
-    <div class="form-group">
-      <label>hobby : </label>
-      <input  class="form-control" placeholder="Enter your hobby" formControlName="hobby" >
-      <p *ngIf="!ccdvForm.get('hobby')?.valid" style="color: red">ít nhất 10 kí tự</p>
-
-    </div>
-   <div class="form-group">
-      <label>description : </label>
-      <input  class="form-control" placeholder="Enter your description" formControlName="description" >
-    <p *ngIf="!ccdvForm.get('hobby')?.valid" style="color: red">ít nhất 10 kí tự</p>
-
-   </div>
-    <div class="form-group">
-      <label>requestToPayer : </label>
-      <input  class="form-control" placeholder="Enter your requestToPayer" formControlName="requestToPayer" >
-    </div>
- <div class="form-group">
-      <label>linkFb : </label>
-      <input  class="form-control" placeholder="Enter your linkFb" formControlName="linkFb" >
-   <p *ngIf="!ccdvForm.get('linkFb')?.valid" style="color: red">k  đc để trống</p>
-   <div class="form-group">
-     <label>Price : </label>
-     <input type="number" class="form-control" placeholder="Enter your price" formControlName="price" >
-     <p *ngIf="!ccdvForm.get('linkFb')?.valid" style="color: red">k  đc để trống</p>
- </div>
- </div>
-    <button type="submit" class="btn btn-primary"  [disabled]="ccdvForm.invalid" >Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="ccdvForm.invalid">Submit</button>
   </form>
 </div>
-
-
