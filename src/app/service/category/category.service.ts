@@ -14,11 +14,11 @@ export class CategoryService {
   constructor(private httpClient: HttpClient) {
 
   }
-  findAll(): Observable<Category[]> {
+  getAll(): Observable<Category[]> {
     return this.httpClient.get<Category[]>(API_URL);
   }
 
-  findById(id: number): Observable<Category> {
+  getById(id: number): Observable<Category> {
     return this.httpClient.get<Category>(API_URL + `/${id}`);
   }
   deleteById(id : number) : Observable<CategoryService> {
