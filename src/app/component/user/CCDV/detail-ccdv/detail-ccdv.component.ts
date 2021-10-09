@@ -6,6 +6,8 @@ import { User } from 'src/app/models/user/user';
 
 import {AngularFireStorage} from "@angular/fire/storage";
 import {UserService} from "../../../../service/user/user.service";
+import {SelectService} from "../../../../service/select/select.service";
+import {City} from "../../../../models/city";
 
 
 @Component({
@@ -14,12 +16,13 @@ import {UserService} from "../../../../service/user/user.service";
   styleUrls: ['./detail-ccdv.component.css']
 })
 export class DetailCcdvComponent implements OnInit {
+  city: City[] = [];
   ccdvForm : FormGroup = new FormGroup(
     {
       name: new FormControl('',[Validators.required]),
       dateOfBirth: new FormControl(),
       gender: new FormControl('',Validators.required),
-      city: new FormControl('',Validators.required),
+      city: new FormControl(""),
       nationality: new FormControl('',Validators.required),
       avatar: new FormControl(),
       height: new FormControl('',Validators.min(100)),
@@ -33,10 +36,13 @@ export class DetailCcdvComponent implements OnInit {
       price: new FormControl('',[Validators.min(70000),Validators.max(500000)]),
     })
   id!: number;
-  constructor(private activeRoute: ActivatedRoute, private router: Router, private http: HttpClient,private storage: AngularFireStorage,private userService: UserService) {
+
+  //.
+  constructor(private activeRoute: ActivatedRoute, private router: Router, private http: HttpClient,private storage: AngularFireStorage,private userService: UserService, private select: SelectService) {
   }
 
   ngOnInit(): void {
+    this.getListCity()
     // this.activatedRoute.params.subscribe((data) => this.id = data.id);
     this.activeRoute.paramMap.subscribe(data => {
       this.id = parseInt(data.get('id')!)
@@ -46,7 +52,7 @@ export class DetailCcdvComponent implements OnInit {
   saveUser(id: number) {
     this.userService.saveUser(id,this.ccdvForm.value).subscribe((data) => {
       alert("Bạn đã trở thành người cung cấp dịch vụ")
-      this.router.navigate([""])
+      this.router.navigate([""]);
     })
   }
   showEditUser(id: number) {
@@ -69,6 +75,12 @@ export class DetailCcdvComponent implements OnInit {
           createAtCCDV: new FormControl(data.createAtCCDV),
           price: new FormControl(data.price),
         })
+    });
+
+  }
+  getListCity() {
+    this.select.findCity().subscribe((data) => {
+      this.city = data;
     })
   }
   // selectedFile : File = null;
@@ -118,3 +130,4 @@ export class DetailCcdvComponent implements OnInit {
 // <!--statusCCDV?: number;-->
 // <!--statusUs?: number;-->
 // <!--price?: number;-->
+

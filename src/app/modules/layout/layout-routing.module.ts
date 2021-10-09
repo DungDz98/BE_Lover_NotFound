@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {ListCcdvComponent} from "../../component/user/CCDV/list-ccdv/list-ccdv.component";
 import {SignInComponent} from "../../component/sign-in/sign-in.component";
 import {SignUpComponent} from "../../component/sign-up/sign-up.component";
-import {DetailCcdvComponent} from "../../conponent/User/CCDV/detail-ccdv/detail-ccdv.component";
+import {DetailCcdvComponent} from "../../component/user/CCDV/detail-ccdv/detail-ccdv.component";
 
 
 const routes: Routes = [

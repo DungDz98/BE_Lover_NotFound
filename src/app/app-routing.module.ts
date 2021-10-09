@@ -11,14 +11,6 @@ const routes: Routes = [
     loadChildren: () => import('./modules/layout/layout.module').then(module => module.LayoutModule)
   },
 ];
-const routes: Routes = [
-  {
-    path: '',
-    component : LayoutComponent,
-    loadChildren: () => import('./modules/layout/layout.module').then(module => module.LayoutModule)
-  },
-];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

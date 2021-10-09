@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from "../../../service/in-out/auth.service";
+import {TokenService} from "../../../service/in-out/token.service";
+import {UserService} from "../../../service/user/user.service";
+
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  idUser!: number | undefined;
+  name!: String | undefined;
+  isCCDV: boolean = true;
 
-  ngOnInit(): void {
+  constructor(private tokenService: TokenService, private userService: UserService) {
   }
 
+  ngOnInit(): void {
+    if (this.tokenService.getJwt()) {
+      this.idUser = this.tokenService.getJwt().id;
+      // @ts-ignore
+      this.name = localStorage.getItem('userName');
+
+
+      // @ts-ignore
+     this.userService.getById(this.idUser).subscribe(data=>{
+       if (data.statusCCDV == 1){
+         this.isCCDV = false;
+       }
+     })
+
+
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SelectService} from "../../../../sevice/select/select.service";
+import {SelectService} from "../../../../service/select/select.service";
 import {User} from "../../../../models/user/user";
 import {City} from "../../../../models/city";
 import {HttpClient} from "@angular/common/http";
@@ -39,12 +39,12 @@ export class ListCcdvComponent implements OnInit {
   }
 
   // test feature
-
-  resetValue(){
-    this.userForm.get('name')?.setValue('');
-    this.userForm.get('gender')?.setValue('Giới tính');
-    this.userForm.get('city')?.setValue('Thành Phố');
-  }
+  //
+  // resetValue(){
+  //   this.userForm.get('name')?.setValue('');
+  //   this.userForm.get('gender')?.setValue('Giới tính');
+  //   this.userForm.get('city')?.setValue('Thành Phố');
+  // }
 
   //------
 
