@@ -36,7 +36,8 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(){
-    this.tokenService.logout();
-    this.router.navigate(['/login']).then(()=>{window.location.reload()})
+    localStorage.removeItem('jwtResponse')
+    window.location.href="/login"
   }
+
 }

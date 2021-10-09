@@ -8,5 +8,10 @@
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     <button class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/login']">login</button>
 <!--    <button class="btn btn-outline-success my-2 my-sm-0" *ngIf="idUser" (click)="logout()">logout</button>-->
+    <p>
+      <a style="cursor: pointer" (click)="logout()" class="btn btn-info btn-lg">
+        <span class="glyphicon glyphicon-log-out"></span> Log out
+      </a>
+    </p>
   </form>
 </nav>
