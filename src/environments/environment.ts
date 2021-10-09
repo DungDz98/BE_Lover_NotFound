@@ -4,18 +4,16 @@
 
 export const environment = {
   production: false,
-  // firebaseConfig: {
-  //   apiKey: 'AIzaSyBjKmroA4JTqsnp6ROXlrVZ4TtGip78HK8',
-  //   authDomain: 'test-8e416.firebaseapp.com',
-  //   projectId: 'test-8e416',
-  //   databaseURL: '' +
-  //     '',
-  //   storageBucket: 'test-8e416.appspot.com',
-  //   messagingSenderId: '1046231139935',
-  //   appId: '1:1046231139935:web:08d9445daf82d1d40abdea',
-  //   measurementId: 'G-8PJ3XDQDBC'
-  // },
-
+  firebaseConfig : {
+    apiKey: "AIzaSyDzfqV_B4ZXra9c3IwJwzhnt6UzgHYZ7xU",
+    authDomain: "tinder-fake-7fc95.firebaseapp.com",
+    databaseURL: 'https://tinder-fake-7fc95-default-rtdb.firebaseio.com/',
+    projectId: "tinder-fake-7fc95",
+    storageBucket: "tinder-fake-7fc95.appspot.com",
+    messagingSenderId: "910340431254",
+    appId: "1:910340431254:web:140cbb53d4555959d4d1b7",
+    measurementId: "G-9J51G2ERW1"
+  },
   API_URL: 'http://localhost:8080'
 };
 

@@ -1,0 +1,163 @@
+<div class="wrapper mt-1" style="background-image: url('assets/images/bg-registration-form-2.jpg');">
+  <div class="inner col-12">
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
+      <h3>Đăng ký tài khoản</h3>
+      <div class="alert alert-warning d-flex align-items-center" role="alert" *ngIf="!isRegistered">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Cảnh báo:">
+          <use xlink:href="#exclamation-triangle-fill"/>
+        </svg>
+        <div>{{status}}</div>
+      </div>
+
+      <div class="alert alert-success d-flex align-items-center" role="alert" *ngIf="isRegistered">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Thành công:">
+          <use xlink:href="#check-circle-fill"/>
+        </svg>
+        <div>{{status}}</div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="form-wrapper">
+          <label class="form-label">Tên tài khoản</label>
+          <div class="input-group has-validation ">
+          <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                              fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+  <path
+    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+</svg></span>
+            <input type="text" class="txtRegister"
+                   [ngClass]="['form-control',(username.untouched)? '' : (username.invalid && (username.dirty || username.touched))? 'is-invalid' : 'is-valid']"
+                   formControlName="userName" id="txtUserName">
+            <div *ngIf="username.invalid && (username.dirty)" class="invalid-feedback">
+              <div *ngIf="username.errors.required">Tên tài khoản không được để trống</div>
+              <div *ngIf="!username.errors.required && !username.errors.minLength">Độ dài tối thiểu là 6 ký tự
+              </div>
+            </div>
+            <div *ngIf="username.valid" class="valid-feedback">Tên tài khoản hợp lệ</div>
+          </div>
+        </div>
+
+
+        <div class="form-wrapper">
+          <label class="form-label">Điện thoại</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+  <path
+    d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+</svg></span>
+            <input type="text" class="txtRegister"
+                   [ngClass]="['form-control',(phoneNumber.untouched)? '' : (phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched))? 'is-invalid' : 'is-valid']"
+                   formControlName="phoneNumber">
+            <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="invalid-feedback">
+              <div *ngIf="phoneNumber.errors.required">Số điện thoại không được để trống</div>
+              <div *ngIf="!phoneNumber.errors.required && phoneNumber.errors.pattern">Không đúng định dạng</div>
+            </div>
+            <div *ngIf="phoneNumber.valid" class="valid-feedback">Số điện thoại hợp lệ</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-wrapper">
+        <label class="form-label">Email</label>
+        <div class="input-group has-validation">
+        <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+  <path
+    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+</svg></span>
+          <input type="email" class="txtRegisterLong"
+                 [ngClass]="['form-control',(email.untouched)? '' : (email.invalid && (email.dirty || email.touched))? 'is-invalid' : 'is-valid']"
+                 formControlName="email">
+          <span class="input-group-text">@example.com</span>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+            <div *ngIf="email.errors.required">Email không được để trống</div>
+            <div *ngIf="!email.errors.required && email.errors">Email phải có @</div>
+          </div>
+          <div *ngIf="email.valid" class="valid-feedback">Email hợp lệ</div>
+        </div>
+      </div>
+
+
+      <div class="form-wrapper">
+        <label class="form-label">Mật khẩu</label>
+        <div class="input-group has-validation">
+         <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+  <path
+    d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+</svg></span>
+          <input [attr.type]="[isPassword]" class="txtRegisterLong"
+                 [ngClass]="['form-control',(password.untouched)? '' : (password.invalid && (password.dirty || password.touched))? 'is-invalid' : 'is-valid']"
+                 formControlName="password">
+          <span class="input-group-text" [hidden]="(isPassword== 'text')" (click)="showPass()"><svg
+            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill"
+            viewBox="0 0 16 16">
+  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+</svg></span>
+          <span class="input-group-text" [hidden]="(isPassword== 'password')" (click)="showPass()"><svg
+            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill"
+            viewBox="0 0 16 16">
+  <path
+    d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
+  <path
+    d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
+</svg></span>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+            <div *ngIf="password.errors.required">Mật khẩu không được để trống</div>
+            <div *ngIf="!password.errors.required && password.errors.pattern">Mật khẩu phải có kí tự đặc biệt,
+              chữ cái, số & độ dài từ 8 đến 20
+            </div>
+          </div>
+          <div *ngIf="password.valid" class="valid-feedback">Mật khẩu hợp lệ</div>
+        </div>
+      </div>
+
+      <div class="form-wrapper">
+        <label class="form-label">Xác nhận mật khẩu</label>
+        <div class="input-group has-validation">
+       <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                           fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+  <path
+    d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+</svg></span>
+          <input [attr.type]="[isConfirmedPassword]" class="txtRegisterLong"
+                 [ngClass]="['form-control',(confirmedPassword.untouched)? '' : (confirmedPassword.invalid || (confirmedPassword.value != password.value) && (confirmedPassword.dirty || confirmedPassword.touched))? 'is-invalid' : 'is-valid']"
+                 formControlName="confirmedPassword">
+          <span class="input-group-text" [hidden]="(isConfirmedPassword== 'text')" (click)="showConfirmedPass()"><svg
+            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill"
+            viewBox="0 0 16 16">
+  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+</svg></span>
+          <span class="input-group-text" [hidden]="(isConfirmedPassword== 'password')" (click)="showConfirmedPass()"><svg
+            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill"
+            viewBox="0 0 16 16">
+  <path
+    d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
+  <path
+    d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
+</svg></span>
+          <div *ngIf="confirmedPassword.invalid && (confirmedPassword.dirty || confirmedPassword.touched)"
+               class="invalid-feedback">Mật khẩu không được để trống
+          </div>
+          <div *ngIf=" confirmedPassword.valid && (confirmedPassword.value != password.value)" class="invalid-feedback">
+            Mật khẩu không khớp
+          </div>
+          <div *ngIf="(confirmedPassword.valid && (confirmedPassword.value == password.value))" class="valid-feedback">
+            Mật khẩu hợp lệ
+          </div>
+        </div>
+      </div>
+
+      <button [disabled]="registerForm.invalid">Đăng kí ngay</button>
+<!--      <button *ngIf="isRegistered">Đăng nhập</button>-->
+    </form>
+  </div>
+</div>
+
+
