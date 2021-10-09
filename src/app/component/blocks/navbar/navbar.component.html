@@ -1,10 +1,12 @@
 <nav class="navbar navbar-light bg-light">
-  <a>Hello {{name}}</a>
   <a class="navbar-brand" [routerLink]="''">Navbar</a>
-  <a [routerLink]="['edit/',idUser]" *ngIf="isCCDV">create</a>
+  <a [routerLink]="['/rents/provider/', idUser]" style="margin-right: auto" *ngIf="isCCDV">Hello {{name}}</a>
+  <a [routerLink]="['/rents/payer/', idUser]" style="margin-right: auto" *ngIf="idUser">Hello {{name}}</a>
+  <a [routerLink]="['edit/',idUser]" *ngIf="isCCDV && idUser">create</a>
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     <button class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/login']">login</button>
+<!--    <button class="btn btn-outline-success my-2 my-sm-0" *ngIf="idUser" (click)="logout()">logout</button>-->
   </form>
 </nav>

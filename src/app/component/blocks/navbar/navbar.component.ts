@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../service/in-out/auth.service";
 import {TokenService} from "../../../service/in-out/token.service";
 import {UserService} from "../../../service/user/user.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -15,7 +16,7 @@ export class NavbarComponent implements OnInit {
   name!: String | undefined;
   isCCDV: boolean = true;
 
-  constructor(private tokenService: TokenService, private userService: UserService) {
+  constructor(private tokenService: TokenService, private userService: UserService, private router :Router) {
   }
 
   ngOnInit(): void {
@@ -31,8 +32,11 @@ export class NavbarComponent implements OnInit {
          this.isCCDV = false;
        }
      })
-
-
     }
+  }
+
+  logout(){
+    this.tokenService.logout();
+    this.router.navigate(['/login']).then(()=>{window.location.reload()})
   }
 }

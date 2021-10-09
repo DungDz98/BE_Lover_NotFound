@@ -5,6 +5,7 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../service/user/user.service";
 import {Rent} from "../../model/Rent";
+import {TokenService} from "../../service/in-out/token.service";
 
 @Component({
   selector: 'app-profile-provider',
@@ -13,7 +14,7 @@ import {Rent} from "../../model/Rent";
 })
 export class ProfileProviderComponent implements OnInit {
   id: number = 0;
-  idUs: number = 11;
+  idUs: number | undefined = 0;
   // @ts-ignore
   user: User = {};
   // @ts-ignore
@@ -23,16 +24,19 @@ export class ProfileProviderComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private formBuilder: FormBuilder,
-              private userService: UserService) { }
+              private userService: UserService,
+              private tokenService: TokenService,
+              ) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-
+      this.idUs = this.tokenService.getJwt().id;
       // @ts-ignore
       this.id = +paramMap.get('id');
       console.log(this.id);
       this.getUserById(this.id);
-      this.getUserCurrent(11);
+      // @ts-ignore
+      this.getUserCurrent(this.idUs);
     });
   }
 
