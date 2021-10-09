@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire";
 import {AngularFireStorageModule} from "@angular/fire/storage";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LayoutComponent } from './conponent/layout/layout.component';
+import {HttpClientModule} from "@angular/common/http";
 import { SignInComponent } from './component/sign-in/sign-in.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -19,7 +22,8 @@ import {NgxPaginationModule} from "ngx-pagination";
   declarations: [
     AppComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,

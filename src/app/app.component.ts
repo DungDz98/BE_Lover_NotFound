@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Observable} from "rxjs";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {finalize} from "rxjs/operators";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent {
   fb: any;
   downloadURL!: Observable<string>;
 
-  constructor(private storage: AngularFireStorage) {
+  constructor(private storage: AngularFireStorage,private http :HttpClient) {
   }
 
   onFileSelected(event:any) {
