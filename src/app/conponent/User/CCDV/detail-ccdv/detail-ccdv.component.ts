@@ -6,8 +6,6 @@ import { User } from 'src/app/models/user/user';
 
 import {AngularFireStorage} from "@angular/fire/storage";
 import {UserService} from "../../../../service/user/user.service";
-
-
 @Component({
   selector: 'app-detail-ccdv',
   templateUrl: './detail-ccdv.component.html',

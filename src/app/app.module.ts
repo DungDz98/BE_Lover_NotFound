@@ -9,13 +9,13 @@ import {AngularFireStorageModule} from "@angular/fire/storage";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LayoutComponent } from './conponent/layout/layout.component';
 import {HttpClientModule} from "@angular/common/http";
-import { DkiDichvuComponent } from './conponent/User/CCDV/dki-dichvu/dki-dichvu.component';
+// import { DkiDichvuComponent } from './conponent/User/CCDV/dki-dichvu/dki-dichvu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
-    DkiDichvuComponent
+    // DkiDichvuComponent
   ],
     imports: [
         BrowserModule,
