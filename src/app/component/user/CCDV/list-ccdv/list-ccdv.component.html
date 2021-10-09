@@ -51,13 +51,12 @@
       </select>
       <input type="text"
              class="form-control name"
-             placeholder="Tên Player"
+             placeholder="Tên"
              autocomplete="off"
              maxlength="32"
              value=""
-             formControlName="name" (input)="getAllByName()">
-      <input type="text" class="form-control category" placeholder="Tên game" autocomplete="off" value="">
-      <button type="button" class="form-control btn-filter btn btn-default" (click)="getAll()">
+             formControlName="name">
+      <button type="button" class="form-control btn-filter btn btn-default" (click)="getAllByName()">
         <i class="fa fa-search"></i> Tìm kiếm
       </button>
     </div>

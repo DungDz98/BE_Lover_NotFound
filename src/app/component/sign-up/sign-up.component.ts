@@ -25,7 +25,7 @@ export class SignUpComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({
     userName: new FormControl('', [Validators.required, Validators.pattern(/^[a-z]{1}[a-z0-9._-]{3,15}$/)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
+    phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^0\d{9}$/)]),
     password: new FormControl('', [Validators.required,
       Validators.pattern(new RegExp('^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,20}$'))]),
     confirmedPassword: new FormControl('', [Validators.required])

@@ -11,7 +11,6 @@ import { SignUpComponent } from './component/sign-up/sign-up.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 
-import {HttpClientModule} from "@angular/common/http";
 //de phan trang
 import {NgxPaginationModule} from "ngx-pagination";
 

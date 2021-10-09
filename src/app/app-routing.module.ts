@@ -6,14 +6,6 @@ import {LayoutComponent} from "./component/layout/layout.component";
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: SignInComponent
-  },
-  {
-    path: 'create',
-    component: SignUpComponent
-  },
-  {
     path: "",
     component: LayoutComponent,
     loadChildren: () => import('./modules/layout/layout.module').then(module => module.LayoutModule)
