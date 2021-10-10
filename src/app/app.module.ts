@@ -17,13 +17,16 @@ import {NgxPaginationModule} from "ngx-pagination";
 import { RentPayerComponent } from './component/rent-payer/rent-payer.component';
 import { ProfileProviderComponent } from './component/profile-provider/profile-provider.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     SignUpComponent,
     RentPayerComponent,
-    ProfileProviderComponent
+    ProfileProviderComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,8 @@ import { ProfileProviderComponent } from './component/profile-provider/profile-p
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
     NgxPaginationModule,
+
+
     ],
   providers: [],
   bootstrap: [AppComponent]

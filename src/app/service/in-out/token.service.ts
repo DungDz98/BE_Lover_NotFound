@@ -18,8 +18,5 @@ export class TokenService {
     localStorage.setItem('jwtResponse', JSON.stringify(jwtResponse));
   }
 
-  logout(){
-    window.localStorage.clear();
-    window.location.reload()
-  }
+
 }
