@@ -3,6 +3,7 @@ import {environment} from "../../../environments/environment.prod";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Rent} from "../../model/Rent";
+import {Category} from "../../model/category/category";
 
 const RENT_API = `${environment.API_URL}/rents`;
 
@@ -30,6 +31,7 @@ export class RentService {
   }
 
   saveRent(rent: Rent): Observable<Rent> {
+    // @ts-ignore
     return this.http.post<Rent>(RENT_API, rent);
   }
 

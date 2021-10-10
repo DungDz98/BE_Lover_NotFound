@@ -1,4 +1,5 @@
 import {User} from "./User";
+import {Category} from "./category/category";
 
 export interface Rent {
   id?:number;
@@ -9,6 +10,6 @@ export interface Rent {
   totalMoney?:number;
   time?: number;
   status?: number;
-  services?: any;
+  services?: Category[];
   feedback?: string;
 }

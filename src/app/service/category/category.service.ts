@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
 
-import {Category} from "../../models/category/category";
+import {Category} from "../../model/category/category";
 const API_URL = environment.API_URL + '/category';
 
 @Injectable({

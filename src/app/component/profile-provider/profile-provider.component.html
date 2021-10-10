@@ -104,29 +104,32 @@
   <div class="wrapper">
     <div class="container player-infomation">
       <div class="row">
-      <div class="player-profile-left-wrap col-md-3">
-        <div class="avt-player">
-          <div class="avt avt-lg"><img
-            [src]="user.avatar"
-            class="avt-img" alt="PD"></div>
-        </div>
-        <div class="rent-time-wrap" *ngIf="user.statusCCDV === 1"><p class="ready" style="color: green">Đang sẵn sàng</p></div>
-        <div class="rent-time-wrap" *ngIf="user.statusCCDV === 2"><p class="ready" style="color: red">Đang bận</p></div>
-        <div class="social-icon">
-          <div class="icon-wrap facebook"><a [href]="user.linkFb" target="_blank"
-                                             rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+        <div class="player-profile-left-wrap col-md-3">
+          <div class="avt-player">
+            <div class="avt avt-lg"><img
+              [src]="user.avatar"
+              class="avt-img" alt="PD"></div>
+          </div>
+          <div class="rent-time-wrap" *ngIf="user.statusCCDV === 1"><p class="ready" style="color: green">Đang sẵn
+            sàng</p></div>
+          <div class="rent-time-wrap" *ngIf="user.statusCCDV === 2"><p class="ready" style="color: red">Đang bận</p>
+          </div>
+          <div class="social-icon">
+            <div class="icon-wrap facebook"><a [href]="user.linkFb" target="_blank"
+                                               rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            </div>
+          </div>
+          <div class="member-since"><span>Ngày tham gia:</span><span><span>{{user.createAt | date:'dd/MM/YYYY'}}</span></span>
           </div>
         </div>
-        <div class="member-since"><span>Ngày tham gia:</span><span><span>{{user.createAt | date:'dd/MM/YYYY'}}</span></span></div>
-      </div>
         <div class="player-profile-main-wrap col-md-6 col-md-pull-3">
           <div>
             <div class="row">
               <div class="center-item col-md-12"><span
                 class="name-player-profile hidden-over-name">{{user.name}} </span>
-<!--                <button class="btn-follow-player"><i class="fas fa-heart"></i>&nbsp;<span-->
-<!--                  class="plus"><span>Theo dõi</span></span>-->
-<!--                </button>-->
+                <!--                <button class="btn-follow-player"><i class="fas fa-heart"></i>&nbsp;<span-->
+                <!--                  class="plus"><span>Theo dõi</span></span>-->
+                <!--                </button>-->
               </div>
             </div>
             <div class="nav-player-profile row">
@@ -154,8 +157,9 @@
             <div class="content-player-profile"><p>Cao thủ <strong>Liên quân Mobile</strong></p>
               <div class="album-of-player">
                 <div>
-                  <a href="https://playerduo.com/api/upload-service/images/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__a1951bc0-1c83-11ec-851f-6161af46f080__player_album.jpg"
-                     style="display: block;"><img
+                  <a
+                    href="https://playerduo.com/api/upload-service/images/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__a1951bc0-1c83-11ec-851f-6161af46f080__player_album.jpg"
+                    style="display: block;"><img
                     src="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__a1951bc0-1c83-11ec-851f-6161af46f080__player_album.jpg"
                     class=""
                     alt="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__a1951bc0-1c83-11ec-851f-6161af46f080__player_album.jpg"></a><a
@@ -180,8 +184,9 @@
                   class=""
                   alt="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__fbed8180-7b3d-11eb-b33d-fdadf423b3d4__player_album.jpg">
                   <div class="fadeDiv"><span style="font-family: Arial;">+1</span></div>
-                </a><a href="https://playerduo.com/api/upload-service/images/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__c4025200-7b3d-11eb-b33d-fdadf423b3d4__player_album.jpg"
-                       style="display: none;"><img
+                </a><a
+                  href="https://playerduo.com/api/upload-service/images/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__c4025200-7b3d-11eb-b33d-fdadf423b3d4__player_album.jpg"
+                  style="display: none;"><img
                   src="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__c4025200-7b3d-11eb-b33d-fdadf423b3d4__player_album.jpg"
                   class=""
                   alt="https://playerduo.com/api/upload-service/thumbs/medium/dcfc2d0b-f15a-4348-b3f8-28400a0e0ff9__c4025200-7b3d-11eb-b33d-fdadf423b3d4__player_album.jpg"></a>
@@ -204,19 +209,21 @@
             <hr>
           </div>
         </div>
-      <div class="player-profile-right-wrap col-md-3 col-md-push-6">
-        <div class="right-player-profile"><p class="price-player-profile">{{user.price}},000 đ/h</p>
-<!--          <div class="rateting-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i-->
-<!--            class="fas fa-star"></i><i class="fas fa-star"></i><i-->
-<!--            class="fas fa-star"></i>&nbsp;<span>35 <span>Đánh giá</span></span></div>-->
-          <div class="text-center">
-            <button class="btn-my-style red" data-toggle="modal" data-target="#rentModal"
-                    data-bs-whatever="@mdo" (click)="rent1()">Thuê</button>
-<!--            <button class="btn-my-style white">Donate</button>-->
-            <button class="btn-my-style white" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">💬 Chat</button>
+        <div class="player-profile-right-wrap col-md-3 col-md-push-6">
+          <div class="right-player-profile"><p class="price-player-profile">{{user.price}},000 đ/h</p>
+            <!--          <div class="rateting-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i-->
+            <!--            class="fas fa-star"></i><i class="fas fa-star"></i><i-->
+            <!--            class="fas fa-star"></i>&nbsp;<span>35 <span>Đánh giá</span></span></div>-->
+            <div class="text-center">
+              <button class="btn-my-style red" data-toggle="modal" data-target="#rentModal"
+                      data-bs-whatever="@mdo" (click)="rent1()">Thuê
+              </button>
+              <!--            <button class="btn-my-style white">Donate</button>-->
+              <button class="btn-my-style white" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">💬 Chat
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
       </div>
     </div>
@@ -224,30 +231,27 @@
 </div>
 
 <!--Modal tạo đơn-->
-<div *ngIf="idUs !== 0" class="modal fade" id="rentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="idUs !== 0" class="modal fade" id="rentModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true" style="width: 100%;">
   <form [formGroup]="rentForm">
-    <div class="modal-dialog">
-      <div class="modal-content">
+    <div class="modal-dialog" style="width: max-content">
+
+      <!--Test -->
+      <div class="modal-content" role="document">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Thông tin phiếu thuê</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+          <button type="button" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title"><span>Thuê người yêu</span></h4></div>
         <div class="modal-body">
-
-          <div class="row">
-            <div class="col-6">
-              <h6 class="mt-3">Người cung cấp dịch vụ:</h6>
-
-              <h6 class="mt-3">Ngày Hẹn</h6>
-              <h6 class="mt-5">Thời gian bắt đầu hẹn:</h6>
-              <h6 class="mt-5">Thời gian muốn thuê::</h6>
-            </div>
-            <div class="col-6">
-              <div class="mt-3">
-                <h6>{{user.name}}</h6>
-              </div>
-              <div class="mt-3">
-
+          <table class="table">
+            <tbody>
+            <tr>
+              <td>Người cung cấp dịch vụ:</td>
+              <td colspan="2">{{user.name}}</td>
+            </tr>
+            <tr>
+              <td>Ngày hẹn:</td>
+              <td>
                 <input formControlName="rentDate" id="b" (change)="change1()"
                        *ngIf="((date.getMonth() + 1) > 9) && (date.getDate() > 9)" type="date" min="{{date2}}">
 
@@ -259,91 +263,215 @@
 
                 <input formControlName="rentDate" id="d" (change)="change3()"
                        *ngIf="((date.getMonth() + 1) < 10) && (date.getDate() > 9)" type="date" min="{{date5}}">
+              </td>
+              <td *ngIf="rentForm.get('rentDate')?.touched"><p *ngIf="rentForm.get('rentDate')?.errors?.required">
+                Ngày hẹn không được để trống</p></td>
 
-              </div>
-              <div class="mt-3">
-                <div *ngIf="rentForm.get('rentDate')?.touched"><p *ngIf="rentForm.get('rentDate')?.errors?.required">
-                  Ngày hẹn không được để trống</p></div>
-              </div>
-              <div class="mt-4" *ngIf="date.getDate() === checkDate.getDate() ">
-                <select formControlName="startDate">
+            </tr>
+            <tr>
+              <td>Thời gian bắt đầu hẹn:</td>
+              <td *ngIf="date.getDate() === checkDate.getDate() ">
+                <select formControlName="startDate">-->
                   <option selected disabled>Chọn giờ</option>
-
                   <option *ngFor="let item of arr1 " value="{{item}}">{{item}} giờ</option>
-
                 </select>
-
-
-              </div>
-              <div class="mt-3"><p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để
-                trống</p></div>
-              <div class="mt-3" *ngIf="date.getDate() !== checkDate.getDate() ">
+              </td>
+              <td class="mt-3" *ngIf="date.getDate() === checkDate.getDate() ">
+                <p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để
+                  trống</p>
+              </td>
+              <td class="mt-3" *ngIf="date.getDate() !== checkDate.getDate() ">
                 <select formControlName="startDate">
                   <option selected disabled>Chọn giờ</option>
                   <option *ngFor="let item of arr " value="{{item}}">{{item}} giờ</option>
 
                 </select>
-                <div><p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để trống</p>
-                </div>
-              </div>
-
-              <div class="mt-3">
+              </td>
+              <td *ngIf="date.getDate() !== checkDate.getDate() ">
+                <p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để trống</p>
+              </td>
+            </tr>
+            <tr>
+              <td>Thời gian muốn thuê:</td>
+              <td class="mt-3">
                 <select formControlName="time" id="price" (change)="checkPrice()">
 
                   <option selected *ngFor="let item of arr" value="{{item + 1}}">{{item + 1}} giờ</option>
                 </select>
-                <div><p *ngIf="rentForm.get('time')?.errors?.required">Thời gian thuê không được để trống</p></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-3">Danh sách dịch vụ mở rộng</div>
-<!--          <div class="row" *ngFor="let service of listUserService">-->
-<!--            <div class="row" *ngIf="service.service?.typeService === 'Mở rộng'">-->
-<!--              <div class="col-6">-->
-<!--                <input type="checkbox" [value]="service.id"-->
-<!--                       (change)="onCheckboxChange($event)"> {{service.service?.name}}-->
-<!--              </div>-->
-<!--              <div class="col-6">-->
-<!--                <div>{{service.price}} Vnd</div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-          <div class="mt-3">Danh sách dịch vụ cơ bản, miễn phí</div>
-<!--          <div class="row" *ngFor="let service of listUserService">-->
-<!--            <div class="row"-->
-<!--                 *ngIf="service.service?.typeService === 'Cơ bản' || service.service?.typeService === 'Miễn phí'">-->
-<!--              <div class="col-6">-->
-<!--                <input type="checkbox" [value]="service.id"-->
-<!--                       (change)="onCheckboxChange($event)"> {{service.service?.name}}-->
-<!--              </div>-->
-<!--              <div class="col-6">-->
-<!--                <div>{{service.price}} Vnd</div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-          <div class="row mt-3">
-            <div class="col-6">
-              <h6>Tổng tiền: </h6>
-            </div>
-            <div class="col-6">
-              {{total}},000 VNĐ
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Tin nhắn:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-
+              </td>
+              <td>
+                <p *ngIf="rentForm.get('time')?.errors?.required">Thời gian thuê không được để trống</p>
+              </td>
+            </tr>
+            <tr>
+              <td><span>Danh sách dịch vụ mở rộng</span>:</td>
+              <td>
+                <div class="row" *ngFor="let service of listUserService">
+                  <div class="row" *ngIf="service.category?.typeService === 'Premium'">
+                    <div class="col-6">
+                      <input type="checkbox" [value]="service.id"
+                             (change)="onCheckboxChange($event)"> {{service.category?.name}}
+                    </div>
+                    <div class="col-6">
+                      <div>{{service?.price}},000 VNĐ</div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Danh sách dịch vụ cơ bản và miễn phí:</td>
+              <td>
+                <div class="row" *ngFor="let service of listUserService">
+                  <div class="row"
+                       *ngIf="service.category?.typeService === 'Basic' || service.category?.typeService === 'Free'">
+                    <div class="col-6">
+                      <input type="checkbox" [value]="service.id"
+                             (change)="onCheckboxChange($event)"> {{service.category?.name}}
+                    </div>
+                    <div class="col-6">
+                      <div>{{service?.price}},000 VNĐ</div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span>Chi phí</span>:</td>
+              <td><span class="price">{{total*1000}} VNĐ</span></td>
+            </tr>
+            <tr>
+              <td colspan="3"><textarea placeholder="Type a message ..." name="message" maxlength="255" type="text" rows="4"
+                                        class="form-control"></textarea>
+                <p class="err-message"></p></td>
+            </tr>
+            </tbody>
+          </table>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-          <button data-dismiss="modal"
-                  class="btn btn-primary" (click)="saveRent()">Gửi
-          </button>
+          <button type="button" class="btn-fill btn btn-danger" (click)="saveRent()" data-dismiss="modal"><span>Thuê</span></button>
+          <button type="button" class="btn btn-default" data-dismiss="modal"><span>Đóng</span></button>
         </div>
-
       </div>
+
+      <!---->
+      <!--      <div class="modal-content">-->
+      <!--        <div class="modal-header">-->
+      <!--          <h5 class="modal-title" id="exampleModalLabel">Thuê người yêu</h5>-->
+      <!--          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+      <!--        </div>-->
+      <!--        <div class="modal-body">-->
+
+      <!--          <div class="row">-->
+      <!--            <div class="col-6">-->
+      <!--              <h6 class="mt-3">Người cung cấp dịch vụ:</h6>-->
+
+      <!--              <h6 class="mt-3">Ngày Hẹn</h6>-->
+      <!--              <h6 class="mt-5">Thời gian bắt đầu hẹn:</h6>-->
+      <!--              <h6 class="mt-5">Thời gian muốn thuê::</h6>-->
+      <!--            </div>-->
+      <!--            <div class="col-6">-->
+      <!--              <div class="mt-3">-->
+      <!--                <h6>{{user.name}}</h6>-->
+      <!--              </div>-->
+      <!--              <div class="mt-3">-->
+
+      <!--                <input formControlName="rentDate" id="b" (change)="change1()"-->
+      <!--                       *ngIf="((date.getMonth() + 1) > 9) && (date.getDate() > 9)" type="date" min="{{date2}}">-->
+
+      <!--                <input formControlName="rentDate" id="a" (change)="change()"-->
+      <!--                       *ngIf="((date.getMonth() + 1) < 10) && (date.getDate() <10)" type="date" min="{{date3}}">-->
+
+      <!--                <input formControlName="rentDate" id="c" (change)="change2()"-->
+      <!--                       *ngIf="((date.getMonth() + 1) > 9) && (date.getDate() < 10)" type="date" min="{{date4}}">-->
+
+      <!--                <input formControlName="rentDate" id="d" (change)="change3()"-->
+      <!--                       *ngIf="((date.getMonth() + 1) < 10) && (date.getDate() > 9)" type="date" min="{{date5}}">-->
+
+      <!--              </div>-->
+      <!--              <div class="mt-3">-->
+      <!--                <div *ngIf="rentForm.get('rentDate')?.touched"><p *ngIf="rentForm.get('rentDate')?.errors?.required">-->
+      <!--                  Ngày hẹn không được để trống</p></div>-->
+      <!--              </div>-->
+      <!--              <div class="mt-4" *ngIf="date.getDate() === checkDate.getDate() ">-->
+      <!--                <select formControlName="startDate">-->
+      <!--                  <option selected disabled>Chọn giờ</option>-->
+
+      <!--                  <option *ngFor="let item of arr1 " value="{{item}}">{{item}} giờ</option>-->
+
+      <!--                </select>-->
+
+
+      <!--              </div>-->
+      <!--              <div class="mt-3"><p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để-->
+      <!--                trống</p></div>-->
+      <!--              <div class="mt-3" *ngIf="date.getDate() !== checkDate.getDate() ">-->
+      <!--                <select formControlName="startDate">-->
+      <!--                  <option selected disabled>Chọn giờ</option>-->
+      <!--                  <option *ngFor="let item of arr " value="{{item}}">{{item}} giờ</option>-->
+
+      <!--                </select>-->
+      <!--                <div><p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để trống</p>-->
+      <!--                </div>-->
+      <!--              </div>-->
+
+      <!--              <div class="mt-3">-->
+      <!--                <select formControlName="time" id="price" (change)="checkPrice()">-->
+
+      <!--                  <option selected *ngFor="let item of arr" value="{{item + 1}}">{{item + 1}} giờ</option>-->
+      <!--                </select>-->
+      <!--                <div><p *ngIf="rentForm.get('time')?.errors?.required">Thời gian thuê không được để trống</p></div>-->
+      <!--              </div>-->
+      <!--            </div>-->
+      <!--          </div>-->
+
+      <!--          <div class="mt-3">Danh sách dịch vụ mở rộng</div>-->
+      <!--          &lt;!&ndash;          <div class="row" *ngFor="let service of listUserService">&ndash;&gt;-->
+      <!--          &lt;!&ndash;            <div class="row" *ngIf="service.service?.typeService === 'Mở rộng'">&ndash;&gt;-->
+      <!--          &lt;!&ndash;              <div class="col-6">&ndash;&gt;-->
+      <!--          &lt;!&ndash;                <input type="checkbox" [value]="service.id"&ndash;&gt;-->
+      <!--          &lt;!&ndash;                       (change)="onCheckboxChange($event)"> {{service.service?.name}}&ndash;&gt;-->
+      <!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+      <!--          &lt;!&ndash;              <div class="col-6">&ndash;&gt;-->
+      <!--          &lt;!&ndash;                <div>{{service.price}} Vnd</div>&ndash;&gt;-->
+      <!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+      <!--          &lt;!&ndash;            </div>&ndash;&gt;-->
+      <!--          &lt;!&ndash;          </div>&ndash;&gt;-->
+      <!--          <div class="mt-3">Danh sách dịch vụ cơ bản, miễn phí</div>-->
+      <!--          &lt;!&ndash;          <div class="row" *ngFor="let service of listUserService">&ndash;&gt;-->
+      <!--          &lt;!&ndash;            <div class="row"&ndash;&gt;-->
+      <!--          &lt;!&ndash;                 *ngIf="service.service?.typeService === 'Cơ bản' || service.service?.typeService === 'Miễn phí'">&ndash;&gt;-->
+      <!--          &lt;!&ndash;              <div class="col-6">&ndash;&gt;-->
+      <!--          &lt;!&ndash;                <input type="checkbox" [value]="service.id"&ndash;&gt;-->
+      <!--          &lt;!&ndash;                       (change)="onCheckboxChange($event)"> {{service.service?.name}}&ndash;&gt;-->
+      <!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+      <!--          &lt;!&ndash;              <div class="col-6">&ndash;&gt;-->
+      <!--          &lt;!&ndash;                <div>{{service.price}} Vnd</div>&ndash;&gt;-->
+      <!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+      <!--          &lt;!&ndash;            </div>&ndash;&gt;-->
+      <!--          &lt;!&ndash;          </div>&ndash;&gt;-->
+      <!--          <div class="row mt-3">-->
+      <!--            <div class="col-6">-->
+      <!--              <h6>Tổng tiền: </h6>-->
+      <!--            </div>-->
+      <!--            <div class="col-6">-->
+      <!--              {{total}},000 VNĐ-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--          <div class="mb-3">-->
+      <!--            <label for="message-text" class="col-form-label">Tin nhắn:</label>-->
+      <!--            <textarea class="form-control" id="message-text"></textarea>-->
+      <!--          </div>-->
+
+      <!--        </div>-->
+      <!--        <div class="modal-footer">-->
+      <!--          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>-->
+      <!--          <button data-dismiss="modal"-->
+      <!--                  class="btn btn-primary" (click)="saveRent()">Gửi-->
+      <!--          </button>-->
+      <!--        </div>-->
+
+      <!--      </div>-->
     </div>
   </form>
 </div>

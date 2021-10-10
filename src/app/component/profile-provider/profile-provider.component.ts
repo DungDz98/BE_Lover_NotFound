@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../model/User";
 import {RentService} from "../../service/rent/rent.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../service/user/user.service";
 import {Rent} from "../../model/Rent";
 import {TokenService} from "../../service/in-out/token.service";
+import {UserServiceService} from "../../service/user-service/user-service.service";
+import {CategoryService} from "../../service/category/category.service";
+import {Category} from "../../model/category/category";
+import {IUserService} from "../../models/userService/IUserService";
 
 @Component({
   selector: 'app-profile-provider',
@@ -20,13 +24,19 @@ export class ProfileProviderComponent implements OnInit {
   // @ts-ignore
   userCurrent: User = {};
   rent: Rent = {};
+  serviceDetail: Category = {};
+  categories: Category[] = [];
+
   constructor(private rentService: RentService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private formBuilder: FormBuilder,
               private userService: UserService,
               private tokenService: TokenService,
-              ) { }
+              private userServiceService: UserServiceService,
+              private categoryService: CategoryService
+  ) {
+  }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
@@ -37,6 +47,7 @@ export class ProfileProviderComponent implements OnInit {
       this.getUserById(this.id);
       // @ts-ignore
       this.getUserCurrent(this.idUs);
+      this.getUserServiceByUserId(this.id);
     });
   }
 
@@ -45,7 +56,7 @@ export class ProfileProviderComponent implements OnInit {
   }
 
   getUserCurrent(id: number) {
-      this.userService.getUserById(id).subscribe(userCurrent => this.userCurrent = userCurrent);
+    this.userService.getUserById(id).subscribe(userCurrent => this.userCurrent = userCurrent);
   }
 
   date: Date = new Date();
@@ -68,13 +79,16 @@ export class ProfileProviderComponent implements OnInit {
     time: new FormControl('', [Validators.required]),
     rentDate: new FormControl('', [Validators.required]),
     // @ts-ignore
-    // service: new FormArray([], [Validators.required])
+    service: new FormArray([], [Validators.required])
 
   });
-  checkReset(){
+  listUserService: IUserService[] = [];
+
+  checkReset() {
     this.router.navigate([''])
     window.location.reload()
   }
+
   checkPrice() {
 // @ts-ignore
     let a = document.getElementById('price').value;
@@ -132,6 +146,9 @@ export class ProfileProviderComponent implements OnInit {
     console.log(this.checkDate.getDate());
   }
 
+  listService: Category[] = [];
+  rentUpdate: Rent = {};
+
   saveRent() {
     console.log(this.rentForm.value.service);
     let a = '';
@@ -140,6 +157,16 @@ export class ProfileProviderComponent implements OnInit {
     }
     a = this.rentForm.value.rentDate + ' ' + this.rentForm.value.startDate + ':00:00';
 
+    for (let i = 0; i < this.categories.length; i++) {
+      console.log(i);
+      // @ts-ignore
+      this.categoryService.findById(this.categories[i].id).subscribe(data1 => {
+        console.log("----" + this.serviceDetail);
+        console.log("----" + data1);
+        this.listService.push(data1);
+        console.log(this.listService);
+      });
+    };
 
     this.rent = {
       user: this.user,
@@ -147,12 +174,83 @@ export class ProfileProviderComponent implements OnInit {
       rentDate: this.rentForm.value.rentDate,
       startTime: new Date(a),
       time: this.rentForm.value.time,
-      totalMoney: this.total
+      totalMoney: this.total,
+      services: this.listService
     };
 
-    this.rentService.saveRent(this.rent).subscribe(() => {
-      alert("Thành công");
+    console.log(this.rent);
+    this.rentService.saveRent(this.rent).subscribe(rentResp => {
+      alert("Thuê thành công");
+      console.log("+++++" + rentResp.services);
+    });
+
+
+    // this.rentService.saveRent(this.rent).subscribe(data => {
+    //   for (let i = 0; i < this.categories.length; i++) {
+    //     console.log(i);
+    //     // @ts-ignore
+    //     this.categoryService.findById(this.categories[i].id).subscribe(data1 => {
+    //       console.log("----" + this.serviceDetail);
+    //       console.log("----" + data1);
+    //       this.listService.push(data1);
+    //       console.log(this.rent);
+    //
+    //     });
+    //   }
+    //   this.rent = data;
+    //   this.rent.services = this.listService;
+    //   // @ts-ignore
+    //   this.rentService.changeStatus(this.rent.id, 0).subscribe(() => {
+    //     console.log('okkkkk');
+    //   });
+    // });
+  }
+
+  getUserServiceByUserId(id: number) {
+    this.userServiceService.findByUserId(id).subscribe(list => {
+      // @ts-ignore
+      this.listUserService = list;
+      console.log(this.listUserService);
     });
   }
 
+  getByIdCategoryService(id: number) {
+    this.categoryService.findById(id).subscribe(data => {
+      this.serviceDetail = data;
+      console.log(this.serviceDetail);
+    });
+  }
+
+  onCheckboxChange(e: any) {
+    const service: FormArray = this.rentForm.get('service') as FormArray;
+    console.log(service);
+    if (e.target.checked) {
+
+      service.push(new FormControl(e.target.value));
+
+      this.userServiceService.findOne(parseInt(new FormControl(e.target.value).value)).subscribe(data => {
+        console.log('data', data);
+        // @ts-ignore
+        this.total += data.price;
+
+        // @ts-ignore
+        this.categories.push(data.category);
+      });
+      this.rentForm.value.totalMoney = this.total;
+    } else {
+      const index = service.controls.findIndex(x => x.value === e.target.value);
+      service.removeAt(index);
+
+      this.userServiceService.findOne(parseInt(new FormControl(e.target.value).value)).subscribe(data => {
+        // @ts-ignore
+        this.total -= data.price;
+        // @ts-ignore
+        this.categories.splice(index, 1);
+      });
+      this.rentForm.value.totalMoney = this.total;
+    }
+
+
+    console.log(this.total, '1');
+  }
 }
