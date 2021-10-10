@@ -1,1 +1,11 @@
-<p>upload works!</p>
+
+<input type="file" (change)="onFileChange($event)" multiple>
+<div class="spinner-border" role="status" *ngIf="checkUploadFile">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+<button (click)="onUpload()">Upload image</button>
+<div *ngFor="let url of downloadURL">
+  <img [src]="url" style="width: 100px; height: 100px">
+</div>
+

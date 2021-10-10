@@ -16,6 +16,7 @@ import { SignUpComponent } from './component/sign-up/sign-up.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import { RentPayerComponent } from './component/rent-payer/rent-payer.component';
 import { ProfileProviderComponent } from './component/profile-provider/profile-provider.component';
+import { UploadComponent } from './component/upload/upload.component';
 
 
 
@@ -26,6 +27,7 @@ import { ProfileProviderComponent } from './component/profile-provider/profile-p
     SignUpComponent,
     RentPayerComponent,
     ProfileProviderComponent,
+    UploadComponent,
 
   ],
   imports: [
