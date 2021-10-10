@@ -1,21 +1,19 @@
-import { HttpClient } from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {City} from "../../../../models/city";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/models/user/user';
-
+import {ActivatedRoute, Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {UserService} from "../../../../service/user/user.service";
 import {SelectService} from "../../../../service/select/select.service";
-import {City} from "../../../../models/city";
-
+import {User} from "../../../../models/user/user";
 
 @Component({
-  selector: 'app-detail-ccdv',
-  templateUrl: './detail-ccdv.component.html',
-  styleUrls: ['./detail-ccdv.component.css']
+  selector: 'app-edit-ccdv',
+  templateUrl: './edit-ccdv.component.html',
+  styleUrls: ['./edit-ccdv.component.css']
 })
-export class DetailCcdvComponent implements OnInit {
+export class EditCcdvComponent implements OnInit {
   city: City[] = [];
   ccdvForm : FormGroup = new FormGroup(
     {
@@ -51,8 +49,8 @@ export class DetailCcdvComponent implements OnInit {
   }
   saveUser(id: number) {
     this.userService.saveUser(id,this.ccdvForm.value).subscribe((data) => {
-      alert("Bạn đã trở thành người cung cấp dịch vụ")
-      this.router.navigate(["/serviceccdv"]);
+      alert("Bạn đã chỉnh sửa trang cá nhân thành công")
+      this.router.navigate([""]);
     })
   }
   showEditUser(id: number) {
@@ -83,51 +81,4 @@ export class DetailCcdvComponent implements OnInit {
       this.city = data;
     })
   }
-  // selectedFile : File = null;
-  // fb: any;
-  // downloadURL!: Observable<string>;
-  //
-  // onFileSelected(event:any) {
-  //   var n = Date.now();
-  //   const file = event.target.files[0];
-  //   const filePath = `RoomsImages/${n}`;
-  //   const fileRef = this.storage.ref(filePath);
-  //   const task = this.storage.upload(`RoomsImages/${n}`, file);
-  //   task
-  //     .snapshotChanges()
-  //     .pipe(
-  //       finalize(() => {
-  //         this.downloadURL = fileRef.getDownloadURL();
-  //         this.downloadURL.subscribe(url => {
-  //           if (url) {
-  //             this.fb = url;
-  //           }
-  //           console.log(this.fb);
-  //         });
-  //       })
-  //     )
-  //     .subscribe(url => {
-  //       if (url) {
-  //         console.log(url);
-  //       }
-  //     });
-  // }
 }
-// <!--name?: string;-->
-// <!--dateOfBirth: Date;-->
-// <!--gender?: string;-->
-// <!--city?: string;-->
-// <!--nationality?: string;-->
-// <!--avatar?: string;-->
-// <!--height?: string;-->
-// <!--weight?: string;-->
-// <!--hobby?: string;-->
-// <!--description?: string;-->
-// <!--requestToPayer?: string;-->
-// <!--linkFb?: string;-->
-// <!--createAt: Date;-->
-// <!--createAtCCDV: Date;-->
-// <!--statusCCDV?: number;-->
-// <!--statusUs?: number;-->
-// <!--price?: number;-->
-

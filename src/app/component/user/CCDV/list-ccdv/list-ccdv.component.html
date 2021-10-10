@@ -36,8 +36,8 @@
     <div class="filter-player">
       <select class="form-control gender " formControlName="gender" (change)="getByGender()">
         <option>Giới tính</option>
-        <option value="nu">Nữ</option>
-        <option value="nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+        <option value="Nam">Nam</option>
       </select>
       <!--    <select class="form-control type ">-->
       <!--      <option value="">Thể loại</option>-->
@@ -81,14 +81,14 @@
               <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0" src="{{userCCDV.avatar}}" [routerLink]="['provider-profile/', userCCDV.id ]">
             <div class="card-img-overlay">
               <button class="btn-danger btn-md"
-                      style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDV.price}},000 đ/h
+                      style="border-radius: 20px; margin-top: 85%; margin-left: 80%; inline-size: 100px">{{userCCDV.price}},000 đ/h
               </button>
             </div>
             <div class="row pl-3 mb-3">
 
               <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>
               <div class="col-12" style="color: gray">{{userCCDV.description}}</div>
-              <div class="col-12" style="color: gray">{{userCCDV.requestToPayer}}</div>
+              <div class="col-12" style="color: gray">{{userCCDV.category_name}}</div>
 
             </div>
           </div>
@@ -129,7 +129,7 @@
                src="{{userCCDVCategory.avatar}}">
           <div class="card-img-overlay">
             <button class="btn-danger btn-md"
-                    style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDVCategory.price}},000 đ/h
+                    style="border-radius: 20px; margin-top: 85%; margin-left: 80%; inline-size: 100px">{{userCCDVCategory.price}},000 đ/h
             </button>
           </div>
           <div class="row pl-3 mb-3">

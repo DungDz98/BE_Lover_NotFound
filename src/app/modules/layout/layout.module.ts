@@ -13,15 +13,19 @@ import {ListCcdvComponent} from "../../component/user/CCDV/list-ccdv/list-ccdv.c
 import {NgxPaginationModule} from "ngx-pagination";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {RentComponent} from "../../component/rent/rent.component";
+import { CheckCcdvComponent } from 'src/app/component/user/CCDV/check-ccdv/check-ccdv/check-ccdv.component';
+import {EditCcdvComponent} from "../../component/user/CCDV/edit-ccdv/edit-ccdv.component";
 
 @NgModule({
   declarations: [
     DetailCcdvComponent,
+    CheckCcdvComponent,
     LayoutComponent,
     NavbarComponent,
     FooterComponent,
     ListCcdvComponent,
     RentComponent,
+    EditCcdvComponent
   ],
   imports: [
     CommonModule,

@@ -13,7 +13,7 @@ import {UserTest} from "../../../../models/selectInHome/user-test";
 })
 export class ListCcdvComponent implements OnInit {
 
-  listUserCCDV: User[] = [];
+  listUserCCDV: UserTest[] = [];
   listUserCCDVHaveCategory: UserTest[] = [];
   city: City[] = []
   page = 1;
@@ -93,6 +93,7 @@ export class ListCcdvComponent implements OnInit {
 
   getByGender() {
     this.select.findUserByGender(this.userForm.get('gender')?.value).subscribe((data) => {
+        console.log(this.userForm.get('gender')?.value);
         this.listUserCCDV = data;
         this.size = data.length;
         this.page = 1;
@@ -101,6 +102,7 @@ export class ListCcdvComponent implements OnInit {
         this.status = 'falseGender';
       }
       })
+
   }
 
 }

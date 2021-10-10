@@ -9,8 +9,9 @@ import {TokenService} from "../../service/in-out/token.service";
 import {UserServiceService} from "../../service/user-service/user-service.service";
 import {CategoryService} from "../../service/category/category.service";
 import {Category} from "../../model/category/category";
-import {IUserService} from "../../models/userService/IUserService";
+
 import {RentWithoutServices} from "../../model/RentWithoutServices";
+import {IuserService} from "../../models/userService/iuserService";
 
 @Component({
   selector: 'app-profile-provider',
@@ -20,6 +21,7 @@ import {RentWithoutServices} from "../../model/RentWithoutServices";
 export class ProfileProviderComponent implements OnInit {
   id: number = 0;
   idUs: number | undefined = 0;
+  idUser1!: number | undefined;
   // @ts-ignore
   user: User = {};
   // @ts-ignore
@@ -42,6 +44,7 @@ export class ProfileProviderComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.getAllRent();
       this.idUs = this.tokenService.getJwt().id;
       // @ts-ignore
       this.id = +paramMap.get('id');
@@ -50,6 +53,10 @@ export class ProfileProviderComponent implements OnInit {
       // @ts-ignore
       this.getUserCurrent(this.idUs);
       this.getUserServiceByUserId(this.id);
+      if (this.tokenService.getJwt()) {
+        this.idUser1 = this.tokenService.getJwt().id;
+        // @ts-ignore
+      }
     });
   }
 
@@ -84,7 +91,7 @@ export class ProfileProviderComponent implements OnInit {
     service: new FormArray([], [Validators.required])
 
   });
-  listUserService: IUserService[] = [];
+  listUserService: IuserService[] = [];
 
   checkReset() {
     this.router.navigate([''])
@@ -269,5 +276,11 @@ export class ProfileProviderComponent implements OnInit {
 
 
     console.log(this.total, '1');
+  }
+
+  countRents: number = 0;
+
+  getAllRent() {
+    this.rentService.getAllRentForProvider(this.id).subscribe(rents => this.countRents = rents.length);
   }
 }

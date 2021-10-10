@@ -1,3 +1,103 @@
+<!--<div class="container">-->
+<!--    <div class="row mt-5">-->
+<!--      <div class="col-3">-->
+<!--        &lt;!&ndash;        <div class="card text-black mt-3" style="border-radius: 10px">&ndash;&gt;-->
+<!--        <img style="height: 300px; width: 298px; position: center; border-radius: 10px"-->
+<!--             [src]="user.avatar">-->
+<!--        <div>-->
+<!--          <ul class="list-group-flush" style="position: center">-->
+<!--            <div *ngIf="user.statusCCDV === 1">-->
+<!--              <h4 class="card-title text-center" style="color: green">Đang sẵn sàng</h4>-->
+<!--            </div>-->
+
+<!--            <div *ngIf="user.statusCCDV === 2">-->
+<!--              <h4 class="card-title text-center" style="color: red">Đang bận</h4>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <i style="color: green" class="card-title text-center">Đã tham gia-->
+<!--                ngày: {{user.createAt | date:'dd/MM/YYYY'}}</i>-->
+<!--            </div>-->
+
+<!--            <div class="row">-->
+<!--              &lt;!&ndash;                <div class="col-2"></div>&ndash;&gt;-->
+<!--              <div class="col-3"></div>-->
+<!--              <div class="col-3 text-center" *ngIf="user.linkFb !== null">-->
+<!--                <a id="img" [href]="user.linkFb" style="cursor: pointer">-->
+<!--                  <img src="https://img.icons8.com/fluency/48/000000/facebook-circled.png"/></a></div>-->
+<!--              <div class="col-3 text-center"><a style="cursor: pointer"><img-->
+<!--                src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/></a></div>-->
+
+<!--              <div class="col-3"></div>-->
+<!--              &lt;!&ndash;                <div class="col-2"></div>&ndash;&gt;-->
+<!--            </div>-->
+
+<!--          </ul>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      </div>-->
+<!--      <div class="col-6">-->
+<!--        <div class="row mt-1">-->
+<!--          <h2 class="card-title">{{user.name}}</h2>-->
+<!--          <div class="row mt-5">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="row mt-5">-->
+<!--          <h4>Thông tin</h4>-->
+<!--          <div class="card">-->
+<!--            <div class="card-body">-->
+
+<!--              <h6 class="card-text"><img style="height: 20px; width: 20px"-->
+<!--                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Mô-->
+<!--                Tả: {{user.description}}</h6>-->
+<!--              <h6 class="card-text"><img style="height: 20px; width: 20px"-->
+<!--                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Sở-->
+<!--                thích: {{user.hobby}}</h6>-->
+<!--              <h6 class="card-text"><img style="height: 20px; width: 20px"-->
+<!--                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Quê-->
+<!--                Quán: {{user.city}}</h6>-->
+<!--              <h6 class="card-text"><img style="height: 20px; width: 20px"-->
+<!--                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Yêu-->
+<!--                cầu: {{user.requestToPayer}}</h6>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--      <div class="col-3">-->
+<!--        <div class="card" style="width: 18rem; border-radius: 10px">-->
+<!--          <div class="card-header">-->
+<!--            <h4 class="card-title text-center" style="color: red">{{user.price}}đ/giờ</h4>-->
+<!--          </div>-->
+<!--          <ul class="list-group list-group-flush">-->
+<!--            <button class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal"-->
+<!--                    data-bs-whatever="@mdo" (click)="rent1()">Thuê-->
+<!--            </button>-->
+<!--            <button class="btn btn-outline-danger">Donate</button>-->
+<!--            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">Chat-->
+<!--            </button>-->
+
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Title</title>-->
+
+<!--  &lt;!&ndash;    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.0/css/all.min.css">&ndash;&gt;-->
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+
+<!--  &lt;!&ndash; jQuery library &ndash;&gt;-->
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+
+<!--  &lt;!&ndash; Latest compiled JavaScript &ndash;&gt;-->
+<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+<!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.0/css/all.min.css">-->
+<!--</head>-->
+<!--<body>-->
 
 <!-- UI mới -->
 <div id="root">
@@ -47,7 +147,7 @@
               </div>
               <div class="col-md-3 col-xs-6">
                 <div class="item-nav-name"><span>Số lượt thuê</span></div>
-                <div class="item-nav-value"><i class="fas fa-ban"></i></div>
+                <div class="item-nav-value">{{countRents}}</div>
               </div>
             </div>
             <hr>
@@ -114,12 +214,19 @@
             <!--          <div class="rateting-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i-->
             <!--            class="fas fa-star"></i><i class="fas fa-star"></i><i-->
             <!--            class="fas fa-star"></i>&nbsp;<span>35 <span>Đánh giá</span></span></div>-->
-            <div class="text-center">
+            <div class="text-center" *ngIf="idUser1 != user.id">
               <button class="btn-my-style red" data-toggle="modal" data-target="#rentModal"
                       data-bs-whatever="@mdo" (click)="rent1()">Thuê
               </button>
               <!--            <button class="btn-my-style white">Donate</button>-->
               <button class="btn-my-style white" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">💬 Chat
+              </button>
+            </div>
+            <div class="text-center" *ngIf="idUser1 == user.id">
+              <button class="btn-my-style red" >Thay đổi trạng thái</button>
+              <!--            <button class="btn-my-style white">Donate</button>-->
+              <button class="btn-my-style white" [routerLink]="['/provider-profile/edit',user.id]">
+                Cập nhật thông tin cá nhân
               </button>
             </div>
           </div>
@@ -205,7 +312,7 @@
               <td><span>Danh sách dịch vụ mở rộng</span>:</td>
               <td colspan="2">
                 <div class="row" *ngFor="let service of listUserService">
-                  <div class="row" *ngIf="service.category?.typeService === 'Premium'">
+                  <div class="row" *ngIf="service.category?.typeService === 'plus'">
                     <div class="col-6">
                       <input type="checkbox" [value]="service.id"
                              (change)="onCheckboxChange($event)"> {{service.category?.name}}
@@ -222,7 +329,7 @@
               <td colspan="2">
                 <div class="row" *ngFor="let service of listUserService">
                   <div class="row"
-                       *ngIf="service.category?.typeService === 'Basic' || service.category?.typeService === 'Free'">
+                       *ngIf="service.category?.typeService === 'basic' || service.category?.typeService === 'free'">
                     <div class="col-6">
                       <input type="checkbox" [value]="service.id"
                              (change)="onCheckboxChange($event)"> {{service.category?.name}}
@@ -251,6 +358,8 @@
           <button type="button" class="btn btn-default" data-dismiss="modal"><span>Đóng</span></button>
         </div>
       </div>
+
+
 
       <!---->
       <!--      <div class="modal-content">-->
@@ -361,15 +470,13 @@
       <!--            <textarea class="form-control" id="message-text"></textarea>-->
       <!--          </div>-->
 
-      <!--        </div>-->
-      <!--        <div class="modal-footer">-->
-      <!--          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>-->
-      <!--          <button data-dismiss="modal"-->
-      <!--                  class="btn btn-primary" (click)="saveRent()">Gửi-->
-      <!--          </button>-->
-      <!--        </div>-->
+<!--        <div class="modal-footer">-->
+<!--          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>-->
+<!--          <button data-dismiss="modal"-->
+<!--                  class="btn btn-primary" (click)="saveRent()">Gửi-->
+<!--          </button>-->
+<!--        </div>-->
 
-      <!--      </div>-->
     </div>
   </form>
 </div>

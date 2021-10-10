@@ -66,7 +66,7 @@
                 <button class="btn btn-outline-danger" data-toggle="modal" data-target="#feedbackModal" (click)="open(item.id)">Báo cáo phản hồi</button>
               </td>
               <td *ngIf="item.status == 4" colspan="2">
-                <button class="btn btn-outline-danger" disabled>Done</button>
+                <button class="btn btn-outline-danger" disabled>Kết thúc</button>
               </td>
             </tr>
 
@@ -90,7 +90,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <textarea [(ngModel)]="feedback" name="" id="" cols="30" rows="10"></textarea>
+        <textarea [(ngModel)]="feedback" name="" id="" cols="60" rows="10"></textarea>
       </div>
 
       <!-- Modal footer -->
