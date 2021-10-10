@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
 
   idUser!: number | undefined;
   name!: String | undefined;
-  isCCDV: boolean = true;
+  notCCDV: boolean = true;
 
   constructor(private tokenService: TokenService, private userService: UserService, private router :Router) {
   }
@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
       // @ts-ignore
      this.userService.getById(this.idUser).subscribe(data=>{
        if (data.statusCCDV == 1){
-         this.isCCDV = false;
+         this.notCCDV = false;
        }
      })
     }

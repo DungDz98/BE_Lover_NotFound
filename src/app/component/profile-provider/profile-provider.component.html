@@ -1,103 +1,3 @@
-<!--<div class="container">-->
-<!--    <div class="row mt-5">-->
-<!--      <div class="col-3">-->
-<!--        &lt;!&ndash;        <div class="card text-black mt-3" style="border-radius: 10px">&ndash;&gt;-->
-<!--        <img style="height: 300px; width: 298px; position: center; border-radius: 10px"-->
-<!--             [src]="user.avatar">-->
-<!--        <div>-->
-<!--          <ul class="list-group-flush" style="position: center">-->
-<!--            <div *ngIf="user.statusCCDV === 1">-->
-<!--              <h4 class="card-title text-center" style="color: green">Đang sẵn sàng</h4>-->
-<!--            </div>-->
-
-<!--            <div *ngIf="user.statusCCDV === 2">-->
-<!--              <h4 class="card-title text-center" style="color: red">Đang bận</h4>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <i style="color: green" class="card-title text-center">Đã tham gia-->
-<!--                ngày: {{user.createAt | date:'dd/MM/YYYY'}}</i>-->
-<!--            </div>-->
-
-<!--            <div class="row">-->
-<!--              &lt;!&ndash;                <div class="col-2"></div>&ndash;&gt;-->
-<!--              <div class="col-3"></div>-->
-<!--              <div class="col-3 text-center" *ngIf="user.linkFb !== null">-->
-<!--                <a id="img" [href]="user.linkFb" style="cursor: pointer">-->
-<!--                  <img src="https://img.icons8.com/fluency/48/000000/facebook-circled.png"/></a></div>-->
-<!--              <div class="col-3 text-center"><a style="cursor: pointer"><img-->
-<!--                src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/></a></div>-->
-
-<!--              <div class="col-3"></div>-->
-<!--              &lt;!&ndash;                <div class="col-2"></div>&ndash;&gt;-->
-<!--            </div>-->
-
-<!--          </ul>-->
-<!--        </div>-->
-<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
-<!--      </div>-->
-<!--      <div class="col-6">-->
-<!--        <div class="row mt-1">-->
-<!--          <h2 class="card-title">{{user.name}}</h2>-->
-<!--          <div class="row mt-5">-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="row mt-5">-->
-<!--          <h4>Thông tin</h4>-->
-<!--          <div class="card">-->
-<!--            <div class="card-body">-->
-
-<!--              <h6 class="card-text"><img style="height: 20px; width: 20px"-->
-<!--                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Mô-->
-<!--                Tả: {{user.description}}</h6>-->
-<!--              <h6 class="card-text"><img style="height: 20px; width: 20px"-->
-<!--                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Sở-->
-<!--                thích: {{user.hobby}}</h6>-->
-<!--              <h6 class="card-text"><img style="height: 20px; width: 20px"-->
-<!--                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Quê-->
-<!--                Quán: {{user.city}}</h6>-->
-<!--              <h6 class="card-text"><img style="height: 20px; width: 20px"-->
-<!--                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Yêu-->
-<!--                cầu: {{user.requestToPayer}}</h6>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
-<!--      </div>-->
-<!--      <div class="col-3">-->
-<!--        <div class="card" style="width: 18rem; border-radius: 10px">-->
-<!--          <div class="card-header">-->
-<!--            <h4 class="card-title text-center" style="color: red">{{user.price}}đ/giờ</h4>-->
-<!--          </div>-->
-<!--          <ul class="list-group list-group-flush">-->
-<!--            <button class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal"-->
-<!--                    data-bs-whatever="@mdo" (click)="rent1()">Thuê-->
-<!--            </button>-->
-<!--            <button class="btn btn-outline-danger">Donate</button>-->
-<!--            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">Chat-->
-<!--            </button>-->
-
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--  <meta charset="UTF-8">-->
-<!--  <title>Title</title>-->
-
-<!--  &lt;!&ndash;    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.0/css/all.min.css">&ndash;&gt;-->
-<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
-
-<!--  &lt;!&ndash; jQuery library &ndash;&gt;-->
-<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
-
-<!--  &lt;!&ndash; Latest compiled JavaScript &ndash;&gt;-->
-<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
-<!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.0/css/all.min.css">-->
-<!--</head>-->
-<!--<body>-->
 
 <!-- UI mới -->
 <div id="root">
@@ -106,7 +6,7 @@
       <div class="row">
         <div class="player-profile-left-wrap col-md-3">
           <div class="avt-player">
-            <div class="avt avt-lg"><img
+            <div class="avt avt-lg"><img style="width: 300px; height: 300px;"
               [src]="user.avatar"
               class="avt-img" alt="PD"></div>
           </div>
@@ -126,7 +26,7 @@
           <div>
             <div class="row">
               <div class="center-item col-md-12"><span
-                class="name-player-profile hidden-over-name">{{user.name}} </span>
+                class="name-player-profile hidden-over-name" style="font-weight: bolder">{{user.name}} </span>
                 <!--                <button class="btn-follow-player"><i class="fas fa-heart"></i>&nbsp;<span-->
                 <!--                  class="plus"><span>Theo dõi</span></span>-->
                 <!--                </button>-->
@@ -234,13 +134,11 @@
 <div *ngIf="idUs !== 0" class="modal fade" id="rentModal" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalLabel" aria-hidden="true" style="width: 100%;">
   <form [formGroup]="rentForm">
-    <div class="modal-dialog" style="width: max-content">
+    <div class="modal-dialog" style="width: max-content; max-width: 80%;">
 
       <!--Test -->
       <div class="modal-content" role="document">
         <div class="modal-header">
-          <button type="button" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
-          </button>
           <h4 class="modal-title"><span>Thuê người yêu</span></h4></div>
         <div class="modal-body">
           <table class="table">
@@ -305,7 +203,7 @@
             </tr>
             <tr>
               <td><span>Danh sách dịch vụ mở rộng</span>:</td>
-              <td>
+              <td colspan="2">
                 <div class="row" *ngFor="let service of listUserService">
                   <div class="row" *ngIf="service.category?.typeService === 'Premium'">
                     <div class="col-6">
@@ -321,7 +219,7 @@
             </tr>
             <tr>
               <td>Danh sách dịch vụ cơ bản và miễn phí:</td>
-              <td>
+              <td colspan="2">
                 <div class="row" *ngFor="let service of listUserService">
                   <div class="row"
                        *ngIf="service.category?.typeService === 'Basic' || service.category?.typeService === 'Free'">
@@ -330,7 +228,7 @@
                              (change)="onCheckboxChange($event)"> {{service.category?.name}}
                     </div>
                     <div class="col-6">
-                      <div>{{service?.price}},000 VNĐ</div>
+                      <div>{{service?.price}} VNĐ</div>
                     </div>
                   </div>
                 </div>
