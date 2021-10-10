@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Rent} from "../../model/Rent";
 import {Category} from "../../model/category/category";
+import {RentWithoutServices} from "../../model/RentWithoutServices";
 
 const RENT_API = `${environment.API_URL}/rents`;
 
@@ -33,6 +34,11 @@ export class RentService {
   saveRent(rent: Rent): Observable<Rent> {
     // @ts-ignore
     return this.http.post<Rent>(RENT_API, rent);
+  }
+
+  saveSubRent(subRent: RentWithoutServices): Observable<Rent> {
+    // @ts-ignore
+    return this.http.post<Rent>(`${RENT_API}/subrent`, subRent);
   }
 
   updateRent(id: number, rent: Rent): Observable<Rent> {

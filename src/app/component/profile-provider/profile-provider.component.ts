@@ -10,6 +10,7 @@ import {UserServiceService} from "../../service/user-service/user-service.servic
 import {CategoryService} from "../../service/category/category.service";
 import {Category} from "../../model/category/category";
 import {IUserService} from "../../models/userService/IUserService";
+import {RentWithoutServices} from "../../model/RentWithoutServices";
 
 @Component({
   selector: 'app-profile-provider',
@@ -26,6 +27,7 @@ export class ProfileProviderComponent implements OnInit {
   rent: Rent = {};
   serviceDetail: Category = {};
   categories: Category[] = [];
+  subRent: RentWithoutServices = {};
 
   constructor(private rentService: RentService,
               private activatedRoute: ActivatedRoute,
@@ -148,6 +150,7 @@ export class ProfileProviderComponent implements OnInit {
 
   listService: Category[] = [];
   rentUpdate: Rent = {};
+  listIdService: String[] = [];
 
   saveRent() {
     console.log(this.rentForm.value.service);
@@ -159,6 +162,8 @@ export class ProfileProviderComponent implements OnInit {
 
     for (let i = 0; i < this.categories.length; i++) {
       console.log(i);
+      // @ts-ignore
+      this.listIdService.push(this.categories[i].id);
       // @ts-ignore
       this.categoryService.findById(this.categories[i].id).subscribe(data1 => {
         console.log("----" + this.serviceDetail);
@@ -178,8 +183,20 @@ export class ProfileProviderComponent implements OnInit {
       services: this.listService
     };
 
-    console.log(this.rent);
-    this.rentService.saveRent(this.rent).subscribe(rentResp => {
+
+
+    this.subRent = {
+      user: this.user,
+      userRent: this.userCurrent,
+      rentDate: this.rentForm.value.rentDate,
+      startTime: new Date(a),
+      time: this.rentForm.value.time,
+      totalMoney: this.total,
+      services: this.listIdService
+    };
+
+    console.log(this.subRent);
+    this.rentService.saveSubRent(this.subRent).subscribe(rentResp => {
       alert("Thuê thành công");
       console.log("+++++" + rentResp.services);
     });
