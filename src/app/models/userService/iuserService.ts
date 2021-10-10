@@ -1,6 +1,5 @@
-
+import { Category } from "../../model/category/category";
 import { User } from "../user/user";
-import {Category} from "../../model/category/category";
 
 export interface IuserService {
   id?: number;
