@@ -11,7 +11,7 @@ const API_URL = environment.API_URL + '/userservices';
   providedIn: 'root'
 })
 
-export class IuserServiceService {
+export class UserServiceService {
 
   constructor(private httpClient: HttpClient) { }
   getAll(): Observable<IuserService[]> {

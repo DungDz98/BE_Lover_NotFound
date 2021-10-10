@@ -5,6 +5,7 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../service/user/user.service";
 import {Rent} from "../../model/Rent";
+import {TokenService} from "../../service/in-out/token.service";
 
 @Component({
   selector: 'app-profile-provider',
@@ -14,6 +15,7 @@ import {Rent} from "../../model/Rent";
 export class ProfileProviderComponent implements OnInit {
   id: number = 0;
   idUs: number = 11;
+  idUser1!: number | undefined;
   // @ts-ignore
   user: User = {};
   // @ts-ignore
@@ -23,7 +25,9 @@ export class ProfileProviderComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private formBuilder: FormBuilder,
-              private userService: UserService) { }
+              private userService: UserService,
+              private tokenService : TokenService
+              ) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
@@ -33,8 +37,14 @@ export class ProfileProviderComponent implements OnInit {
       console.log(this.id);
       this.getUserById(this.id);
       this.getUserCurrent(11);
-    });
+
+      if (this.tokenService.getJwt()) {
+        this.idUser1 = this.tokenService.getJwt().id;
+        // @ts-ignore
+      }
+    })
   }
+
 
   getUserById(id: number) {
     this.userService.getUserById(id).subscribe(user => this.user = user);
@@ -65,7 +75,6 @@ export class ProfileProviderComponent implements OnInit {
     rentDate: new FormControl('', [Validators.required]),
     // @ts-ignore
     // service: new FormArray([], [Validators.required])
-
   });
   checkReset(){
     this.router.navigate([''])

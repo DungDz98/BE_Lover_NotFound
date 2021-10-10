@@ -4,12 +4,13 @@ import {Category} from "../../../../../models/category/category";
 
 
 import {IuserService} from "../../../../../models/userService/iuserService"
-import {IuserServiceService} from "../../../../../service/user-service/iuser-service.service";
+import {UserServiceService} from "../../../../../service/user-service/user-service.service";
 
 
 import {CategoryService} from "../../../../../service/category/category.service";
 
 import {UserService} from "../../../../../service/user/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-check-ccdv',
@@ -30,8 +31,9 @@ export class CheckCcdvComponent implements OnInit {
   user: User = {};
   constructor(private categoryService: CategoryService,
               private formBuilder: FormBuilder,
-              private userService: IuserServiceService,
+              private userService: UserServiceService,
               private userSr : UserService,
+              private router :Router
   ) {
     this.serviceFormGroup = this.formBuilder.group({
       services: this.formBuilder.array([], [Validators.required]),
@@ -100,5 +102,7 @@ export class CheckCcdvComponent implements OnInit {
       // @ts-ignore
       this.getById(this.serviceFormGroup.value.services[i])
     }
+    alert("Chúc mừng bạn đã đăng ký thành công")
+    this.router.navigate([""]);
   }
 }

@@ -217,12 +217,16 @@
           </div>
         </div>
       </div>
-
       </div>
     </div>
   </div>
 </div>
 
+
+<button class="btn btn-secondary" type="button"
+        [routerLink]="['/provider-profile/edit',user.id]" *ngIf="idUser1 == user.id">
+  Chỉnh sửa thông tin cá nhân
+</button>
 <!--Modal tạo đơn-->
 <div *ngIf="idUs !== 0" class="modal fade" id="rentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <form [formGroup]="rentForm">
