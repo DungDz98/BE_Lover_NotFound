@@ -1,87 +1,86 @@
-<!--&lt;!&ndash;<app-list-service-register [listService]="listServiceSelect"></app-list-service-register>&ndash;&gt;-->
-<!--<div class="container">-->
-<!--  <div>-->
-<!--    <h3 style="color: orangered" class="mt-5">Danh sách dịch vụ</h3>-->
-<!--    <hr>-->
-<!--    <h6>Bạn có thể chọn các dịch vụ mà bản thân có thể cung cấp dưới đây</h6>-->
-<!--    <form [formGroup]="serviceFormGroup" >-->
-<!--      <div class="row">-->
-<!--        <div class="col-4">-->
-<!--          <table style="border: #eeeeee">-->
-<!--            <tr>-->
-<!--              <td><h5 style="color: orangered">Dịch vụ cơ bản</h5></td>-->
-<!--            </tr>-->
-<!--            <tr *ngFor="let service of listServiceShow">-->
-<!--              <td *ngIf="service.typeService == 'Cơ bản'"><input type="checkbox" [value]="service.id"-->
-<!--                                                                 (change)="onCheckboxChange($event)"/> {{service.name}}-->
-<!--              </td>-->
-<!--            </tr>-->
-<!--          </table>-->
-<!--        </div>-->
-<!--        <div class="col-4">-->
-<!--          <table style="border: #eeeeee">-->
-<!--            <tr>-->
-<!--              <td><h5 style="color: orangered">Dịch vụ miễn phí</h5></td>-->
-<!--            </tr>-->
-<!--            <tr *ngFor="let service of listServiceShow">-->
-<!--              <td *ngIf="service.typeService == 'Miễn phí'"><input type="checkbox" [value]="service.id"-->
-<!--                                                                   (change)="onCheckboxChange($event)"/> {{service.name}}-->
-<!--              </td>-->
-<!--            </tr>-->
-<!--          </table >-->
-<!--        </div>-->
-<!--        <div class="col-4">-->
-<!--          <table style="border: #eeeeee">-->
-<!--            <tr>-->
-<!--              <td><h5 style="color: orangered">Dịch vụ mở rộng</h5></td>-->
-<!--            </tr>-->
-<!--            <tr *ngFor="let service of listServiceShow">-->
-<!--              <td *ngIf="service.typeService == 'Mở rộng'"><input type="checkbox" [value]="service.id"-->
-<!--                                                                  (change)="onCheckboxChange($event)"/> {{service.name}}-->
-<!--              </td>-->
-<!--            </tr>-->
-<!--          </table>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="row">-->
-<!--        <div class="col-2">-->
-<!--        </div>-->
-<!--        <div class="col-2"></div>-->
-<!--        <div class="col-2"></div>-->
-<!--        <div class="col-2"></div>-->
-<!--        <div class="col-2 mb-5">-->
-<!--          <button class="btn btn-primary" type="button" [disabled]="!serviceFormGroup.valid" data-bs-toggle="modal"-->
-<!--                  data-bs-target="#registerModal" (click)="getListService()">Đăng kí dịch vụ-->
-<!--          </button>-->
-<!--        </div>-->
+<!--<app-list-service-register [listService]="listServiceSelect"></app-list-service-register>-->
+<div class="container">
+  <div>
+    <h3 style="color: orangered" class="mt-5">Danh sách dịch vụ</h3>
+    <hr>
+    <h6>Bạn có thể chọn các dịch vụ mà bản thân có thể cung cấp dưới đây</h6>
+    <form [formGroup]="serviceFormGroup" >
+      <div class="row">
+        <div class="col-4">
+          <table style="border: #eeeeee">
+            <tr>
+              <td><h5 style="color: orangered">Dịch vụ cơ bản</h5></td>
+            </tr>
+            <tr *ngFor="let service of listServiceShow">
+              <td *ngIf="service.typeService == 'basic'"><input type="checkbox" [value]="service.id"
+                                                                 (change)="onCheckboxChange($event)"/> {{service.name}}
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-4">
+          <table style="border: #eeeeee">
+            <tr>
+              <td><h5 style="color: orangered">Dịch vụ miễn phí</h5></td>
+            </tr>
+            <tr *ngFor="let service of listServiceShow">
+              <td *ngIf="service.typeService == 'free'"><input type="checkbox" [value]="service.id"
+                                                                   (change)="onCheckboxChange($event)"/> {{service.name}}
+              </td>
+            </tr>
+          </table >
+        </div>
+        <div class="col-4">
+          <table style="border: #eeeeee">
+            <tr>
+              <td><h5 style="color: orangered">Dịch vụ mở rộng</h5></td>
+            </tr>
+            <tr *ngFor="let service of listServiceShow">
+              <td *ngIf="service.typeService == 'plus'"><input type="checkbox" [value]="service.id" (change)="onCheckboxChange($event)"/> {{service.name}}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-2 mb-5">
+          <button class="btn btn-primary" type="button" [disabled]="!serviceFormGroup.valid" data-bs-toggle="modal"
+                  data-bs-target="#registerModal" (click)="getListService()">Đăng kí dịch vụ
+          </button>
+        </div>
 
-<!--      </div>-->
+      </div>
 
-<!--    </form>-->
-
-
-<!--  </div>-->
-<!--  <div class="modal fade"  id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--    <div class="modal-dialog">-->
-<!--      <div class="modal-content">-->
-<!--        <div class="modal-header">-->
-<!--          <h5 class="modal-title" id="registerModalLabel">Xác nhận đăng kí dịch vụ</h5>-->
-<!--          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--        </div>-->
-<!--        <div class="modal-body">-->
-<!--          Bạn có chắc chắn muốn đăng kí trở thành người cung cấp dịch vụ không?-->
-<!--        </div>-->
-<!--        <div class="modal-footer">-->
-<!--          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>-->
-<!--          <button type="button" class="btn btn-primary" routerLink="/edit-price" data-bs-dismiss="modal">Đăng kí-->
-<!--          </button>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
+    </form>
 
 
-<!--</div>-->
+  </div>
+  <div class="modal fade"  id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerModalLabel">Xác nhận đăng kí dịch vụ</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Bạn có chắc chắn muốn đăng kí trở thành người cung cấp dịch vụ không?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" routerLink="/edit-price" data-bs-dismiss="modal">Đăng kí
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
 
 
 
