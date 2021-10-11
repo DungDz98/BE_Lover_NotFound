@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" [routerLink]="''">Not Found</a>
+  <a class="navbar-brand" [routerLink]="''">Tendir</a>
   <a [routerLink]="['/rents/provider/', idUser]" style="margin-right: auto;" *ngIf="!notCCDV && idUser">Xin chào {{name}}</a>
   <a [routerLink]="['/rents/payer/', idUser]" style="margin-right: auto" *ngIf="idUser && notCCDV">Xin chào {{name}}</a>
   <a [routerLink]="['edit/',idUser]" *ngIf="notCCDV && idUser" class="btn btn-outline-info mr-3">Đăng ký CCDV</a>
