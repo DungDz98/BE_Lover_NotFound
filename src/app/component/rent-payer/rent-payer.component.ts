@@ -16,8 +16,6 @@ export class RentPayerComponent implements OnInit {
   rents: Rent[] = [];
   rent: Rent = {};
   id!: number;
-  totalLength: any;
-  page: number = 1;
 
   constructor(private rentService: RentService, private activatedRoute: ActivatedRoute, private router: Router,
               private userService: UserService, private angularFireStorage: AngularFireStorage) {
