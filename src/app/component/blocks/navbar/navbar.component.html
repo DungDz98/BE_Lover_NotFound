@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light bg-light my-nav-bar">
   <a class="navbar-brand" [routerLink]="''">Tendir</a>
   <a [routerLink]="['/rents/provider/', idUser]" style="margin-right: auto;" *ngIf="!notCCDV && idUser">Xin chào {{name}}</a>
   <a [routerLink]="['/rents/payer/', idUser]" style="margin-right: auto" *ngIf="idUser && notCCDV">Xin chào {{name}}</a>
