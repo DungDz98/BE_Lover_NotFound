@@ -34,7 +34,7 @@ export class ListCcdvComponent implements OnInit {
     this.userForm = new FormGroup({
       name: new FormControl(),
       gender: new FormControl('Giới tính'),
-      city: new FormControl('Thành Phố'),
+      city1: new FormControl('Thành Phố'),
     })
   }
 
@@ -72,6 +72,7 @@ export class ListCcdvComponent implements OnInit {
     this.select.findCity().subscribe((data) => {
         this.city = data;
         this.size = data.length
+      console.log(this.userForm.get('city')?.value)
       this.page = 1
       })
   }
@@ -105,4 +106,14 @@ export class ListCcdvComponent implements OnInit {
 
   }
 
+  getByCity() {
+    this.select.findUserByCity(this.userForm.get('city1')?.value).subscribe((data) => {
+      console.log(this.userForm.get('city1'));
+      this.listUserCCDV = data;
+      this.size = data.length;
+      this.page = 1;
+      this.status = 'true';
+    })
+
+  }
 }

@@ -2,11 +2,16 @@
   <a class="navbar-brand" [routerLink]="''">Not Found</a>
   <a [routerLink]="['/rents/provider/', idUser]" style="margin-right: auto;" *ngIf="!notCCDV && idUser">Xin chào {{name}}</a>
   <a [routerLink]="['/rents/payer/', idUser]" style="margin-right: auto" *ngIf="idUser && notCCDV">Xin chào {{name}}</a>
-  <a [routerLink]="['edit/',idUser]" *ngIf="notCCDV && idUser" class="btn btn-outline-info mr-3">Đăng ký CCDV</a>
   <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Tìm người yêu đi" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
     <button class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/login']" *ngIf="!idUser">Đăng nhập</button>
-<!--    <button class="btn btn-outline-success my-2 my-sm-0" *ngIf="idUser" (click)="logout()">logout</button>-->
+    <div class="dropdown">
+      <img class="dropbtn" src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" width="50px" height="50px" style="border-radius: 10%">
+      <div class="dropdown-content">
+        <a [routerLink]="['/rents/provider/', idUser]">Xem danh sách đơn</a>
+        <a [routerLink]="['edit/',idUser]" *ngIf="notCCDV && idUser">Đăng ký CCDV</a>
+        <a (click)="logout()">Logout</a>
+      </div>
+    </div>
+
   </form>
 </nav>

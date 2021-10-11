@@ -36,7 +36,7 @@
     <div class="filter-player">
       <select class="form-control gender " formControlName="gender" (change)="getByGender()">
         <option>Giới tính</option>
-        <option value="Nữ">Nữ</option>
+        <option value="Nu">Nữ</option>
         <option value="Nam">Nam</option>
       </select>
       <!--    <select class="form-control type ">-->
@@ -45,8 +45,9 @@
       <!--      <option value="hot">Hot</option>-->
       <!--      <option value="vip">Vip</option>-->
       <!--    </select>-->
-      <select class="form-control city " formControlName="city" (change)="getListCity()">
+      <select class="form-control city " formControlName="city1" (change)="getByCity()">
         <option selected>Thành Phố</option>
+        <option value="hanoi">Hanoi</option>
         <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
       </select>
       <input type="text"
@@ -81,7 +82,7 @@
               <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0" src="{{userCCDV.avatar}}" [routerLink]="['provider-profile/', userCCDV.id ]">
             <div class="card-img-overlay">
               <button class="btn-danger btn-md"
-                      style="border-radius: 20px; margin-top: 85%; margin-left: 80%; inline-size: 100px">{{userCCDV.price}},000 đ/h
+                      style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px">{{userCCDV.price}},000 đ/h
               </button>
             </div>
             <div class="row pl-3 mb-3">
@@ -114,7 +115,7 @@
   </div>
 
 <!--z-->
-  <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Hót hòn họt</p>
+  <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Hót</p>
   <div class="row" *ngIf="listUserCCDVHaveCategory.length !== 0">
     <div class="col-3 " *ngFor="let userCCDVCategory of listUserCCDVHaveCategory | paginate : {
                 itemsPerPage: 12,
@@ -129,7 +130,7 @@
                src="{{userCCDVCategory.avatar}}">
           <div class="card-img-overlay">
             <button class="btn-danger btn-md"
-                    style="border-radius: 20px; margin-top: 85%; margin-left: 80%; inline-size: 100px">{{userCCDVCategory.price}},000 đ/h
+                    style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px">{{userCCDVCategory.price}},000 đ/h
             </button>
           </div>
           <div class="row pl-3 mb-3">

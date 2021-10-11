@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   name!: String | undefined;
   notCCDV: boolean = true;
 
-  constructor(private tokenService: TokenService, private userService: UserService, private router :Router) {
+  constructor(private tokenService: TokenService, private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -27,16 +27,18 @@ export class NavbarComponent implements OnInit {
 
 
       // @ts-ignore
-     this.userService.getById(this.idUser).subscribe(data=>{
-       if (data.statusCCDV == 1){
-         this.notCCDV = false;
-       }
-     })
+      this.userService.getById(this.idUser).subscribe(data => {
+        if (data.statusCCDV == 1) {
+          this.notCCDV = false;
+        }
+      })
     }
   }
 
-  logout(){
-    this.tokenService.logout();
-    this.router.navigate(['/login']).then(()=>{window.location.reload()})
+  logout() {
+    localStorage.removeItem('jwtResponse');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('pw');
+    window.location.href = "/login";
   }
 }

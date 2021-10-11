@@ -126,7 +126,7 @@
           <div>
             <div class="row">
               <div class="center-item col-md-12"><span
-                class="name-player-profile hidden-over-name" style="font-weight: bolder">{{user.name}} </span>
+                class="name-player-profile hidden-over-name">{{user.name}} </span>
                 <!--                <button class="btn-follow-player"><i class="fas fa-heart"></i>&nbsp;<span-->
                 <!--                  class="plus"><span>Theo dõi</span></span>-->
                 <!--                </button>-->
@@ -147,7 +147,7 @@
               </div>
               <div class="col-md-3 col-xs-6">
                 <div class="item-nav-name"><span>Số lượt thuê</span></div>
-                <div class="item-nav-value">{{countRents}}</div>
+                <div class="item-nav-value"><i class="fas fa-ban"></i></div>
               </div>
             </div>
             <hr>
@@ -214,19 +214,12 @@
             <!--          <div class="rateting-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i-->
             <!--            class="fas fa-star"></i><i class="fas fa-star"></i><i-->
             <!--            class="fas fa-star"></i>&nbsp;<span>35 <span>Đánh giá</span></span></div>-->
-            <div class="text-center" *ngIf="idUser1 != user.id">
+            <div class="text-center">
               <button class="btn-my-style red" data-toggle="modal" data-target="#rentModal"
                       data-bs-whatever="@mdo" (click)="rent1()">Thuê
               </button>
               <!--            <button class="btn-my-style white">Donate</button>-->
               <button class="btn-my-style white" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">💬 Chat
-              </button>
-            </div>
-            <div class="text-center" *ngIf="idUser1 == user.id">
-              <button class="btn-my-style red" >Thay đổi trạng thái</button>
-              <!--            <button class="btn-my-style white">Donate</button>-->
-              <button class="btn-my-style white" [routerLink]="['/provider-profile/edit',user.id]">
-                Cập nhật thông tin cá nhân
               </button>
             </div>
           </div>
@@ -241,12 +234,13 @@
 <div *ngIf="idUs !== 0" class="modal fade" id="rentModal" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalLabel" aria-hidden="true" style="width: 100%;">
   <form [formGroup]="rentForm">
-    <div class="modal-dialog" style="width: max-content; max-width: 80%;">
+    <div class="modal-dialog" style="width: max-content">
 
       <!--Test -->
       <div class="modal-content" role="document">
         <div class="modal-header">
-          <h4 class="modal-title"><span>Thuê người yêu</span></h4></div>
+             <h4 class="modal-title" style="text-align: center">Thuê người yêu</h4>
+        </div>
         <div class="modal-body">
           <table class="table">
             <tbody>
@@ -310,7 +304,7 @@
             </tr>
             <tr>
               <td><span>Danh sách dịch vụ mở rộng</span>:</td>
-              <td colspan="2">
+              <td>
                 <div class="row" *ngFor="let service of listUserService">
                   <div class="row" *ngIf="service.category?.typeService === 'plus'">
                     <div class="col-6">
@@ -326,7 +320,7 @@
             </tr>
             <tr>
               <td>Danh sách dịch vụ cơ bản và miễn phí:</td>
-              <td colspan="2">
+              <td>
                 <div class="row" *ngFor="let service of listUserService">
                   <div class="row"
                        *ngIf="service.category?.typeService === 'basic' || service.category?.typeService === 'free'">
@@ -335,7 +329,7 @@
                              (change)="onCheckboxChange($event)"> {{service.category?.name}}
                     </div>
                     <div class="col-6">
-                      <div>{{service?.price}} VNĐ</div>
+                      <div>{{service?.price}},000 VNĐ</div>
                     </div>
                   </div>
                 </div>
@@ -358,8 +352,6 @@
           <button type="button" class="btn btn-default" data-dismiss="modal"><span>Đóng</span></button>
         </div>
       </div>
-
-
 
       <!---->
       <!--      <div class="modal-content">-->
@@ -470,13 +462,15 @@
       <!--            <textarea class="form-control" id="message-text"></textarea>-->
       <!--          </div>-->
 
-<!--        <div class="modal-footer">-->
-<!--          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>-->
-<!--          <button data-dismiss="modal"-->
-<!--                  class="btn btn-primary" (click)="saveRent()">Gửi-->
-<!--          </button>-->
-<!--        </div>-->
+      <!--        </div>-->
+      <!--        <div class="modal-footer">-->
+      <!--          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>-->
+      <!--          <button data-dismiss="modal"-->
+      <!--                  class="btn btn-primary" (click)="saveRent()">Gửi-->
+      <!--          </button>-->
+      <!--        </div>-->
 
+      <!--      </div>-->
     </div>
   </form>
 </div>

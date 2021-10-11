@@ -17,6 +17,9 @@ export class RentPayerComponent implements OnInit {
   rent: Rent = {};
   id!: number;
 
+  size?: number;
+  page = 1;
+
   constructor(private rentService: RentService, private activatedRoute: ActivatedRoute, private router: Router,
               private userService: UserService, private angularFireStorage: AngularFireStorage) {
   }
