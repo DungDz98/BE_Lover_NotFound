@@ -26,4 +26,8 @@ export class UserService {
   getUserById(id: number): Observable<User> {
     return this.httpClient.get<User>(`${USER_API}/${id}`);
   }
+  changeStatusCCDV(id: number): Observable<User> {
+    // @ts-ignore
+    return this.httpClient.put<User>(`${API_URL}/statusccdv/${id}`);
+  }
 }

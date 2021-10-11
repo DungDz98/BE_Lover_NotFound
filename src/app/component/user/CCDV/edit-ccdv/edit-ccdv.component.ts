@@ -49,8 +49,8 @@ export class EditCcdvComponent implements OnInit {
   }
   saveUser(id: number) {
     this.userService.saveUser(id,this.ccdvForm.value).subscribe((data) => {
-      alert("Bạn đã chỉnh sửa trang cá nhân thành công")
-      this.router.navigate([""]);
+      alert("Bạn đã chỉnh sửa trang cá nhân thành công");
+      this.router.navigate(['/provider-profile/', this.id]);
     })
   }
   showEditUser(id: number) {

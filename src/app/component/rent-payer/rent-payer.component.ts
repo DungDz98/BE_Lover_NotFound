@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../model/User";
 import {Rent} from "../../model/Rent";
 import {RentService} from "../../service/rent/rent.service";
@@ -17,8 +17,8 @@ export class RentPayerComponent implements OnInit {
   rent: Rent = {};
   id!: number;
 
-  size?: number;
-  page = 1;
+  totalLength: any;
+  page: number = 1;
 
   constructor(private rentService: RentService, private activatedRoute: ActivatedRoute, private router: Router,
               private userService: UserService, private angularFireStorage: AngularFireStorage) {
@@ -35,7 +35,11 @@ export class RentPayerComponent implements OnInit {
   }
 
   getAllRentForPayer(id: number) {
-    this.rentService.getAllRentForPayer(id).subscribe(rents => this.rents = rents);
+    this.rentService.getAllRentForPayer(id).subscribe(rents => {
+        this.rents = rents;
+        this.totalLength = rents.length;
+      }
+    );
   }
 
   getRentById(id: any) {
@@ -43,12 +47,13 @@ export class RentPayerComponent implements OnInit {
   }
 
   hidden = true;
-  viewDetail(){
+
+  viewDetail() {
     this.hidden = !this.hidden;
   }
 
   changeStatus(id: any, status: number) {
-    this.rentService.changeStatus(id ,status).subscribe(data =>{
+    this.rentService.changeStatus(id, status).subscribe(data => {
       this.rent = data;
       alert('Thao tác thành công');
       window.location.reload()

@@ -73,4 +73,13 @@ export class RentComponent implements OnInit {
     this.idFeedback = idFeedback;
   }
 
+  deleteRentById(id: number | undefined) {
+    console.log(id);
+    // @ts-ignore
+    this.rentService.deleteRentById(id).subscribe(() => {
+        alert("Thành công!");
+        window.location.reload();
+    })
+  }
+
 }

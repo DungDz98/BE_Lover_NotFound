@@ -54,4 +54,8 @@ export class RentService {
     // @ts-ignore
     return this.http.put<Rent>(`${RENT_API}/feedback/${id}` + '?newStatus=' + status, feedback);
   }
+
+  deleteRentById(id: number): Observable<Rent> {
+    return this.http.delete<Rent>(`${RENT_API}/${id}`);
+  }
 }

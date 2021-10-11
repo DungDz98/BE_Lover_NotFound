@@ -281,6 +281,8 @@ export class ProfileProviderComponent implements OnInit {
   countRents: number = 0;
 
   getAllRent() {
-    this.rentService.getAllRentForProvider(this.id).subscribe(rents => this.countRents = rents.length);
+    this.rentService.getAllRentForProvider(this.id).subscribe(rents => {
+      if (rents != null) this.countRents = rents.length;
+    });
   }
 }

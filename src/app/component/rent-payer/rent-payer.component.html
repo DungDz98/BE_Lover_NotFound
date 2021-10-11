@@ -1,7 +1,7 @@
 <div class="col-12" *ngIf="hidden">
   <div class="card table-card">
     <div class="card-header">
-      <h5>Danh Sách Đơn Đã Thuê Của Bạn</h5>
+      <h5 style="text-align: center; color: #f0564a;">Danh Sách Đơn Đã Thuê Của Bạn</h5>
     </div>
     <div class="card-body px-0 py-0">
       <div class="table-responsive">
@@ -28,7 +28,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let item of rents; index as i">
+            <tr *ngFor="let item of rents | paginate: {
+            itemsPerPage: 3, currentPage: page, totalItems: totalLength, id: 'first'
+             }; index as i">
               <td>{{item.user?.userName}}</td>
               <td>{{item.time}}  giờ</td>
               <td>{{item.rentDate | date : 'dd/MM/YYYY' }}</td>
@@ -52,6 +54,9 @@
 
             </tbody>
           </table>
+          <div class="mt-5 d-flex justify-content-center" *ngIf="totalLength > 3">
+            <pagination-controls (pageChange)="page = $event" id='first'></pagination-controls>
+          </div>
         </div>
       </div>
     </div>
@@ -60,7 +65,7 @@
 <div class="col-xl-12 col-md-6" *ngIf="hidden == false">
   <div class="card table-card">
     <div class="card-header">
-      <h5>Chi tiết đơn hàng</h5>
+      <h5 style="text-align: center">Chi tiết đơn hàng</h5>
     </div>
     <div class="card-body px-0 py-0">
       <div class="table-responsive">

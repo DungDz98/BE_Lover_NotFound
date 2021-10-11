@@ -147,14 +147,14 @@
               </div>
               <div class="col-md-3 col-xs-6">
                 <div class="item-nav-name"><span>Số lượt thuê</span></div>
-                <div class="item-nav-value"><i class="fas fa-ban"></i></div>
+                <div class="item-nav-value">{{countRents}}</div>
               </div>
             </div>
             <hr>
             <div class="title-player-profile row">
               <div class="col-xs-6"><span>Thông tin</span></div>
             </div>
-            <div class="content-player-profile"><p>Cao thủ <strong>Liên quân Mobile</strong></p>
+            <div class="content-player-profile"><p>Thuê đi <strong>Nhìn cái gì!</strong></p>
               <div class="album-of-player">
                 <div>
                   <a
@@ -216,10 +216,10 @@
             <!--            class="fas fa-star"></i>&nbsp;<span>35 <span>Đánh giá</span></span></div>-->
             <div class="text-center">
               <button class="btn-my-style red" data-toggle="modal" data-target="#rentModal"
-                      data-bs-whatever="@mdo" (click)="rent1()">Thuê
+                      data-bs-whatever="@mdo" (click)="rent1()" *ngIf="idUs !== id && user.statusCCDV !== 3">Thuê
               </button>
               <!--            <button class="btn-my-style white">Donate</button>-->
-              <button class="btn-my-style white" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">💬 Chat
+              <button class="btn-my-style white" data-bs-toggle="modal" data-bs-target="#exampleModalMessage" *ngIf="idUs !== id">💬 Chat
               </button>
             </div>
           </div>
@@ -239,7 +239,7 @@
       <!--Test -->
       <div class="modal-content" role="document">
         <div class="modal-header">
-             <h4 class="modal-title" style="text-align: center">Thuê người yêu</h4>
+             <h4 class="modal-title" style="padding-left: 30%;">Thuê người yêu</h4>
         </div>
         <div class="modal-body">
           <table class="table">
@@ -263,7 +263,7 @@
                 <input formControlName="rentDate" id="d" (change)="change3()"
                        *ngIf="((date.getMonth() + 1) < 10) && (date.getDate() > 9)" type="date" min="{{date5}}">
               </td>
-              <td *ngIf="rentForm.get('rentDate')?.touched"><p *ngIf="rentForm.get('rentDate')?.errors?.required">
+              <td *ngIf="rentForm.get('rentDate')?.touched"><p *ngIf="rentForm.get('rentDate')?.errors?.required" style="color: darkred; font-style: italic; font-size: smaller">
                 Ngày hẹn không được để trống</p></td>
 
             </tr>
@@ -276,7 +276,7 @@
                 </select>
               </td>
               <td class="mt-3" *ngIf="date.getDate() === checkDate.getDate() ">
-                <p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để
+                <p *ngIf="rentForm.get('startDate')?.errors?.required && rentForm.get('startDate')?.touched" style="color: darkred; font-style: italic; font-size: smaller">Thời gian bắt đầu không được để
                   trống</p>
               </td>
               <td class="mt-3" *ngIf="date.getDate() !== checkDate.getDate() ">
@@ -287,7 +287,7 @@
                 </select>
               </td>
               <td *ngIf="date.getDate() !== checkDate.getDate() ">
-                <p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để trống</p>
+                <p *ngIf="rentForm.get('startDate')?.errors?.required && rentForm.get('startDate')?.touched" style="color: darkred; font-style: italic; font-size: smaller">Thời gian bắt đầu không được để trống</p>
               </td>
             </tr>
             <tr>
@@ -299,7 +299,7 @@
                 </select>
               </td>
               <td>
-                <p *ngIf="rentForm.get('time')?.errors?.required">Thời gian thuê không được để trống</p>
+                <p *ngIf="rentForm.get('time')?.errors?.required && rentForm.get('time')?.touched" style="color: darkred; font-style: italic; font-size: smaller">Thời gian thuê không được để trống</p>
               </td>
             </tr>
             <tr>
@@ -329,7 +329,7 @@
                              (change)="onCheckboxChange($event)"> {{service.category?.name}}
                     </div>
                     <div class="col-6">
-                      <div>{{service?.price}},000 VNĐ</div>
+                      <div>{{service?.price}} VNĐ</div>
                     </div>
                   </div>
                 </div>

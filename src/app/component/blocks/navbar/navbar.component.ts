@@ -28,7 +28,8 @@ export class NavbarComponent implements OnInit {
 
       // @ts-ignore
       this.userService.getById(this.idUser).subscribe(data => {
-        if (data.statusCCDV == 1) {
+        // @ts-ignore
+        if (data.statusCCDV > 0) {
           this.notCCDV = false;
         }
       })
@@ -40,5 +41,14 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('userName');
     localStorage.removeItem('pw');
     window.location.href = "/login";
+  }
+
+  changeStatusCCDV() {
+    // @ts-ignore
+    this.userService.changeStatusCCDV(this.idUser).subscribe(() => {
+      alert('Thay đổi trạng thái thành công');
+      window.location.reload();
+    })
+
   }
 }

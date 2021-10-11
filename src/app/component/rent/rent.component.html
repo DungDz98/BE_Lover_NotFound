@@ -1,7 +1,7 @@
 <div class="col-12" *ngIf="hidden">
   <div class="card table-card">
     <div class="card-header">
-      <h5>Danh Sách Đơn Thuê Của Bạn</h5>
+      <h5 style="text-align: center; color: #f0564a;">Danh Sách Đơn Thuê Của Bạn</h5>
     </div>
     <div class="card-body px-0 py-0">
       <div class="table-responsive">
@@ -56,7 +56,7 @@
                 <button class="btn btn-outline-danger" (click)="changeStatus(item.id, 1);">Tiếp nhận đơn</button>
               </td>
               <td *ngIf="item.status == 0">
-                <button class="btn btn-outline-success">Huỷ đơn</button>
+                <button class="btn btn-outline-success" (click)="deleteRentById(item.id)">Huỷ đơn</button>
               </td>
               <td *ngIf="item.status == 1">
                 <button class="btn btn-outline-warning" disabled>Đang đợi người sử dụng dịch vụ xác nhận</button>
@@ -75,7 +75,7 @@
 
             </tbody>
           </table>
-          <div class="mt-5 d-flex justify-content-center">
+          <div class="mt-5 d-flex justify-content-center" *ngIf="totalLength > 3">
             <pagination-controls (pageChange)="page = $event" id='first'></pagination-controls>
           </div>
         </div>
@@ -90,7 +90,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Báo cáo phản hồi</h4>
+        <h4 class="modal-title" style="text-align: center">Báo cáo phản hồi</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -111,7 +111,7 @@
 <div class="col-xl-12 col-md-6" *ngIf="hidden == false">
   <div class="card table-card">
     <div class="card-header">
-      <h5>Chi tiết đơn hàng</h5>
+      <h5 style="text-align: center">Chi tiết đơn hàng</h5>
     </div>
     <div class="card-body px-0 py-0">
       <div class="table-responsive">
