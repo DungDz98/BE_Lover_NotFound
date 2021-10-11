@@ -44,11 +44,11 @@ export class ProfileProviderComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      this.getAllRent();
       this.idUs = this.tokenService.getJwt().id;
       // @ts-ignore
       this.id = +paramMap.get('id');
       console.log(this.id);
+      this.getAllRent();
       this.getUserById(this.id);
       // @ts-ignore
       this.getUserCurrent(this.idUs);

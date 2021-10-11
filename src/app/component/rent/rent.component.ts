@@ -18,6 +18,8 @@ export class RentComponent implements OnInit {
   rents: Rent[] = [];
   rent: Rent = {};
   id!: number;
+  totalLength: any;
+  page: number = 1;
 
   constructor(private rentService: RentService, private activatedRoute: ActivatedRoute, private router: Router,
               private userService: UserService, private angularFireStorage: AngularFireStorage) {
@@ -34,7 +36,10 @@ export class RentComponent implements OnInit {
   }
 
   getAllRentForProvider(id: number) {
-    this.rentService.getAllRentForProvider(id).subscribe(rents => this.rents = rents);
+    this.rentService.getAllRentForProvider(id).subscribe(rents => {
+      this.rents = rents;
+      this.totalLength = rents.length;
+    });
   }
 
   getRentById(id: any) {
