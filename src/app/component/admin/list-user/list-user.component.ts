@@ -37,6 +37,13 @@ export class ListUserComponent implements OnInit {
       window.location.reload();
     })
   }
+
+  changeVipStatus(id: number | undefined) {
+    // @ts-ignore
+    this.userService.changeVipStatus(id).subscribe(() => {
+      window.location.reload();
+    })
+  }
 }
 
 

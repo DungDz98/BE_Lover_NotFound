@@ -1,5 +1,5 @@
 <div>
-  <table class="table table-striped" style="margin: auto; text-align: center">
+  <table class="table table-striped" style="text-align: center">
     <thead>
     <tr>
       <th>#</th>
@@ -7,6 +7,8 @@
       <th>Số điện thoại</th>
       <th>Email</th>
       <th>Trạng thái</th>
+      <th>Loại tài khoản</th>
+      <th colspan="2">Hành động</th>
 
     </tr>
     </thead>
@@ -26,13 +28,35 @@
              (click)="getUserById(user.id)">{{user.phoneNumber}}</a></td>
       <td><a style="cursor: pointer" data-toggle="modal" data-target="#userDetail"
              (click)="getUserById(user.id)">{{user.email}}</a></td>
-      <td *ngIf="user.statusUs == 1"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 2)"><p
-        style="color: red">Khoá</p></a></td>
-      <td *ngIf="user.statusUs == 0"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 1)"><p
-        style="color: green">Kích hoạt</p></a>
+
+      <td>
+        <a style="color: green" *ngIf="user.statusUs == 0">Chưa kích hoạt</a>
+        <a style="color: blue" *ngIf="user.statusUs == 1">Đã kích hoạt</a>
+        <a style="color: red" *ngIf="user.statusUs == 2">Bị khoá</a>
       </td>
-      <td *ngIf="user.statusUs == 2"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 1)"><p
-        style="color: green">Bỏ khoá</p></a></td>
+
+
+      <td>
+        <a style="color: darkolivegreen" *ngIf="user.statusCCDV == 0">Người dùng</a>
+        <a style="color: gray" *ngIf="user.statusCCDV == 1">Cung cấp dịch vụ</a>
+        <a style="color: firebrick" *ngIf="user.statusCCDV == 2">Tạm ngưng dịch vụ</a>
+        <a style="color: yellowgreen" *ngIf="user.statusCCDV == 3">Vip</a>
+      </td>
+
+
+      <td *ngIf="user.statusUs == 1"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 2)" class="btn btn-outline-danger"><p>
+        Khoá</p></a></td>
+      <td *ngIf="user.statusUs == 0"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 1)" class="btn btn-outline-primary"><p>
+        Kích hoạt</p></a>
+      </td>
+      <td *ngIf="user.statusUs == 2"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 1)" class="btn btn-outline-secondary"><p>Bỏ
+        khoá</p></a></td>
+
+      <td *ngIf="user.statusCCDV == 3"><a style="cursor: pointer" (click)="changeVipStatus(user.id)" class="btn btn-light"><p>
+        Huỷ bỏ Vip</p></a></td>
+      <td *ngIf="user.statusCCDV == 1 || user.statusCCDV == 2"><a style="cursor: pointer" (click)="changeVipStatus(user.id)" class="btn btn-outline-warning"><p>
+        Nâng cấp Vip</p></a>
+      </td>
 
     </tr>
     </tbody>
@@ -85,15 +109,19 @@
         </div>
         <div class="form-group row">
           <p class="col-sm-4 col-form-label detailKey">Loại tài khoản</p>
-          <p class="col-sm-8" *ngIf="user.statusUs == 0">
+          <p class="col-sm-8" *ngIf="user.statusCCDV == 0">
             Người dùng
           </p>
-          <p class="col-sm-8" *ngIf="user.statusUs == 1">
-            Người cung cấp dịch vụ <span style="cursor: pointer" class="ti-arrow-circle-right ml-3" data-toggle="modal"
+          <p class="col-sm-8" *ngIf="user.statusCCDV == 1">
+            Cung cấp dịch vụ <span style="cursor: pointer" class="ti-arrow-circle-right ml-3" data-toggle="modal"
                                          data-target="#providerDetail"></span>
           </p>
-          <p class="col-sm-8" *ngIf="user.statusUs == 3">
-            Người cung cấp dịch vụ VIP <span style="cursor: pointer" class="ti-arrow-circle-right ml-3"
+          <p class="col-sm-8" *ngIf="user.statusCCDV == 2">
+            Tạm ngưng dịch vụ <span style="cursor: pointer" class="ti-arrow-circle-right ml-3" data-toggle="modal"
+                                         data-target="#providerDetail"></span>
+          </p>
+          <p class="col-sm-8" *ngIf="user.statusCCDV == 3">
+            VIP <span style="cursor: pointer" class="ti-arrow-circle-right ml-3"
                                              data-toggle="modal"
                                              data-target="#providerDetail"></span>
           </p>

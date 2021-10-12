@@ -33,7 +33,10 @@ export class UserService {
   }
   changeStatusUser(id: number, statusUs: number): Observable<User> {
     // @ts-ignore
-    return this.httpClient.put<User>(`${ADMIN_API}/users/status/${id}?statusUs=${statusUs}`);
-
+    return this.httpClient.put<User>(`${ADMIN_API}/users/statusUs/${id}?statusUs=${statusUs}`);
+  }
+  changeVipStatus(id: number): Observable<User> {
+    // @ts-ignore
+    return this.httpClient.put<User>(`${ADMIN_API}/users/vip/${id}`);
   }
 }
