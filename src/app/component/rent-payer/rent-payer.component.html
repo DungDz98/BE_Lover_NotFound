@@ -31,7 +31,7 @@
             <tr *ngFor="let item of rents | paginate: {
             itemsPerPage: 3, currentPage: page, totalItems: totalLength, id: 'first'
              }; index as i">
-              <td>{{item.user?.userName}}</td>
+              <td><a [routerLink]="['/provider-profile/', item.user?.id]">{{item.user?.name}}</a></td>
               <td>{{item.time}}  giờ</td>
               <td>{{item.rentDate | date : 'dd/MM/YYYY' }}</td>
               <td *ngIf="item.status == 0">Chờ phản hồi</td>

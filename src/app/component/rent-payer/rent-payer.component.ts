@@ -54,9 +54,9 @@ export class RentPayerComponent implements OnInit {
 
   changeStatus(id: any, status: number) {
     this.rentService.changeStatus(id, status).subscribe(data => {
-      this.rent = data;
-      alert('Thao tác thành công');
-      window.location.reload()
+      for (let r of this.rents) {
+        if (r.id === id) r.status = data.status;
+      }
     })
   }
 }

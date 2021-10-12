@@ -53,7 +53,7 @@ export class NavbarComponent implements OnInit {
 
   changeStatusCCDV() {
     // @ts-ignore
-    this.userService.changeStatusCCDV(this.idUser).subscribe(() => {
+    this.userService.changeStatusCCDV(this.idUser).subscribe(resp => {
       alert('Thay đổi trạng thái thành công');
       window.location.reload();
     })

@@ -206,6 +206,7 @@ export class ProfileProviderComponent implements OnInit {
     this.rentService.saveSubRent(this.subRent).subscribe(rentResp => {
       alert("Thuê thành công");
       console.log("+++++" + rentResp.services);
+      this.getAllRent();
     });
 
 

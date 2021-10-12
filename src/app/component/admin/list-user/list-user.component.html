@@ -44,17 +44,17 @@
       </td>
 
 
-      <td *ngIf="user.statusUs == 1"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 2, i)" class="btn btn-outline-danger"><p>
+      <td *ngIf="user.statusUs == 1"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 2)" class="btn btn-outline-danger"><p>
         Khoá</p></a></td>
-      <td *ngIf="user.statusUs == 0"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 1, i)" class="btn btn-outline-primary"><p>
+      <td *ngIf="user.statusUs == 0"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 1)" class="btn btn-outline-primary"><p>
         Kích hoạt</p></a>
       </td>
-      <td *ngIf="user.statusUs == 2"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 1, i)" class="btn btn-outline-secondary"><p>Bỏ
+      <td *ngIf="user.statusUs == 2"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 1)" class="btn btn-outline-secondary"><p>Bỏ
         khoá</p></a></td>
 
-      <td *ngIf="user.statusCCDV == 3"><a style="cursor: pointer" (click)="changeVipStatus(user.id, i)" class="btn btn-light"><p>
+      <td *ngIf="user.statusCCDV == 3"><a style="cursor: pointer" (click)="changeVipStatus(user.id)" class="btn btn-light"><p>
         Huỷ bỏ Vip</p></a></td>
-      <td *ngIf="user.statusCCDV == 1 || user.statusCCDV == 2"><a style="cursor: pointer" (click)="changeVipStatus(user.id, i)" class="btn btn-outline-warning"><p>
+      <td *ngIf="user.statusCCDV == 1 || user.statusCCDV == 2"><a style="cursor: pointer" (click)="changeVipStatus(user.id)" class="btn btn-outline-warning"><p>
         Nâng cấp Vip</p></a>
       </td>
 

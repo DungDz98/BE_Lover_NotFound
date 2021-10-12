@@ -20,6 +20,7 @@ export class RentComponent implements OnInit {
   id!: number;
   totalLength: any;
   page: number = 1;
+  index?: number;
 
   constructor(private rentService: RentService, private activatedRoute: ActivatedRoute, private router: Router,
               private userService: UserService, private angularFireStorage: AngularFireStorage) {
@@ -53,16 +54,21 @@ export class RentComponent implements OnInit {
 
   changeStatus(id: any, status: number) {
     this.rentService.changeStatus(id ,status).subscribe(data =>{
-      this.rent = data;
-      alert('Thao tác thành công');
-      window.location.reload()
+      for (let r of this.rents) {
+        if (r.id === id) r.status = data.status;
+      }
+      // alert('Thao tác thành công');
+      // window.location.reload()
     })
   }
   changeStatusAndFeedback(id: any, status: number) {
     this.rentService.changeStatusAndFeedback(id ,status, this.feedback).subscribe(data =>{
-      this.rent = data;
-      alert('Thao tác thành công');
-      window.location.reload()
+      // @ts-ignore
+      for (let r of this.rents) {
+        if (r.id === id) r.status = data.status;
+      }
+      // alert('Thao tác thành công');
+      // window.location.reload()
     })
   }
 

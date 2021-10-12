@@ -31,17 +31,24 @@ export class ListUserComponent implements OnInit {
     this.userService.getUserById(id).subscribe(user => this.user = user);
   }
 
-  changeStatusUser(id: number | undefined, statusUs: number, i: number) {
+  changeStatusUser(id: number | undefined, statusUs: number) {
     // @ts-ignore
     this.userService.changeStatusUser(id, statusUs).subscribe(resp => {
-      this.listUser[i].statusUs = resp.statusUs;
+      for (let u of this.listUser) {
+        if (u.id === id) {
+          u.statusUs = resp.statusUs;
+        }
+      }
     })
   }
 
-  changeVipStatus(id: number | undefined, i: number) {
+  changeVipStatus(id: number | undefined) {
     // @ts-ignore
     this.userService.changeVipStatus(id).subscribe(resp => {
-      this.listUser[i].statusCCDV = resp.statusCCDV;
+      for (let u of this.listUser) {
+        if (u.id === id) u.statusCCDV = resp.statusCCDV;
+      }
+
       // window.location.reload();
     })
   }

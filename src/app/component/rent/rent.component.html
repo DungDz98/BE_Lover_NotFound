@@ -53,10 +53,10 @@
                 </button>
               </td>
               <td *ngIf="item.status == 0">
-                <button class="btn btn-outline-danger" (click)="changeStatus(item.id, 1);">Tiếp nhận đơn</button>
+                <button class="btn btn-outline-success" (click)="changeStatus(item.id, 1);">Tiếp nhận đơn</button>
               </td>
               <td *ngIf="item.status == 0">
-                <button class="btn btn-outline-success" (click)="deleteRentById(item.id)">Huỷ đơn</button>
+                <button class="btn btn-outline-danger" (click)="deleteRentById(item.id)">Huỷ đơn</button>
               </td>
               <td *ngIf="item.status == 1">
                 <button class="btn btn-outline-warning" disabled>Đang đợi người sử dụng dịch vụ xác nhận</button>
@@ -171,7 +171,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="changeStatusAndFeedback(idFeedback, 4);">Xong</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="changeStatusAndFeedback(idFeedback, 4);">Xong</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
 
