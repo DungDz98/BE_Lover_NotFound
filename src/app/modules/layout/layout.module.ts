@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {DetailCcdvComponent} from "../../component/user/CCDV/detail-ccdv/detail-ccdv.component";
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireModule} from "@angular/fire";
@@ -13,8 +13,9 @@ import {ListCcdvComponent} from "../../component/user/CCDV/list-ccdv/list-ccdv.c
 import {NgxPaginationModule} from "ngx-pagination";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {RentComponent} from "../../component/rent/rent.component";
-import { CheckCcdvComponent } from 'src/app/component/user/CCDV/check-ccdv/check-ccdv/check-ccdv.component';
+import {CheckCcdvComponent} from 'src/app/component/user/CCDV/check-ccdv/check-ccdv/check-ccdv.component';
 import {EditCcdvComponent} from "../../component/user/CCDV/edit-ccdv/edit-ccdv.component";
+import {UploadComponent} from "../../component/upload/upload.component";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {EditCcdvComponent} from "../../component/user/CCDV/edit-ccdv/edit-ccdv.c
     FooterComponent,
     ListCcdvComponent,
     RentComponent,
-    EditCcdvComponent
+    EditCcdvComponent,
+    UploadComponent
   ],
   imports: [
     CommonModule,
@@ -36,9 +38,11 @@ import {EditCcdvComponent} from "../../component/user/CCDV/edit-ccdv/edit-ccdv.c
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
     ReactiveFormsModule,
-    FormsModule
-  ]
+    FormsModule,
+  ],
+  exports: [UploadComponent]
 })
 
-export class LayoutModule { }
+export class LayoutModule {
+}
 

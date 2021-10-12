@@ -17,6 +17,11 @@ import {NgxPaginationModule} from "ngx-pagination";
 import { RentPayerComponent } from './component/rent-payer/rent-payer.component';
 import { ProfileProviderComponent } from './component/profile-provider/profile-provider.component';
 import {RouterModule} from "@angular/router";
+import { LayoutAdminComponent } from './component/admin-component/layout-admin/layout-admin.component';
+import {AdminModule} from "./modules/admin/admin.module";
+import { AdminHomeComponent } from './component/admin-component/admin-home/admin-home.component';
+
+
 
 @NgModule({
   declarations: [
@@ -25,6 +30,9 @@ import {RouterModule} from "@angular/router";
     SignUpComponent,
     RentPayerComponent,
     ProfileProviderComponent,
+    LayoutAdminComponent,
+    AdminHomeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -35,8 +43,11 @@ import {RouterModule} from "@angular/router";
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
     NgxPaginationModule,
-    RouterModule
-    ],
+    RouterModule,
+    AdminModule,
+
+
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
