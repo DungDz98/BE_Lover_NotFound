@@ -40,7 +40,7 @@
               <td *ngIf="item.status == 3">Đã thanh toán</td>
               <td *ngIf="item.status == 4">Đã báo cáo</td>
               <td>
-                <button class="btn btn-outline-danger" (click)="viewDetail(); getRentById(item.id)">Xem chi tiết đơn
+                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#detail" (click)="getRentById(item.id)">Xem chi tiết đơn
                   thuê
                 </button>
               </td>
@@ -62,6 +62,62 @@
     </div>
   </div>
 </div>
+
+<!--Detail rent-->
+<div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document"  style="transform: translateX(-25%);">
+    <div class="modal-content text-center">
+      <div class="modal-header" style="padding-left: 35%;">
+        <h5 class="modal-title" id="exampleModalLabel">Xem chi tiết hoá đơn</h5>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <p class="col-sm-4 col-form-label detailKey">Tên người yêu</p>
+          <p class="col-sm-8">
+            {{rent.userRent?.name}}
+          </p>
+        </div>
+        <div class="form-group row">
+          <p class="col-sm-4 col-form-label detailKey">Các dịch vụ sử dụng</p>
+          <div class="col-sm-8">
+            <p class="col-sm-12" *ngFor="let s of rent.services">+ {{s.name}}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <p class="col-sm-4 col-form-label detailKey">Tổng thời gian (h)</p>
+          <p class="col-sm-8">
+            {{rent.time}}
+          </p>
+        </div>
+        <div class="form-group row">
+          <p class="col-sm-4 col-form-label detailKey">Ngày</p>
+          <p class="col-sm-8">
+            {{rent.rentDate | date : 'dd/MM/YYYY'}}
+          </p>
+        </div>
+        <div class="form-group row">
+          <p class="col-sm-4 col-form-label detailKey">Trạng thái</p>
+          <p class="col-sm-8" *ngIf="rent.status == 0">Chờ phản hồi</p>
+          <p class="col-sm-8" *ngIf="rent.status == 1">Đã tiếp nhận</p>
+          <p class="col-sm-8" *ngIf="rent.status == 2">Đã hoàn thành</p>
+          <p class="col-sm-8" *ngIf="rent.status == 3">Đã thanh toán</p>
+          <p class="col-sm-8" *ngIf="rent.status == 4">Đã báo cáo</p>
+        </div>
+        <div class="form-group row">
+          <p class="col-sm-4 col-form-label detailKey">Hành động</p>
+          <p class="col-sm-8" *ngIf="rent.status == 1">
+            <button class="btn btn-outline-danger" (click)="changeStatus(rent.id,2); ">Hoàn thành</button>
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="col-xl-12 col-md-6" *ngIf="hidden == false">
   <div class="card table-card">
     <div class="card-header">

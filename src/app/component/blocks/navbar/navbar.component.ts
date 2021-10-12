@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   idUser!: number | undefined;
   name!: String | undefined;
   notCCDV: boolean = true;
+  avatar: string = '';
 
   constructor(private tokenService: TokenService, private userService: UserService, private router: Router) {
   }
@@ -24,6 +25,8 @@ export class NavbarComponent implements OnInit {
       this.idUser = this.tokenService.getJwt().id;
       // @ts-ignore
       this.name = localStorage.getItem('userName');
+      // @ts-ignore
+      this.getAvatar(this.idUser);
 
 
       // @ts-ignore
@@ -34,6 +37,11 @@ export class NavbarComponent implements OnInit {
         }
       })
     }
+  }
+
+  getAvatar(id: number) {
+    // @ts-ignore
+    this.userService.getById(id).subscribe(user => this.avatar = user.avatar);
   }
 
   logout() {
