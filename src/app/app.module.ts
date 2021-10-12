@@ -25,6 +25,7 @@ import {RouterModule} from "@angular/router";
     SignUpComponent,
     RentPayerComponent,
     ProfileProviderComponent,
+    UploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,4 +41,5 @@ import {RouterModule} from "@angular/router";
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
