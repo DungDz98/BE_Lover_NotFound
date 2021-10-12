@@ -22,14 +22,6 @@ const routes: Routes = [
   },
 
   {
-    path: 'login',
-    component: SignInComponent
-  },
-  {
-    path: 'create',
-    component: SignUpComponent
-  },
-  {
     path: 'edit/:id', component: DetailCcdvComponent,
   },
   {

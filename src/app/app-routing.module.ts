@@ -16,6 +16,14 @@ const routes: Routes = [
     component: LayoutAdminComponent,
     loadChildren: () => import('./modules/admin/admin.module').then(module => module.AdminModule)
   },
+  {
+    path: 'login',
+    component: SignInComponent
+  },
+  {
+    path: 'create',
+    component: SignUpComponent
+  },
 ];
 
 @NgModule({
