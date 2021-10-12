@@ -33,7 +33,7 @@ export class DetailCcdvComponent implements OnInit {
       linkFb: new FormControl(),
       statusCCDV: new FormControl(),
       createAtCCDV: new FormControl(),
-      price: new FormControl('',[Validators.min(70000),Validators.max(500000)]),
+      price: new FormControl('',[Validators.min(70),Validators.max(500)]),
     })
   id!: number;
 
@@ -46,7 +46,7 @@ export class DetailCcdvComponent implements OnInit {
     // this.activatedRoute.params.subscribe((data) => this.id = data.id);
     this.activeRoute.paramMap.subscribe(data => {
       this.id = parseInt(data.get('id')!)
-      this.showEditUser(this.id);
+      // this.showEditUser(this.id);
     })
   }
   saveUser(id: number) {
