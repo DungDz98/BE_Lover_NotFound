@@ -1,0 +1,180 @@
+<div>
+  <table class="table table-striped" style="margin: auto; text-align: center">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Tên tài khoản</th>
+      <th>Số điện thoại</th>
+      <th>Email</th>
+      <th>Trạng thái</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let user of listUser | paginate : {
+                itemsPerPage: 5,
+                currentPage: page,
+                totalItems: totalLength,
+                id: 'first'
+              };
+        let i = index">
+      <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+      <td><a style="cursor: pointer" data-toggle="modal" data-target="#userDetail"
+             (click)="getUserById(user.id)">{{user.userName}}</a></td>
+      <td><a style="cursor: pointer" data-toggle="modal" data-target="#userDetail"
+             (click)="getUserById(user.id)">{{user.phoneNumber}}</a></td>
+      <td><a style="cursor: pointer" data-toggle="modal" data-target="#userDetail"
+             (click)="getUserById(user.id)">{{user.email}}</a></td>
+      <td *ngIf="user.statusUs == 1"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 2)"><p
+        style="color: red">Khoá</p></a></td>
+      <td *ngIf="user.statusUs == 0"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 1)"><p
+        style="color: green">Kích hoạt</p></a>
+      </td>
+      <td *ngIf="user.statusUs == 2"><a style="cursor: pointer" (click)="changeStatusUser(user.id, 1)"><p
+        style="color: green">Bỏ khoá</p></a></td>
+
+    </tr>
+    </tbody>
+
+
+  </table>
+  <div class="mt-5 d-flex justify-content-center" *ngIf="totalLength > 5">
+    <pagination-controls (pageChange)="page = $event" id='first'></pagination-controls>
+  </div>
+</div>
+
+<!--Detail user-->
+<div class="modal fade" id="userDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center userDetail">
+      <div class="modal-header" style="padding-left: 35%;">
+        <h5 class="modal-title" id="exampleModalLabel">Thông tin chi tiết tài khoản</h5>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <p class="col-sm-4 col-form-label detailKey">Tên tài khoản</p>
+          <p class="col-sm-8">
+            {{user.userName}}
+          </p>
+        </div>
+        <div class="form-group row">
+          <p class="col-sm-4 col-form-label detailKey">Số điện thoại</p>
+          <p class="col-sm-8">
+            {{user.phoneNumber}}
+          </p>
+        </div>
+        <div class="form-group row">
+          <p class="col-sm-4 col-form-label detailKey">Email</p>
+          <p class="col-sm-8">
+            {{user.email}}
+          </p>
+        </div>
+        <div class="form-group row">
+          <p class="col-sm-4 col-form-label detailKey">Trạng thái</p>
+          <p class="col-sm-8" *ngIf="user.statusUs == 0">
+            Chưa kích hoạt
+          </p>
+          <p class="col-sm-8" *ngIf="user.statusUs == 1">
+            Đã kích hoạt
+          </p>
+          <p class="col-sm-8" *ngIf="user.statusUs == 2">
+            Đã bị khoá
+          </p>
+        </div>
+        <div class="form-group row">
+          <p class="col-sm-4 col-form-label detailKey">Loại tài khoản</p>
+          <p class="col-sm-8" *ngIf="user.statusUs == 0">
+            Người dùng
+          </p>
+          <p class="col-sm-8" *ngIf="user.statusUs == 1">
+            Người cung cấp dịch vụ <span style="cursor: pointer" class="ti-arrow-circle-right ml-3" data-toggle="modal"
+                                         data-target="#providerDetail"></span>
+          </p>
+          <p class="col-sm-8" *ngIf="user.statusUs == 3">
+            Người cung cấp dịch vụ VIP <span style="cursor: pointer" class="ti-arrow-circle-right ml-3"
+                                             data-toggle="modal"
+                                             data-target="#providerDetail"></span>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Detail provider-->
+  <div class="modal fade" id="providerDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document" style="transform: translateX(-25%);">
+      <div class="modal-content text-center providerDetail">
+        <div class="modal-header" style="padding-left: 35%;">
+          <h5 class="modal-title">Thông tin cung cấp dịch vụ</h5>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Tên tài khoản</p>
+            <p class="col-sm-8">
+              {{user.userName}}
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Tên</p>
+            <p class="col-sm-8">
+              {{user.name}}
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Ngày sinh</p>
+            <p class="col-sm-8">
+              {{user.dateOfBirth | date : 'dd/mm/yyyy'}}
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Giới tính</p>
+            <p class="col-sm-8">
+              {{user.gender}}
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Địa chỉ</p>
+            <p class="col-sm-8">
+              {{user.city}} - {{user.nationality}}
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Chiều cao - Cân nặng</p>
+            <p class="col-sm-8">
+              {{user.height}} cm - {{user.weight}} kg
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Sở thích</p>
+            <p class="col-sm-8">
+              {{user.hobby}}
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Yêu cầu với người dùng</p>
+            <p class="col-sm-8">
+              {{user.requestToPayer}}
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Giá</p>
+            <p class="col-sm-8">
+              {{user.price}}đ/h
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

@@ -15,6 +15,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {RentComponent} from "../../component/rent/rent.component";
 import { CheckCcdvComponent } from 'src/app/component/user/CCDV/check-ccdv/check-ccdv/check-ccdv.component';
 import {EditCcdvComponent} from "../../component/user/CCDV/edit-ccdv/edit-ccdv.component";
+import {UploadComponent} from "../../component/upload/upload.component";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {EditCcdvComponent} from "../../component/user/CCDV/edit-ccdv/edit-ccdv.c
     FooterComponent,
     ListCcdvComponent,
     RentComponent,
-    EditCcdvComponent
+    EditCcdvComponent,
+    UploadComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,7 @@ import {EditCcdvComponent} from "../../component/user/CCDV/edit-ccdv/edit-ccdv.c
     AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
     ReactiveFormsModule,
     FormsModule
-  ]
+  ], exports:[UploadComponent]
 })
 
 export class LayoutModule { }

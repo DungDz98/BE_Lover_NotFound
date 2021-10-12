@@ -1,0 +1,16 @@
+.table thead th {
+  vertical-align: center;
+}
+
+.detailKey {
+  font-weight: bolder;
+}
+
+.userDetail {
+  width: 100%;
+}
+
+.providerDetail {
+  width: 150%;
+}
+

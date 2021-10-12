@@ -6,6 +6,7 @@ import {environment} from "../../../environments/environment.prod";
 
 const API_URL = environment.API_URL + '/ccdv';
 const USER_API = `${environment.API_URL}/users`;
+const ADMIN_API = environment.API_URL + '/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,10 @@ export class UserService {
   changeStatusCCDV(id: number): Observable<User> {
     // @ts-ignore
     return this.httpClient.put<User>(`${API_URL}/statusccdv/${id}`);
+  }
+  changeStatusUser(id: number, statusUs: number): Observable<User> {
+    // @ts-ignore
+    return this.httpClient.put<User>(`${ADMIN_API}/users/status/${id}?statusUs=${statusUs}`);
+
   }
 }
