@@ -81,4 +81,8 @@ export class EditCcdvComponent implements OnInit {
       this.city = data;
     })
   }
+
+  getImage($event: string) {
+    console.log($event);
+  }
 }
