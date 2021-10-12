@@ -4,8 +4,9 @@ export class JwtResponse {
   name?: string;
   userName?: string;
   roles?: any[];
+  statusUs?: number;
 
-  constructor(id: number , token: string, name: string, userName: string, roles: any) {
+  constructor(id: number , token: string, name: string, userName: string, roles: any, statusUs: number) {
 
 
 
@@ -14,5 +15,6 @@ export class JwtResponse {
     this.name = name;
     this.userName = userName;
     this.roles = roles;
+    this.statusUs = statusUs;
   }
 }
