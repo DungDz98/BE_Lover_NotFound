@@ -112,7 +112,8 @@ export class ProfileUserComponent implements OnInit {
     this.userService.editAvatar(user1,this.idUser).subscribe(()=>{
       this.isHidden=true;
       console.log("Đổi ảnh thành công");
-      this.router.navigate(["/"])
+      // this.router.navigate(['/'])
+      window.location.reload();
     })
 
   }
