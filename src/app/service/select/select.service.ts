@@ -38,4 +38,8 @@ export class SelectService {
     return this.httpClient.get<UserTest[]>(API_URL + `/test`)
   }
 
+  getAllGoiY(gender: String | undefined) {
+    return this.httpClient.get<UserTest[]>(API_URL + `/suggestions?gender=` + gender);
+  }
+
 }

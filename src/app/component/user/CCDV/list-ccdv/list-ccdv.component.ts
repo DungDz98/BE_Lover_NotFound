@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {SelectService} from "../../../../service/select/select.service";
-import {User} from "../../../../models/user/user";
 import {City} from "../../../../models/city";
 import {HttpClient} from "@angular/common/http";
 import {FormControl, FormGroup} from "@angular/forms";
 import {UserTest} from "../../../../models/selectInHome/user-test";
+import {UserService} from "../../../../service/user/user.service";
+import {TokenService} from "../../../../service/in-out/token.service";
+import {User} from "../../../../model/user/user";
 
 @Component({
   selector: 'app-list-ccdv',
@@ -15,6 +17,7 @@ export class ListCcdvComponent implements OnInit {
 
   listUserCCDV: UserTest[] = [];
   listUserCCDVHaveCategory: UserTest[] = [];
+  listGoiY: UserTest[] = [];
   city: City[] = []
   page = 1;
   page2 = 1;
@@ -24,7 +27,10 @@ export class ListCcdvComponent implements OnInit {
   status!: String;
   userForm!: FormGroup;
 
-  constructor(private select: SelectService, private http: HttpClient) {
+  idTemp!: number | undefined;
+  genderUser!: String | undefined;
+
+  constructor(private select: SelectService, private http: HttpClient, private userService: UserService, private token: TokenService) {
   }
 
   ngOnInit(): void {
@@ -35,20 +41,12 @@ export class ListCcdvComponent implements OnInit {
       name: new FormControl(),
       gender: new FormControl('Giới tính'),
       city1: new FormControl('Thành Phố'),
-    })
+    });
+    this.idTemp = this.token.getJwt().id;
+    this.getAllGoiY();
+    this.test()
   }
 
-  // test feature
-  //
-  // resetValue(){
-  //   this.userForm.get('name')?.setValue('');
-  //   this.userForm.get('gender')?.setValue('Giới tính');
-  //   this.userForm.get('city')?.setValue('Thành Phố');
-  // }
-
-  //------
-
-  // select ra homepage
   getAll() {
     this.select.getAllSelectRequest().subscribe((data) => {
       this.listUserCCDV = data;
@@ -58,8 +56,8 @@ export class ListCcdvComponent implements OnInit {
     })
   }
 
-  getUserCategory(){
-    this.select.findUserHaveCategory().subscribe((data)=>{
+  getUserCategory() {
+    this.select.findUserHaveCategory().subscribe((data) => {
       this.listUserCCDVHaveCategory = data;
       this.size2 = data.length;
       this.page = 1
@@ -70,11 +68,11 @@ export class ListCcdvComponent implements OnInit {
 
   getListCity() {
     this.select.findCity().subscribe((data) => {
-        this.city = data;
-        this.size = data.length
+      this.city = data;
+      this.size = data.length
       console.log(this.userForm.get('city')?.value)
       this.page = 1
-      })
+    })
   }
 
   getAllByName() {
@@ -83,7 +81,7 @@ export class ListCcdvComponent implements OnInit {
         this.size = data.length;
         this.page = 1;
         this.status = 'true';
-        if (data.length == 0){
+        if (data.length == 0) {
           this.status = 'falseName';
         }
       },
@@ -94,15 +92,15 @@ export class ListCcdvComponent implements OnInit {
 
   getByGender() {
     this.select.findUserByGender(this.userForm.get('gender')?.value).subscribe((data) => {
-        console.log(this.userForm.get('gender')?.value);
-        this.listUserCCDV = data;
-        this.size = data.length;
-        this.page = 1;
-        this.status = 'true';
-      if (data.length == 0){
+      console.log(this.userForm.get('gender')?.value);
+      this.listUserCCDV = data;
+      this.size = data.length;
+      this.page = 1;
+      this.status = 'true';
+      if (data.length == 0) {
         this.status = 'falseGender';
       }
-      })
+    })
 
   }
 
@@ -116,4 +114,28 @@ export class ListCcdvComponent implements OnInit {
     })
 
   }
+
+
+
+  getAllGoiY(){
+    this.http.get<User>(`http://localhost:8080/ccdv/${this.token.getJwt().id}`).subscribe((data)=>{
+      this.select.getAllGoiY(data.gender).subscribe((data1)=>{
+        this.listGoiY = data1
+      })
+    })
+  }
+
+
+  test(){
+    navigator.geolocation.getCurrentPosition(position => {
+      console.log(position.coords.latitude)
+      console.log(position.coords.longitude)
+    })
+  }
+
+
+
+
 }
+
+

@@ -47,7 +47,6 @@
       <!--    </select>-->
       <select class="form-control city " formControlName="city1" (change)="getByCity()">
         <option selected>Thành Phố</option>
-        <option value="hanoi">Hanoi</option>
         <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
       </select>
       <input type="text"
@@ -88,8 +87,8 @@
             <div class="row pl-3 mb-3">
 
               <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>
-              <div class="col-12" style="color: gray">{{userCCDV.description}}</div>
-              <div class="col-12" style="color: gray">{{userCCDV.category_name}}</div>
+              <div class="col-12" style="color: gray; margin-top: -15px">{{userCCDV.description}}</div>
+              <div class="col-12" style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDV.category_name}}</div>
 
             </div>
           </div>
@@ -115,7 +114,39 @@
   </div>
 
 <!--z-->
-  <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Hót</p>
+
+<!--  danh sách gợi ý-->
+
+  <div *ngIf="listGoiY.length !== 0">
+    <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Gợi ý cho bạn</p>
+    <div class="row">
+      <div class="col-3 " *ngFor="let userCCDVCategory of listGoiY">
+        <a style="text-decoration: none; cursor: pointer"
+           [routerLink]="['provider-profile/', userCCDVCategory.id ]">
+          <div class="card text-black mt-3" style="border-radius: 10px">
+            <img style="border-radius: 10px 10px 0 0"
+                 src="{{userCCDVCategory.avatar}}">
+            <div class="card-img-overlay">
+              <button class="btn-danger btn-md"
+                      style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px">{{userCCDVCategory.price}},000 đ/h
+              </button>
+            </div>
+            <div class="row pl-3 mb-3">
+              <h4 class="col-12 mt-3" style=" color: orangered;">{{userCCDVCategory.name}}</h4>
+              <div class="col-12" style="color: gray; margin-top: -15px">{{userCCDVCategory.description}}</div>
+              <span class="col-12" style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.category_name}}</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+<!--  kết thúc danh sách gợi ý-->
+
+<!--  danh sách khởi đầu-->
+<div style="margin-top: 50px">
+  <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Top Người Yêu Cũ</p>
   <div class="row" *ngIf="listUserCCDVHaveCategory.length !== 0">
     <div class="col-3 " *ngFor="let userCCDVCategory of listUserCCDVHaveCategory | paginate : {
                 itemsPerPage: 12,
@@ -134,11 +165,9 @@
             </button>
           </div>
           <div class="row pl-3 mb-3">
-
-            <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDVCategory.name}}</h4>
-            <div class="col-12" style="color: gray">{{userCCDVCategory.description}}</div>
-            <div class="col-12" style="color: gray">{{userCCDVCategory.category_name}}</div>
-
+            <h4 class="col-12 mt-3" style=" color: orangered;">{{userCCDVCategory.name}}</h4>
+            <div class="col-12" style="color: gray; margin-top: -15px">{{userCCDVCategory.description}}</div>
+            <span class="col-12" style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.category_name}}</span>
           </div>
         </div>
       </a>
@@ -147,5 +176,76 @@
   <div class="mt-5 d-flex justify-content-center">
     <pagination-controls (pageChange)="page2 = $event" id='second'></pagination-controls>
   </div>
+</div>
+<!--  kết thúc danh sách khởi đầu-->
 
 </div>
+
+<!--...modal update user-->
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title" id="exampleModalLabel" style="margin-left: 130px">Nhập thông tin người dùng</h3>
+    </div>
+    <div class="modal-body p-4">
+      <form>
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-4">
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" for="name" style="margin-left: 0px;">Nhập tên(*)</label>
+              <input type="text" id="name" class="form-control" placeholder="Nhập tên">
+              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div></div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" style="margin-left: 0px;">Chọn giới tính(*)</label>
+              <select class="form-control">
+                <option value="" selected disabled>Giới tính</option>
+                <option value="Nam">Nam</option>
+                <option value="Nu">Nữ</option>
+              </select>
+              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 67.2px;"></div><div class="form-notch-trailing"></div></div></div>
+          </div>
+        </div>
+
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-4">
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" style="margin-left: 0px;">Chọn thành phố bạn đang sống(*)</label>
+              <select class="form-control">
+                <option value="" selected disabled>Thành phố</option>
+                <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
+              </select>
+              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div></div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" style="margin-left: 0px;">Ngày sinh của bạn(*)</label>
+              <input type="date" class="form-control">
+              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 67.2px;"></div><div class="form-notch-trailing"></div></div></div>
+          </div>
+        </div>
+
+        <!-- Message input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="description" style="margin-left: 0px;">Miêu tả</label>
+          <textarea class="form-control" id="description" rows="4"></textarea>
+          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 134.4px;"></div><div class="form-notch-trailing"></div></div></div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block" data-dismiss="modal">Hoàn thành</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--...end modal-->

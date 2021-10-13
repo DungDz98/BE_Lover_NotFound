@@ -36,6 +36,8 @@ export class NavbarComponent implements OnInit {
           this.notCCDV = false;
         }
       })
+
+
     }
   }
 
