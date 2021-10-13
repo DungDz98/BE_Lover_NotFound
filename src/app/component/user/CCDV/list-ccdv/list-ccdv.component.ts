@@ -44,6 +44,7 @@ export class ListCcdvComponent implements OnInit {
     });
     this.idTemp = this.token.getJwt().id;
     this.getAllGoiY();
+    this.test()
   }
 
   getAll() {
@@ -123,4 +124,18 @@ export class ListCcdvComponent implements OnInit {
       })
     })
   }
+
+
+  test(){
+    navigator.geolocation.getCurrentPosition(position => {
+      console.log(position.coords.latitude)
+      console.log(position.coords.longitude)
+    })
+  }
+
+
+
+
 }
+
+

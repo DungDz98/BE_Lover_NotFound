@@ -46,7 +46,7 @@
         <a style="text-decoration: none; cursor: pointer"
            [routerLink]="['provider-profile/', userCCDV.id ]" >
           <div class="card text-black mt-3" style="border-radius: 10px">
-              <img style="height: 250px; width: 253px ; border-radius: 10px 10px 0 0" src="{{userCCDV.avatar}}" [routerLink]="['provider-profile/', userCCDV.id ]">
+              <img style=" border-radius: 10px 10px 0 0" src="{{userCCDV.avatar}}" [routerLink]="['provider-profile/', userCCDV.id ]">
             <div class="card-img-overlay">
               <button class="btn-danger btn-md"
                       style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px;">{{userCCDV.price}},000 đ/h
@@ -85,14 +85,14 @@
 
 <!--  danh sách gợi ý-->
 
-  <div *ngIf="idTemp">
+  <div *ngIf="listGoiY.length !== 0">
     <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Gợi ý cho bạn</p>
     <div class="row">
       <div class="col-3 " *ngFor="let userCCDVCategory of listGoiY">
         <a style="text-decoration: none; cursor: pointer"
            [routerLink]="['provider-profile/', userCCDVCategory.id ]">
           <div class="card text-black mt-3" style="border-radius: 10px">
-            <img style="height: 250px; width: 253px ; border-radius: 10px 10px 0 0"
+            <img style="border-radius: 10px 10px 0 0"
                  src="{{userCCDVCategory.avatar}}">
             <div class="card-img-overlay">
               <button class="btn-danger btn-md"
@@ -125,7 +125,7 @@
       <a style="text-decoration: none; cursor: pointer"
          [routerLink]="['provider-profile/', userCCDVCategory.id ]">
         <div class="card text-black mt-3" style="border-radius: 10px">
-          <img style="height: 250px; width: 253px ; border-radius: 10px 10px 0 0"
+          <img style="border-radius: 10px 10px 0 0"
                src="{{userCCDVCategory.avatar}}">
           <div class="card-img-overlay">
             <button class="btn-danger btn-md"
