@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { ProfileUserComponent } from './component/user/SDDV/profile-user/profile-user.component';
+import {LayoutModule} from "./modules/layout/layout.module";
 
 
 
@@ -52,6 +53,7 @@ import { ProfileUserComponent } from './component/user/SDDV/profile-user/profile
         BrowserAnimationsModule,
         MatMenuModule,
         MatSidenavModule,
+        LayoutModule,
 
     ],
   providers: [],

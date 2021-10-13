@@ -49,6 +49,8 @@ export class UserService {
   updateUser(user: User): Observable<User> {
     return this.httpClient.put<User>(`${USER_API}/update`, user);
   }
-
+  editAvatar(user: User, id: number): Observable<User> {
+    return this.httpClient.put<User>(USER_API+"/"+id+"/editAvatar",user)
+  }
 
 }

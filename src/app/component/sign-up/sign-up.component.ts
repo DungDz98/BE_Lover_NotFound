@@ -11,7 +11,6 @@ import {Router, RouterModule} from "@angular/router";
 })
 export class SignUpComponent implements OnInit {
   signUpForm: SignUpForm = {};
-
   status = 'Vui lòng điền vào biểu mẫu để đăng ký!';
   error1 = {
     message: 'This username is existed'

@@ -17,6 +17,9 @@ export class ProfileUserComponent implements OnInit {
   city1: City[] =[];
   user!: User;
   userForm!: FormGroup;
+  // @ts-ignore
+  avatarLink: string;
+  isHidden = true;
   idUser!: number;
   constructor(private select: SelectService, private userService: UserService, private http: HttpClient,
               private activatedRoute:ActivatedRoute, private  tokenService: TokenService,
@@ -95,5 +98,22 @@ export class ProfileUserComponent implements OnInit {
     });
 
   }
+  editAvatar(){
+    this.isHidden= false;
+  }
+  getImage($event: string){
+    this.avatarLink=$event;
+  }
+  saveAvatar(){
+    const user1= {
+      avatar: this.avatarLink
+    }
+    // @ts-ignore
+    this.userService.editAvatar(user1,this.idUser).subscribe(()=>{
+      this.isHidden=true;
+      console.log("Đổi ảnh thành công");
+      this.router.navigate(["/"])
+    })
 
+  }
 }
