@@ -1,20 +1,21 @@
-<div class="wrapper mt-1" style="background-image: url('assets/images/bg-registration-form-2.jpg');">
-  <div class="inner col-12">
+<div class="wrapper mt-1" style="background-image: url('assets/images/bg-registration-form-2.jpg'); height: 100vh">
+  <div class="inner col-12" style="height: 100vh">
 
     <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
-      <h3>Đăng ký tài khoản</h3>
-      <div class="alert alert-warning d-flex align-items-center" role="alert" *ngIf="!isRegistered">
+      <h3 style="color: #a94442 !important; text-align: center">Đăng ký</h3>
+      <div class="form-login">
+      <div class="alert alert-warning d-flex align-items-center" role="alert" *ngIf="!isRegistered" style="padding: 5px 10px;">
         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Cảnh báo:">
           <use xlink:href="#exclamation-triangle-fill"/>
         </svg>
-        <div>{{status}}</div>
+        <div class="text-center">{{status}}</div>
       </div>
 
-      <div class="alert alert-success d-flex align-items-center" role="alert" *ngIf="isRegistered">
+      <div class="alert alert-success d-flex align-items-center" role="alert" *ngIf="isRegistered" style="padding: 5px 10px">
         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Thành công:">
           <use xlink:href="#check-circle-fill"/>
         </svg>
-        <div>{{status}}</div>
+        <div class="text-center">{{status}}</div>
       </div>
 
 
@@ -31,11 +32,11 @@
                    [ngClass]="['form-control',(username.untouched)? '' : (username.invalid && (username.dirty || username.touched))? 'is-invalid' : 'is-valid']"
                    formControlName="userName" id="txtUserName">
             <div *ngIf="username.invalid && (username.dirty)" class="invalid-feedback">
-              <div *ngIf="username.errors.required">Tên tài khoản không được để trống</div>
-              <div *ngIf="!username.errors.required && !username.errors.minLength">Độ dài tối thiểu là 6 ký tự
+              <div *ngIf="username.errors.required">✖ Tên tài khoản không được để trống</div>
+              <div *ngIf="!username.errors.required && !username.errors.minLength">✖ Độ dài tối thiểu là 6 ký tự
               </div>
             </div>
-            <div *ngIf="username.valid" class="valid-feedback">Tên tài khoản hợp lệ</div>
+            <div *ngIf="username.valid" class="valid-feedback">✔ Tên tài khoản hợp lệ</div>
           </div>
         </div>
 
@@ -52,10 +53,10 @@
                    [ngClass]="['form-control',(phoneNumber.untouched)? '' : (phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched))? 'is-invalid' : 'is-valid']"
                    formControlName="phoneNumber">
             <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="invalid-feedback">
-              <div *ngIf="phoneNumber.errors.required">Số điện thoại không được để trống</div>
-              <div *ngIf="!phoneNumber.errors.required && phoneNumber.errors.pattern">Không đúng định dạng</div>
+              <div *ngIf="phoneNumber.errors.required">✖ Số điện thoại không được để trống</div>
+              <div *ngIf="!phoneNumber.errors.required && phoneNumber.errors.pattern">✖ Không đúng định dạng</div>
             </div>
-            <div *ngIf="phoneNumber.valid" class="valid-feedback">Số điện thoại hợp lệ</div>
+            <div *ngIf="phoneNumber.valid" class="valid-feedback">✔ Số điện thoại hợp lệ</div>
           </div>
         </div>
       </div>
@@ -74,10 +75,10 @@
                  formControlName="email">
           <span class="input-group-text">@example.com</span>
           <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
-            <div *ngIf="email.errors.required">Email không được để trống</div>
-            <div *ngIf="!email.errors.required && email.errors">Email phải có @</div>
+            <div *ngIf="email.errors.required">✖ Email không được để trống</div>
+            <div *ngIf="!email.errors.required && email.errors">✖ Email phải có @</div>
           </div>
-          <div *ngIf="email.valid" class="valid-feedback">Email hợp lệ</div>
+          <div *ngIf="email.valid" class="valid-feedback">✔ Email hợp lệ</div>
         </div>
       </div>
 
@@ -108,12 +109,12 @@
     d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
 </svg></span>
           <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
-            <div *ngIf="password.errors.required">Mật khẩu không được để trống</div>
-            <div *ngIf="!password.errors.required && password.errors.pattern">Mật khẩu phải có kí tự đặc biệt,
+            <div *ngIf="password.errors.required">✖ Mật khẩu không được để trống</div>
+            <div *ngIf="!password.errors.required && password.errors.pattern">✖ Mật khẩu phải có kí tự đặc biệt,
               chữ cái, số & độ dài từ 8 đến 20
             </div>
           </div>
-          <div *ngIf="password.valid" class="valid-feedback">Mật khẩu hợp lệ</div>
+          <div *ngIf="password.valid" class="valid-feedback">✔ Mật khẩu hợp lệ</div>
         </div>
       </div>
 
@@ -143,18 +144,21 @@
     d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
 </svg></span>
           <div *ngIf="confirmedPassword.invalid && (confirmedPassword.dirty || confirmedPassword.touched)"
-               class="invalid-feedback">Mật khẩu không được để trống
+               class="invalid-feedback">✖ Mật khẩu không được để trống
           </div>
           <div *ngIf=" confirmedPassword.valid && (confirmedPassword.value != password.value)" class="invalid-feedback">
-            Mật khẩu không khớp
+            ✖ Mật khẩu không khớp
           </div>
           <div *ngIf="(confirmedPassword.valid && (confirmedPassword.value == password.value))" class="valid-feedback">
-            Mật khẩu hợp lệ
+            ✔ Mật khẩu hợp lệ
           </div>
         </div>
       </div>
 
       <button [disabled]="registerForm.invalid">Đăng kí ngay</button>
+        <div style="text-align: center" id="quickLogin">Đã có tài khoản? <a routerLink="/login" style="color: #dddddd" >Đăng nhập</a></div>
+
+      </div>
 <!--      <button *ngIf="isRegistered">Đăng nhập</button>-->
     </form>
   </div>

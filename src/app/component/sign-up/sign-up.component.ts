@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SignUpForm} from '../../model/in-out/sign-up-form';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../service/in-out/auth.service';
+import {Router, RouterModule} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
@@ -52,7 +53,8 @@ export class SignUpComponent implements OnInit {
   get confirmedPassword(): any {
     return this.registerForm.get('confirmedPassword');
   }
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -69,6 +71,7 @@ export class SignUpComponent implements OnInit {
       if (JSON.stringify(data) === JSON.stringify(this.success)) {
         this.isRegistered = true;
         this.status = 'Bạn đã đăng ký thành công, bạn có thể đăng nhập ngay bây giờ';
+        this.router.navigate(["/login"]);
       }
     });
   }

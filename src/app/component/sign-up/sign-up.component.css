@@ -40,7 +40,7 @@ a:hover {
   outline: none; }
 
 .wrapper {
-  margin-top: -6%;
+  margin-top: 2%;
   background-size: cover;
   min-height: 100vh;
   background-size: cover;
@@ -51,16 +51,18 @@ a:hover {
 .inner {
   min-width: 850px;
   margin: auto;
-  padding-top: 68px;
-  padding-bottom: 48px;
-  background: url("src/assets/images/bg-register-1.jpg");
+  padding-top: 0px;
+  padding-bottom: 58px;
+  background-image: url("https://elead.com.vn/wp-content/uploads/2020/04/anh-dep-tinh-yeu-lang-man_104516519.jpg");
+  background-position:center;
   background-size: cover;}
 .inner h3 {
   text-transform: uppercase;
   font-size: 22px;
   font-family: "Muli-Bold";
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 8px;
+  margin-top: 8px;
   color: #333;
   letter-spacing: 2px; }
 
@@ -76,9 +78,9 @@ form {
   margin-right: 20px; }
 
 .form-wrapper {
-  margin-bottom: 17px; }
+  margin-bottom: 5px; }
 .form-wrapper label {
-  margin-bottom: 9px;
+  margin-bottom: 5px;
   display: block; }
 
 .form-control {
@@ -209,3 +211,52 @@ button:hover:before {
 .txtRegisterLong{
   width: 60%;
 }
+
+.form-login {
+  background-color: rgba(0,0,0,0.55);
+  border-radius: 15px;
+  border-color:#d2d2d2;
+  border-width: 5px;
+  color:white;
+  box-shadow:0 1px 0 #cfcfcf;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.form-control{
+  background:transparent!important;
+  color:white!important;
+  font-size: 18px!important;
+}
+h1{
+  color:white!important;
+}
+h4 {
+  border:0 solid #fff;
+  border-bottom-width:1px;
+  padding-bottom:10px;
+  text-align: center;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+.text-white{
+  color: white!important;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #ffffff!important;
+  opacity: 1; /* Firefox */
+  font-size:18px!important;
+}
+
+.invalid-feedback {
+  color: #fdbb28;
+}
+
+.valid-feedback {
+  color: #FEB58A;
+}
+
+
