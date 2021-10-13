@@ -238,32 +238,36 @@
         <div class="aside">
           <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12 personalinfo"><h3>Thông tin cá nhân</h3>
-              <div class="d-flex img-avatar"><img src="https://files.playerduo.com/production/images/avatar20.png"
-                                                  class="" alt="avatar" sizes="sm">
+              <div class="d-flex img-avatar">
+                <img src="{{userForm.get('avatar')?.value}}" class="" alt="avatar" sizes="sm">
                 <div class="cropimg-avatar">
                   <button type="button"><span> Thay Đổi<p>JPG, GIF or PNG, &lt;5 MB. </p></span></button>
                 </div>
               </div>
-              <form class="from-userinfo">
-                <div class="fieldGroup "><p class="control-label">Họ và tên</p><input type="text" name="name" placeholder="" maxlength="5000" autocomplete="false" value="sonstarx02"></div>
+              <form class="from-userinfo" [formGroup]="userForm">
+                <div class="fieldGroup "><p class="control-label">Họ và tên</p>
+                  <input type="text" name="name" placeholder="" maxlength="5000" autocomplete="false" formControlName="name">
+                </div>
                 <p class="control-label">Ngày sinh</p>
-                <input type="date" maxlength="5000" autocomplete="false">
+                <input type="date" maxlength="5000" autocomplete="false" formControlName="dateOfBirth">
                 <p class="control-label">Thành phố</p>
-                <select name="city">
-               <!--...ghisau-->
+                <select name="city" formControlName="city">
+                  <option *ngFor="let item of city1" value="{{item.name}}">{{item.name}}</option>
                 </select>
-                <div class="fieldGroup "><p class="control-label">Giới tính</p>
-                  <select name="gender">
+                <div class="fieldGroup ">
+                  <p class="control-label">Giới tính</p>
+                  <select name="gender" formControlName="gender">
                     <option value="" disabled>Giới tính</option>
                     <option value="Nam">Nam</option>
                     <option value="Nu">Nữ</option>
                   </select>
                 </div>
                 <div class="fieldGroup ">
-                  <p class="control-label">Miểu tả</p><textarea type="text" name="name" placeholder="" maxlength="5000" autocomplete="false" value="sonstarx02" rows="6"></textarea>
+                  <p class="control-label">Miểu tả</p>
+                  <textarea type="text" name="name" placeholder="" maxlength="5000" autocomplete="false" value="sonstarx02" rows="6" formControlName="description"></textarea>
                   </div>
                 <hr>
-                <button type="submit" class="btn-update">Cập nhật</button>
+                <button type="submit" class="btn-update" (click)="updateUser()">Cập nhật</button>
               </form>
             </div>
           </div>

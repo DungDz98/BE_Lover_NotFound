@@ -49,7 +49,7 @@ const routes: Routes = [
     component : EditCcdvComponent
   },
   {
-    path: 'profile-user',
+    path: 'profile-user/:id',
     component: ProfileUserComponent
   },
 ];

@@ -58,4 +58,5 @@ export class RentService {
   deleteRentById(id: number): Observable<Rent> {
     return this.http.delete<Rent>(`${RENT_API}/${id}`);
   }
+
 }

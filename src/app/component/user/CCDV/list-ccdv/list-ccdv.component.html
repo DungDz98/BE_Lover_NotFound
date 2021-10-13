@@ -82,6 +82,38 @@
   </div>
 
 <!--z-->
+
+<!--  danh sách gợi ý-->
+
+  <div *ngIf="idTemp">
+    <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Gợi ý cho bạn</p>
+    <div class="row">
+      <div class="col-3 " *ngFor="let userCCDVCategory of listGoiY">
+        <a style="text-decoration: none; cursor: pointer"
+           [routerLink]="['provider-profile/', userCCDVCategory.id ]">
+          <div class="card text-black mt-3" style="border-radius: 10px">
+            <img style="height: 250px; width: 253px ; border-radius: 10px 10px 0 0"
+                 src="{{userCCDVCategory.avatar}}">
+            <div class="card-img-overlay">
+              <button class="btn-danger btn-md"
+                      style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px">{{userCCDVCategory.price}},000 đ/h
+              </button>
+            </div>
+            <div class="row pl-3 mb-3">
+              <h4 class="col-12 mt-3" style=" color: orangered;">{{userCCDVCategory.name}}</h4>
+              <div class="col-12" style="color: gray; margin-top: -15px">{{userCCDVCategory.description}}</div>
+              <span class="col-12" style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.category_name}}</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+<!--  kết thúc danh sách gợi ý-->
+
+<!--  danh sách khởi đầu-->
+<div style="margin-top: 50px">
   <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Top Người Yêu Cũ</p>
   <div class="row" *ngIf="listUserCCDVHaveCategory.length !== 0">
     <div class="col-3 " *ngFor="let userCCDVCategory of listUserCCDVHaveCategory | paginate : {
@@ -112,6 +144,8 @@
   <div class="mt-5 d-flex justify-content-center">
     <pagination-controls (pageChange)="page2 = $event" id='second'></pagination-controls>
   </div>
+</div>
+<!--  kết thúc danh sách khởi đầu-->
 
 </div>
 
