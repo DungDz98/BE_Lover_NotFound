@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { IuserService } from 'src/app/models/userService/iuserService';
+import { IUserService } from 'src/app/models/userService/iuserService';
 import { environment } from 'src/environments/environment';
 import {User} from "../../models/user/user";
 
@@ -14,17 +14,17 @@ const API_URL = environment.API_URL + '/userservices';
 export class UserServiceService {
 
   constructor(private httpClient: HttpClient) { }
-  getAll(): Observable<IuserService[]> {
+  getAll(): Observable<IUserService[]> {
     return this.httpClient.get<User[]>(API_URL);
   }
-  create(userService: IuserService): Observable<IuserService> {
-    return this.httpClient.post<IuserService>(API_URL, userService);
+  create(userService: IUserService): Observable<IUserService> {
+    return this.httpClient.post<IUserService>(API_URL, userService);
   }
-  findByUserId(id: number): Observable<IuserService[]> {
-    return this.httpClient.get<IuserService[]>(`${API_URL}/${id}`);
+  findByUserId(id: number): Observable<IUserService[]> {
+    return this.httpClient.get<IUserService[]>(`${API_URL}/${id}`);
   }
-  findOne(id: number): Observable<IuserService> {
-    return this.httpClient.get<IuserService>(API_URL +"/findOne" + `/${id}`);
+  findOne(id: number): Observable<IUserService> {
+    return this.httpClient.get<IUserService>(API_URL +"/findOne" + `/${id}`);
   }
   getById(id: number): Observable<User> {
     return this.httpClient.get<User>(API_URL + `/${id}`)

@@ -11,7 +11,7 @@ import {CategoryService} from "../../service/category/category.service";
 import {Category} from "../../model/category/category";
 
 import {RentWithoutServices} from "../../model/RentWithoutServices";
-import {IuserService} from "../../models/userService/iuserService";
+import {IUserService} from "../../models/userService/iuserService";
 
 @Component({
   selector: 'app-profile-provider',
@@ -91,7 +91,7 @@ export class ProfileProviderComponent implements OnInit {
     service: new FormArray([], [Validators.required])
 
   });
-  listUserService: IuserService[] = [];
+  listUserService: IUserService[] = [];
 
   checkReset() {
     this.router.navigate([''])

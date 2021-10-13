@@ -124,11 +124,11 @@
         <a style="text-decoration: none; cursor: pointer"
            [routerLink]="['provider-profile/', userCCDVCategory.id ]">
           <div class="card text-black mt-3" style="border-radius: 10px">
-            <img style="border-radius: 10px 10px 0 0"
+            <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover!important;"
                  src="{{userCCDVCategory.avatar}}">
             <div class="card-img-overlay">
               <button class="btn-danger btn-md"
-                      style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px">{{userCCDVCategory.price}},000 đ/h
+                      style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userCCDVCategory.price}},000 đ/h
               </button>
             </div>
             <div class="row pl-3 mb-3">

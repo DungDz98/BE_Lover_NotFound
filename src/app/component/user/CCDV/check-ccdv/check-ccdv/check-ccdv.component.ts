@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
-import {IuserService} from "../../../../../models/userService/iuserService"
+import {IUserService} from "../../../../../models/userService/iuserService"
 import {UserServiceService} from "../../../../../service/user-service/user-service.service";
 
 
@@ -76,7 +76,7 @@ export class CheckCcdvComponent implements OnInit {
   }
 
 
-  user_Service!: IuserService;
+  user_Service!: IUserService;
 
   getById(id: number) {
 
