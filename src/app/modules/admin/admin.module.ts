@@ -13,6 +13,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
+import {AdminHomeComponent} from "../../component/admin-component/admin-home/admin-home.component";
 
 
 @NgModule({
@@ -21,7 +22,9 @@ import {MatMenuModule} from "@angular/material/menu";
     ListUserComponent,
     NavbarAdminComponent,
     AdminCategoryComponent,
-    SidebarAdminComponent
+    SidebarAdminComponent,
+    AdminHomeComponent,
+    AdminCategoryComponent
   ],
   exports: [
     NavbarAdminComponent,
