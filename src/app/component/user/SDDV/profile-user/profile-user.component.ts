@@ -5,7 +5,7 @@ import {User} from "../../../../model/user/user";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../../service/user/user.service";
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {TokenService} from "../../../../service/in-out/token.service";
 
 @Component({
@@ -18,7 +18,9 @@ export class ProfileUserComponent implements OnInit {
   user!: User;
   userForm!: FormGroup;
   idUser!: number;
-  constructor(private select: SelectService, private userService: UserService, private http: HttpClient, private activatedRoute:ActivatedRoute, private  tokenService: TokenService) { }
+  constructor(private select: SelectService, private userService: UserService, private http: HttpClient,
+              private activatedRoute:ActivatedRoute, private  tokenService: TokenService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.getListCity();
@@ -61,6 +63,7 @@ export class ProfileUserComponent implements OnInit {
   updateUser(){
     this.userService.updateUser(this.userForm.value).subscribe((data)=>{
       alert("oke");
+      this.router.navigate(["/"]);
     })
   }
 

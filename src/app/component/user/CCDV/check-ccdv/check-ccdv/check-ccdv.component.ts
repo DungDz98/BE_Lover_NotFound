@@ -88,7 +88,9 @@ export class CheckCcdvComponent implements OnInit {
       console.log(this.user);
       this.userService.create(this.user_Service).subscribe(() => {
 
-      })
+      });
+      alert("Chúc mừng bạn đã đăng ký thành công");
+      this.router.navigate(["/"]);
       // this.listServiceSelect.push(data)
       // console.log(this.listServiceSelect)
     })
@@ -102,7 +104,7 @@ export class CheckCcdvComponent implements OnInit {
       // @ts-ignore
       this.getById(this.serviceFormGroup.value.services[i])
     }
-    alert("Chúc mừng bạn đã đăng ký thành công")
-    this.router.navigate([""]);
+
+
   }
 }
