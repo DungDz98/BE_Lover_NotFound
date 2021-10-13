@@ -62,7 +62,6 @@ export class CheckCcdvComponent implements OnInit {
   }
   submit() {
     console.log(this.serviceFormGroup.value.services);
-
   }
 
   getByIdUs() {

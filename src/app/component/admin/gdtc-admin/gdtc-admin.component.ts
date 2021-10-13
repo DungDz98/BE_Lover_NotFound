@@ -15,7 +15,6 @@ export class GdtcAdminComponent implements OnInit {
 
 // @ts-ignore
   user: User = {};
-
   rents: Rent[] = [];
   rent: Rent = {};
   id!: number;
