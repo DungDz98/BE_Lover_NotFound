@@ -26,7 +26,7 @@
 
 .site-footer
 {
-  background-color:#26272b;
+  background-color:#ccc;
   padding:45px 0 20px;
   font-size:15px;
   line-height:24px;
@@ -43,7 +43,7 @@
 }
 .site-footer h6
 {
-  color:#fff;
+  color:#737778;
   font-size:16px;
   text-transform:uppercase;
   margin-top:5px;
@@ -192,3 +192,9 @@
   font-weight: 600;
   color: #9298a1;
 }
+
+.member li:hover a {
+  color: #f0564a;
+  cursor: pointer;
+}
+

@@ -1,9 +1,81 @@
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" [routerLink]="''">Not Found</a>
-  <form class="form-inline">
-    <button class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/login']" *ngIf="!idUser">Đăng nhập</button>
+<!--<nav class="navbar navbar-light bg-light">-->
+<!--  <a class="navbar-brand" [routerLink]="''">Not Found</a>-->
+<!--  <form class="form-inline">-->
+<!--    <button class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/login']" *ngIf="!idUser">Đăng nhập</button>-->
+<!--    <div class="dropdown" *ngIf="idUser">-->
+<!--      <img class="dropbtn" [src]="avatar" width="50px" height="50px" style="border-radius: 50%">-->
+<!--      <div class="dropdown-content" *ngIf="idUser && notCCDV">-->
+<!--        <a [routerLink]="''">Xin chào {{name}}</a>-->
+<!--        <a [routerLink]="['/rents/payer/', idUser]">Quản lý đơn đã thuê</a>-->
+<!--        <a [routerLink]="['edit/',idUser]" *ngIf="notCCDV && idUser">Đăng ký CCDV</a>-->
+<!--        <a (click)="logout()">Logout</a>-->
+<!--      </div>-->
+<!--      <div class="dropdown-content" *ngIf="!notCCDV && idUser">-->
+<!--        <a [routerLink]="['/provider-profile/', idUser]">Xin chào {{name}}</a>-->
+<!--        <a [routerLink]="['/rents/provider/', idUser]">Quản lý đơn được thuê</a>-->
+<!--        <a [routerLink]="['/rents/payer/', idUser]">Quản lý đơn đã thuê</a>-->
+<!--        <a [routerLink]="['/provider-profile/edit/', idUser]">Chỉnh sửa thông tin cá nhân</a>-->
+<!--        <a (click)="changeStatusCCDV()">Thay đổi trạng thái</a>-->
+<!--        <a (click)="logout()" style="cursor: pointer">Logout</a>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </form>-->
+<!--</nav>-->
+
+
+<div class="header">
+  <div class="header__left">
+    <a href="/"><img
+      src="https://cdn-icons-png.flaticon.com/128/2748/2748558.png"
+      alt=""
+    /></a>
+    <div class="header__input">
+      <span class="material-icons"> search </span>
+      <input type="text" placeholder="Tìm kiếm người yêu"/>
+    </div>
+  </div>
+
+  <div class="header__middle">
+    <div class="header__option">
+      <span class="material-icons"> home </span>
+    </div>
+    <div class="header__option" id="rank">
+      <span style="font-weight: bolder"> BXH </span>
+    </div>
+<!--    <div class="header__option">-->
+<!--      <span class="material-icons"> subscriptions </span>-->
+<!--    </div>-->
+  </div>
+
+  <div class="header__right">
+        <div class="header__info">
+          <a class="money-user" [routerLink]="['/login']" *ngIf="!idUser">Đăng nhập</a>
+        </div>
+    <!--    <span class="material-icons"> people </span>-->
+    <a *ngIf="idUser"><span class="ti-facebook myIcon"></span></a>
+    <a *ngIf="idUser"><span class="ti-bell myIcon" id="bell"></span></a>
+    <!--        thông báo-->
+    <nav>
+      <!--          <div class="icona" id="bell"> <img src="https://i.imgur.com/AC7dgLA.png" alt=""> </div>-->
+      <!--      <div class="notifications" id="box">-->
+      <!--        <h2 th:if="${notifications.size() > 0}">Thông báo - <span th:text="${notifications.size()}">2</span></h2>-->
+      <!--        <h2 th:unless="${notifications.size() > 0}">Thông báo - <span>0</span></h2>-->
+      <!--        <div class="notifications-item" th:each="n, loop : ${notifications}">-->
+      <!--          <img th:src="@{${n.getSender().getAvatar()}}" alt="img">-->
+      <!--          <div id="deletenotify"><a th:href="@{/delete-notify(idnotify=${n.getId()})}"><span aria-hidden="true">×</span></a></div>-->
+      <!--          <div class="text">-->
+      <!--            <a th:href="@{/detail-post(id=${n.getPost().getId()})}">-->
+      <!--              <h4 th:text="${n.getSender().getUsername()}">Samso aliao</h4>-->
+      <!--              <p th:text="${' đã '+n.getContent() +' bài đăng của bạn'}">Samso Nagaro Like your home work</p>-->
+      <!--            </a>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+    </nav>
+    <!--        thông báo-->
     <div class="dropdown" *ngIf="idUser">
-      <img class="dropbtn" [src]="avatar" width="50px" height="50px" style="border-radius: 50%">
+      <img class="dropbtn" [src]="avatar" width="40px" height="40px" style="border-radius: 50%; margin-left: 10px; cursor: pointer">
       <div class="dropdown-content" *ngIf="idUser && notCCDV">
         <a [routerLink]="''">Xin chào {{name}}</a>
         <a [routerLink]="['/rents/payer/', idUser]">Quản lý đơn đã thuê</a>
@@ -16,9 +88,10 @@
         <a [routerLink]="['/rents/payer/', idUser]">Quản lý đơn đã thuê</a>
         <a [routerLink]="['/provider-profile/edit/', idUser]">Chỉnh sửa thông tin cá nhân</a>
         <a (click)="changeStatusCCDV()">Thay đổi trạng thái</a>
-        <a (click)="logout()" style="cursor: pointer">Logout</a>
+        <a (click)="logout()" style="cursor: pointer">Đăng xuất</a>
       </div>
     </div>
+  </div>
+</div>
 
-  </form>
-</nav>
+
