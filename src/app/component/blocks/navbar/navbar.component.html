@@ -80,7 +80,7 @@
         <a [routerLink]="''">Xin chào {{name}}</a>
         <a [routerLink]="['/rents/payer/', idUser]">Quản lý đơn đã thuê</a>
         <a [routerLink]="['edit/',idUser]" *ngIf="notCCDV && idUser">Đăng ký CCDV</a>
-        <a (click)="logout()">Logout</a>
+        <a (click)="logout()" style="cursor: pointer">Đăng xuất</a>
       </div>
       <div class="dropdown-content" *ngIf="!notCCDV && idUser">
         <a [routerLink]="['/provider-profile/', idUser]">Xin chào {{name}}</a>
