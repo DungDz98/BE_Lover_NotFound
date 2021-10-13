@@ -53,50 +53,58 @@ export class SignInComponent implements OnInit {
     this.signInForm = new SignInForm(this.username.value, this.password.value);
     console.log(this.signInForm);
     this.authService.login(this.signInForm).subscribe(data => {
-        if (data.token !== undefined) {
-          localStorage.setItem('userName', this.username.value)
-          localStorage.setItem('pw', this.password.value)
-          this.isLogin = true;
-          this.status = 'Login successfully';
-          this.jwtResponse = {
-
-            id: data.id,
-
-            token: data.token,
-            name: data.name,
-            userName: data.userName,
-            roles: data.roles,
-            statusUs: data.statusUs
-          }
-          ;
-          console.log(this.jwtResponse.id);
-          this.tokenService.setJwt(this.jwtResponse);
-          // @ts-ignore
-          for (let i = 0; i < data.roles?.length; i++) {
-            // @ts-ignore
-            if (data.roles[i].authority === 'ROLE_ADMIN') {
-              console.log('a');
-              this.check = true;
-              this.router.navigate(['admin']).then(() => {
-                window.location.reload();
-
-              });
-            }
-          }
-          if (this.check === false) {
-            if (this.jwtResponse.statusUs == 0) this.status = 'Tài khoản chưa được kích hoạt';
-            else if (this.jwtResponse.statusUs == 2) this.status = 'Tài khoản đã bị khoá';
-            else {
-              this.router.navigate(['']).then(() => {
-                window.location.reload();
-              });
-            }
-          }
+        console.log(data)
+        if (data.statusUs === 2){
+          this.status = 'Tài khoản đã bị khóa';
+          console.log("block")
+        }else if (data.statusUs === 0){
+          this.status = 'Tài khoản chưa được kích hoạt'
+          console.log("inactive")
         } else {
-          this.status = 'Đăng nhập thất bại! Vui lòng thử lại!';
+          if (data.token !== undefined) {
+            localStorage.setItem('userName', this.username.value)
+            localStorage.setItem('pw', this.password.value)
+            this.isLogin = true;
+            this.status = 'Login successfully';
+            this.jwtResponse = {
+
+              id: data.id,
+
+              token: data.token,
+              name: data.name,
+              userName: data.userName,
+              roles: data.roles,
+              statusUs: data.statusUs
+            }
+            ;
+            console.log(this.jwtResponse.id);
+            this.tokenService.setJwt(this.jwtResponse);
+            // @ts-ignore
+            for (let i = 0; i < data.roles?.length; i++) {
+              // @ts-ignore
+              if (data.roles[i].authority === 'ROLE_ADMIN') {
+                console.log('a');
+                this.check = true;
+                this.router.navigate(['admin']).then(() => {
+                  window.location.reload();
+
+                });
+              }
+            }
+            if (this.check === false) {
+              {
+                this.router.navigate(['']).then(() => {
+                  window.location.reload();
+                });
+              }
+            }
+          } else {
+            this.status = 'Đăng nhập thất bại! Vui lòng thử lại!';
+          }
         }
       }
     ), this.status = 'Sai tài khoản hoặc mật khẩu';
   }
+
 
 }
