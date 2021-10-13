@@ -5,6 +5,11 @@ import { AdminRoutingModule } from './admin-routing.module';
 import {NavbarAdminComponent} from "../../component/admin-component/navbar-admin/navbar-admin.component";
 import {AdminCategoryComponent} from "../../component/admin-component/admin-category/admin-category.component";
 import {SidebarAdminComponent} from "../../component/admin-component/sidebar-admin/sidebar-admin.component";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatMenuModule} from "@angular/material/menu";
 
 
 
@@ -21,6 +26,11 @@ import {SidebarAdminComponent} from "../../component/admin-component/sidebar-adm
   imports: [
     CommonModule,
     AdminRoutingModule,
+    MatDividerModule,
+    MatIconModule,
+    MatListModule,
+    MatToolbarModule,
+    MatMenuModule,
   ]
 })
 export class AdminModule { }

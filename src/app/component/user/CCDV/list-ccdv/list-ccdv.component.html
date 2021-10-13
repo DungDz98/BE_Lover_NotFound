@@ -1,37 +1,5 @@
 <!--<script src="../../../personalpage/upload.js"></script>-->
 <div class="container">
-  <!--  <div class="row mt-5">-->
-  <!--    <div class="col-2">-->
-  <!--      <div class="input-group">-->
-  <!--        <select class="form-select" id="gender">-->
-  <!--          <option selected>Giới tính</option>-->
-  <!--          <option value="Nam">Nam</option>-->
-  <!--          <option value="Nữ">Nữ</option>-->
-  <!--          <option value="Khác">Khác</option>-->
-  <!--        </select>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--    <div class="col-3">-->
-  <!--      <div class=" input-group">-->
-  <!--        <select class="form-select" id="city">-->
-  <!--          <option selected>Thành Phố</option>-->
-  <!--          <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>-->
-  <!--        </select>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--    <div class="col-2">-->
-  <!--      <div class="range">-->
-  <!--        <input type="text" class="form-control" placeholder="Nhập tên" id="name"/>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--    <div class="col-2">-->
-  <!--      <div class="form-group col-md-3">-->
-  <!--        <button type="submit" class="btn btn-primary" style="width: 100px">Tìm kiếm</button>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--a-->
-
   <form [formGroup]="userForm">
     <div class="filter-player">
       <select class="form-control gender " formControlName="gender" (change)="getByGender()">
@@ -47,7 +15,6 @@
       <!--    </select>-->
       <select class="form-control city " formControlName="city1" (change)="getByCity()">
         <option selected>Thành Phố</option>
-        <option value="hanoi">Hanoi</option>
         <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
       </select>
       <input type="text"
@@ -79,17 +46,17 @@
         <a style="text-decoration: none; cursor: pointer"
            [routerLink]="['provider-profile/', userCCDV.id ]" >
           <div class="card text-black mt-3" style="border-radius: 10px">
-              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0" src="{{userCCDV.avatar}}" [routerLink]="['provider-profile/', userCCDV.id ]">
+              <img style="height: 250px; width: 253px ; border-radius: 10px 10px 0 0" src="{{userCCDV.avatar}}" [routerLink]="['provider-profile/', userCCDV.id ]">
             <div class="card-img-overlay">
               <button class="btn-danger btn-md"
-                      style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px">{{userCCDV.price}},000 đ/h
+                      style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px;">{{userCCDV.price}},000 đ/h
               </button>
             </div>
             <div class="row pl-3 mb-3">
 
               <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>
-              <div class="col-12" style="color: gray">{{userCCDV.description}}</div>
-              <div class="col-12" style="color: gray">{{userCCDV.category_name}}</div>
+              <div class="col-12" style="color: gray; margin-top: -15px">{{userCCDV.description}}</div>
+              <div class="col-12" style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDV.category_name}}</div>
 
             </div>
           </div>
@@ -126,7 +93,7 @@
       <a style="text-decoration: none; cursor: pointer"
          [routerLink]="['provider-profile/', userCCDVCategory.id ]">
         <div class="card text-black mt-3" style="border-radius: 10px">
-          <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0"
+          <img style="height: 250px; width: 253px ; border-radius: 10px 10px 0 0"
                src="{{userCCDVCategory.avatar}}">
           <div class="card-img-overlay">
             <button class="btn-danger btn-md"
@@ -134,11 +101,9 @@
             </button>
           </div>
           <div class="row pl-3 mb-3">
-
-            <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDVCategory.name}}</h4>
-            <div class="col-12" style="color: gray">{{userCCDVCategory.description}}</div>
-            <div class="col-12" style="color: gray">{{userCCDVCategory.category_name}}</div>
-
+            <h4 class="col-12 mt-3" style=" color: orangered;">{{userCCDVCategory.name}}</h4>
+            <div class="col-12" style="color: gray; margin-top: -15px">{{userCCDVCategory.description}}</div>
+            <span class="col-12" style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.category_name}}</span>
           </div>
         </div>
       </a>
@@ -149,3 +114,72 @@
   </div>
 
 </div>
+
+<!--...modal update user-->
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title" id="exampleModalLabel" style="margin-left: 130px">Nhập thông tin người dùng</h3>
+    </div>
+    <div class="modal-body p-4">
+      <form>
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-4">
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" for="name" style="margin-left: 0px;">Nhập tên(*)</label>
+              <input type="text" id="name" class="form-control" placeholder="Nhập tên">
+              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div></div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" style="margin-left: 0px;">Chọn giới tính(*)</label>
+              <select class="form-control">
+                <option value="" selected disabled>Giới tính</option>
+                <option value="Nam">Nam</option>
+                <option value="Nu">Nữ</option>
+              </select>
+              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 67.2px;"></div><div class="form-notch-trailing"></div></div></div>
+          </div>
+        </div>
+
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-4">
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" style="margin-left: 0px;">Chọn thành phố bạn đang sống(*)</label>
+              <select class="form-control">
+                <option value="" selected disabled>Thành phố</option>
+                <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
+              </select>
+              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div></div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" style="margin-left: 0px;">Ngày sinh của bạn(*)</label>
+              <input type="date" class="form-control">
+              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 67.2px;"></div><div class="form-notch-trailing"></div></div></div>
+          </div>
+        </div>
+
+        <!-- Message input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="description" style="margin-left: 0px;">Miêu tả</label>
+          <textarea class="form-control" id="description" rows="4"></textarea>
+          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 134.4px;"></div><div class="form-notch-trailing"></div></div></div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block" data-dismiss="modal">Hoàn thành</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--...end modal-->

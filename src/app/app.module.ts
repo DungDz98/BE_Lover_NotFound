@@ -20,6 +20,10 @@ import {RouterModule} from "@angular/router";
 import { LayoutAdminComponent } from './component/admin-component/layout-admin/layout-admin.component';
 import {AdminModule} from "./modules/admin/admin.module";
 import { AdminHomeComponent } from './component/admin-component/admin-home/admin-home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatMenuModule} from "@angular/material/menu";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import { ProfileUserComponent } from './component/user/SDDV/profile-user/profile-user.component';
 
 
 
@@ -31,23 +35,25 @@ import { AdminHomeComponent } from './component/admin-component/admin-home/admin
     RentPayerComponent,
     ProfileProviderComponent,
     LayoutAdminComponent,
-    AdminHomeComponent,
+    ProfileUserComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
-    NgxPaginationModule,
-    RouterModule,
-    AdminModule,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        FormsModule,
+        AngularFireStorageModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+        NgxPaginationModule,
+        RouterModule,
+        AdminModule,
+        BrowserAnimationsModule,
+        MatMenuModule,
+        MatSidenavModule,
 
-
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

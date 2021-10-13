@@ -9,6 +9,7 @@ import {RentPayerComponent} from "../../component/rent-payer/rent-payer.componen
 import {ProfileProviderComponent} from "../../component/profile-provider/profile-provider.component";
 import { CheckCcdvComponent } from 'src/app/component/user/CCDV/check-ccdv/check-ccdv/check-ccdv.component';
 import {EditCcdvComponent} from "../../component/user/CCDV/edit-ccdv/edit-ccdv.component";
+import {ProfileUserComponent} from "../../component/user/SDDV/profile-user/profile-user.component";
 
 
 const routes: Routes = [
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path : 'provider-profile/edit/:id',
     component : EditCcdvComponent
+  },
+  {
+    path: 'profile-user',
+    component: ProfileUserComponent
   },
 ];
 

@@ -8,6 +8,10 @@ const routes: Routes = [
     path: '',
     component: AdminHomeComponent
   },
+  {
+    path: "test",
+    component: AdminCategoryComponent
+  }
 ];
 
 @NgModule({

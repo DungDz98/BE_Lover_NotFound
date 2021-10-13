@@ -27,21 +27,22 @@
   margin: 0 8px;
 }
 .mat-list-item ::ng-deep .mat-list-item-content:hover {
-  background: #2c3344 !important;
+  background: #676767 !important;
 }
 .list-item-active {
   color: #f2f5f7 !important;
 }
 .list-item-active ::ng-deep .mat-list-item-content {
-  background: #2c3344 !important;
+  background: #ff0909 !important;
 }
 .list-item-active ::ng-deep .mat-list-item-content:hover {
-  background: #2c3344 !important;
+  background: #0049e1 !important;
 }
 .mat-subheader {
-  color: #818cf8;
+  color: #c8cae5;
   font-size: 0.6rem;
   font-weight: 100;
   letter-spacing: 1px;
 }
+
 
