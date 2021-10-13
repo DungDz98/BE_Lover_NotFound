@@ -31,7 +31,7 @@ export class EditCcdvComponent implements OnInit {
       linkFb: new FormControl(),
       statusCCDV: new FormControl(),
       createAtCCDV: new FormControl(),
-      price: new FormControl('',[Validators.min(70000),Validators.max(500000)]),
+      price: new FormControl('',[Validators.min(70),Validators.max(500)]),
     })
   id!: number;
 
