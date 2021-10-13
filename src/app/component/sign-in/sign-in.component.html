@@ -1,45 +1,42 @@
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Login</title>
-<link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<section class="login-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 login-sec">
+        <h2 class="text-center">Đăng nhập</h2>
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="form-group">
+            <label for="email" class="text-uppercase">Tên tài khoản</label>
+            <input type="text" name="email" id="email" class="form-control" formControlName="userName" placeholder="Mời nhập tên tài khoản">
 
-<main>
-  <div class="container-fluid">
-    <div class="row mt-2" id="signin1">
-      <div class="col-sm-6 login-section-wrapper">
-        <div class="login-wrapper my-auto">
-          <h1 class="login-title">Đăng nhập</h1>
-          <div><p style="color: red">{{status}}</p></div>
-          <form [formGroup]="loginForm" (ngSubmit)="login()">
-            <div class="form-group">
-              <label for="email">Tên tài khoản</label>
-              <input type="text" name="email" id="email" class="form-control" placeholder="Tên tài khoản" formControlName="userName">
+          </div>
+          <div class="form-group">
+            <label for="password" class="text-uppercase">Mật khẩu</label>
+            <input type="password" name="password" id="password" class="form-control" formControlName="password" placeholder="Mời nhập mật khẩu">
+          </div>
+
+
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input">
+              <small>Lưu đăng nhập</small>
+            </label>
+            <button type="submit" class="btn btn-login float-right">Đăng nhập</button>
+          </div>
+
+        </form>
+        <div class="copy-text">Chưa có tài khoản <i class="fa fa-heart"></i> <a routerLink="/create">Đăng ký</a></div>
+      </div>
+      <div class="col-md-8 banner-sec">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+              <div class="carousel-caption d-none d-md-block">
+              </div>
             </div>
+          </div>
 
-            <div class="form-group mb-4">
-              <label for="password">Mật khẩu </label>
-              <input type="password" name="password" id="password" class="form-control" placeholder="Mời nhập mật khẩu" formControlName="password">
-            </div>
-
-            <button name="login" id="login" class="btn btn-block login-btn" value="Login">Đăng nhập</button>
-          </form>
-
-          <a href="#!" class="forgot-password-link">Quên mật khẩu?</a>
-          <p class="login-wrapper-footer-text">Bạn chưa có tài khoản? <a href="#!" routerLink="/create" class="text-reset">Đăng kí tại đây</a></p>
         </div>
-
       </div>
-      <div class="col-sm-6 px-0 d-none d-sm-block">
-        <img src="assets/images/login.jpg" alt="login image" class="login-img">
-      </div>
-
     </div>
   </div>
-</main>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+</section>
