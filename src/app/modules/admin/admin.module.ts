@@ -8,15 +8,10 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {NavbarAdminComponent} from "../../component/admin-component/navbar-admin/navbar-admin.component";
 import {AdminCategoryComponent} from "../../component/admin-component/admin-category/admin-category.component";
 import {SidebarAdminComponent} from "../../component/admin-component/sidebar-admin/sidebar-admin.component";
-//@ts-ignore
 import {MatDividerModule} from "@angular/material/divider";
-//@ts-ignore
 import {MatIconModule} from "@angular/material/icon";
-//@ts-ignore
 import {MatListModule} from "@angular/material/list";
-//@ts-ignore
 import {MatToolbarModule} from "@angular/material/toolbar";
-//@ts-ignore
 import {MatMenuModule} from "@angular/material/menu";
 
 
