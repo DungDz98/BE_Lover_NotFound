@@ -5,10 +5,10 @@ import {AdminCategoryComponent} from "../../component/admin-component/admin-cate
 import {AdminHomeComponent} from "../../component/admin-component/admin-home/admin-home.component";
 
 const routes: Routes = [
-  {
-    path: "",
-    component: ListUserComponent
-  },
+  // {
+  //   path: "",
+  //   component: ListUserComponent
+  // },
   {
     path: '',
     component: AdminHomeComponent
