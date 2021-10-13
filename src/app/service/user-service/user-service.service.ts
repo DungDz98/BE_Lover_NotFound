@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { IUserService } from 'src/app/models/userService/iuserService';
 import { environment } from 'src/environments/environment';
 import {User} from "../../models/user/user";
+import {Rent} from "../../model/Rent";
 
 const API_URL = environment.API_URL + '/userservices';
 

@@ -28,7 +28,11 @@
                 <option value="" disabled selected>Chọn giới tính</option>
                 <option value="Nam">Nam</option>
                 <option value="Nu">Nữ</option>
-              </select></div>
+              </select>
+              <p *ngIf="!ccdvForm.get('gender')?.valid && ccdvForm.get('gender')?.touched" style="color: red">không thể để
+                trống</p>
+
+            </div>
           </div>
         </td>
       </tr>
@@ -37,6 +41,7 @@
           <div class="form-group">
             <h5>Thành Phố :</h5>
             <select formControlName="city" style="width: 250px">
+              <option value="" disabled selected>Chọn thành phố</option>
               <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
             </select>
             <p *ngIf="!ccdvForm.get('city')?.valid && ccdvForm.get('city')?.touched" style="color: red">không thể để
@@ -107,10 +112,10 @@
         <td style="float: right">
           <div class="form-group">
             <h5>Giá : </h5>
-            <input style="width: 250px" type="number" class="form-control" placeholder="Nhập giá (đ/h)"
+            <input style="width: 250px" type="number" class="form-control" placeholder="Nhập giá (nghìn đ/h)"
                    formControlName="price">
-            <p *ngIf="!ccdvForm.get('price')?.valid && ccdvForm.get('price')?.touched" style="color: red">ít nhất 70k
-              nhiều nhất 500k</p>
+            <p *ngIf="!ccdvForm.get('price')?.valid && ccdvForm.get('price')?.touched" style="color: red">ít nhất 70
+              nhiều nhất 500</p>
           </div>
         </td>
       </tr>

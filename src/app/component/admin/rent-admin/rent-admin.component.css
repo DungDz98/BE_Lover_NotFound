@@ -1,0 +1,11 @@
+.table thead th {
+  vertical-align: center;
+}
+
+.detailKey {
+  font-weight: bolder;
+}
+
+.modal-content {
+  width: 150%;
+}

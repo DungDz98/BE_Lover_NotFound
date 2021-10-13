@@ -14,6 +14,9 @@ import {MatListModule} from "@angular/material/list";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
 import {AdminHomeComponent} from "../../component/admin-component/admin-home/admin-home.component";
+import {RentAdminComponent} from "../../component/admin/rent-admin/rent-admin.component";
+import {FormsModule} from "@angular/forms";
+import {GdtcAdminComponent} from "../../component/admin/gdtc-admin/gdtc-admin.component";
 
 
 @NgModule({
@@ -24,7 +27,9 @@ import {AdminHomeComponent} from "../../component/admin-component/admin-home/adm
     AdminCategoryComponent,
     SidebarAdminComponent,
     AdminHomeComponent,
-    AdminCategoryComponent
+    AdminCategoryComponent,
+    RentAdminComponent,
+    GdtcAdminComponent
   ],
   exports: [
     NavbarAdminComponent,
@@ -39,6 +44,7 @@ import {AdminHomeComponent} from "../../component/admin-component/admin-home/adm
     MatListModule,
     MatToolbarModule,
     MatMenuModule,
+    FormsModule
   ]
 })
 export class AdminModule {

@@ -7,6 +7,7 @@ import {Category} from "../../model/category/category";
 import {RentWithoutServices} from "../../model/RentWithoutServices";
 
 const RENT_API = `${environment.API_URL}/rents`;
+const RENT_API1 = `${environment.API_URL}/admin`;
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +58,10 @@ export class RentService {
 
   deleteRentById(id: number): Observable<Rent> {
     return this.http.delete<Rent>(`${RENT_API}/${id}`);
+  }
+
+  getRentByStatus(): Observable<Rent[]>{
+    return this.http.get<Rent[]>(RENT_API1+'/transaction');
   }
 
 }
