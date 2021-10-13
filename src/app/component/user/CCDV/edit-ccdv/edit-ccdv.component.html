@@ -1,4 +1,9 @@
-<h2 style="margin: 4px 0 5px; font-weight: 700;font-size: 30px; color: #f0564a; text-align: center">Sửa thông tin cá nhân</h2>
+
+
+
+
+
+<h2 style="margin: 4px 0 5px; font-weight: 700;font-size: 30px; color: #f0564a; text-align: center">Đăng ký cung cấp dịch vụ</h2>
 <br>
 <div class="container">
   <form [formGroup]="ccdvForm" (ngSubmit)="saveUser(id)">
@@ -25,9 +30,14 @@
             <h5> Giới tính : </h5>
             <div>
               <select name="" id="" formControlName="gender" style="width: 250px">
+                <option value="" disabled selected>Chọn giới tính</option>
                 <option value="Nam">Nam</option>
                 <option value="Nu">Nữ</option>
-              </select></div>
+              </select>
+              <p *ngIf="!ccdvForm.get('gender')?.valid && ccdvForm.get('gender')?.touched" style="color: red">không thể để
+                trống</p>
+
+            </div>
           </div>
         </td>
       </tr>
@@ -36,6 +46,7 @@
           <div class="form-group">
             <h5>Thành Phố :</h5>
             <select formControlName="city" style="width: 250px">
+              <option value="" disabled selected>Chọn thành phố</option>
               <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
             </select>
             <p *ngIf="!ccdvForm.get('city')?.valid && ccdvForm.get('city')?.touched" style="color: red">không thể để
@@ -127,12 +138,11 @@
         <td></td>
         <td></td>
         <td style="float: right">
-          <button type="submit" class="btn btn-primary" [disabled]="ccdvForm.invalid">Cập nhật</button>
+          <button type="submit" class="btn btn-primary" [disabled]="ccdvForm.invalid">Đăng ký</button>
           <a class="btn btn-danger ml-3" href="/">Quay lại</a>
         </td>
       </tr>
     </table>
 
   </form>
-  <app-upload (givenURLtoCreate)="getImage($event)"></app-upload>
 </div>

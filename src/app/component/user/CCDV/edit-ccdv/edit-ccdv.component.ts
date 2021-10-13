@@ -58,20 +58,20 @@ export class EditCcdvComponent implements OnInit {
       this.ccdvForm = new FormGroup(
         {
           id: new FormControl(data.id),
-          name: new FormControl(data.name),
+          name: new FormControl(data.name,[Validators.required]),
           dateOfBirth: new FormControl(data.dateOfBirth),
-          gender: new FormControl(data.gender),
-          city: new FormControl(data.city),
-          nationality: new FormControl(data.nationality),
+          gender: new FormControl(data.gender,Validators.required),
+          city: new FormControl(data.city,Validators.required),
+          nationality: new FormControl(data.nationality,Validators.required),
           avatar: new FormControl(data.avatar),
-          height: new FormControl(data.height),
-          weight: new FormControl(data.weight),
-          hobby: new FormControl(data.hobby),
-          description: new FormControl(data.description),
+          height: new FormControl(data.height,Validators.min(100)),
+          weight: new FormControl(data.weight,Validators.min(30)),
+          hobby: new FormControl(data.hobby,Validators.min(10)),
+          description: new FormControl(data.description,Validators.minLength(10)),
           requestToPayer: new FormControl(data.requestToPayer),
           linkFb: new FormControl(data.linkFb),
           createAtCCDV: new FormControl(data.createAtCCDV),
-          price: new FormControl(data.price),
+          price: new FormControl(data.price,[Validators.min(70),Validators.max(500)]),
         })
     });
 

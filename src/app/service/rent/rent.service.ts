@@ -7,6 +7,7 @@ import {Category} from "../../model/category/category";
 import {RentWithoutServices} from "../../model/RentWithoutServices";
 
 const RENT_API = `${environment.API_URL}/rents`;
+const RENT_API1 = `${environment.API_URL}/admin`;
 
 @Injectable({
   providedIn: 'root'
@@ -58,4 +59,41 @@ export class RentService {
   deleteRentById(id: number): Observable<Rent> {
     return this.http.delete<Rent>(`${RENT_API}/${id}`);
   }
+
+  getAllRent1(): Observable<Rent[]> {
+    return this.http.get<Rent[]>(RENT_API1+'/rent');
+  }
+getRentById1(id : number): Observable<Rent>{
+    return  this.http.get<Rent>(RENT_API1+'/rent'+`/${id}`);
+}
+
+getRentByStatus(): Observable<Rent[]>{
+    return this.http.get<Rent[]>(RENT_API1+'/transaction');
+}
+//   @GetMapping("/users")
+//   public ResponseEntity<Iterable<User>> findAllUser(){
+//     Iterable<User> users = userService.findAll();
+//     return new ResponseEntity<>(users, HttpStatus.OK);
+//   }
+//   @GetMapping("/categories")
+//   public ResponseEntity<Iterable<Category>> findAllCategory(){
+//     Iterable<Category> categoryServices = categoryService.findAll();
+//     return new ResponseEntity(categoryServices,HttpStatus.OK);
+//   }
+//   @GetMapping("/rent")
+//   public ResponseEntity<Iterable<Rent>> getAllRent(){
+//     Iterable<Rent> rents = rentService.findAll();
+//     return new ResponseEntity<>(rents,HttpStatus.OK);
+//   }
+//   @GetMapping("/rentDetail/{id}")
+//   public ResponseEntity<Iterable<RentDetail>> findAllByRentId(@PathVariable Long id){
+//   Iterable<RentDetail> rent_details = rentDetailService.findByRentId(id);
+//   return new ResponseEntity<>(rent_details,HttpStatus.OK);
+// }
+// @GetMapping("/rent/{id}")
+// public ResponseEntity<Rent> findById(@PathVariable Long id){
+//   Optional<Rent> rentOptional = rentService.findById(id);
+//   return new ResponseEntity(rentOptional,HttpStatus.OK);
+// }
+
 }
