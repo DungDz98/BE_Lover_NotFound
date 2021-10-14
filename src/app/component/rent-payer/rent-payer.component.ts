@@ -5,6 +5,7 @@ import {RentService} from "../../service/rent/rent.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {UserService} from "../../service/user/user.service";
 import {AngularFireStorage} from "@angular/fire/storage";
+import {TokenService} from "../../service/in-out/token.service";
 
 @Component({
   selector: 'app-rent-payer',
@@ -16,15 +17,18 @@ export class RentPayerComponent implements OnInit {
   rents: Rent[] = [];
   rent: Rent = {};
   id!: number;
+  idUser?: number;
 
   totalLength: any;
   page: number = 1;
 
   constructor(private rentService: RentService, private activatedRoute: ActivatedRoute, private router: Router,
-              private userService: UserService, private angularFireStorage: AngularFireStorage) {
+              private userService: UserService, private angularFireStorage: AngularFireStorage,
+              private tokenService: TokenService) {
   }
 
   ngOnInit(): void {
+    this.idUser = this.tokenService.getJwt().id;
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       // @ts-ignore
       this.id = +paramMap.get('id');

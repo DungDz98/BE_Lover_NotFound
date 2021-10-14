@@ -5,6 +5,7 @@ import {UserService} from "../../service/user/user.service";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {User} from "../../model/User";
 import {Rent} from "../../model/Rent";
+import {TokenService} from "../../service/in-out/token.service";
 
 @Component({
   selector: 'app-rent',
@@ -21,12 +22,15 @@ export class RentComponent implements OnInit {
   totalLength: any;
   page: number = 1;
   index?: number;
+  idUser?: number;
 
   constructor(private rentService: RentService, private activatedRoute: ActivatedRoute, private router: Router,
-              private userService: UserService, private angularFireStorage: AngularFireStorage) {
+              private userService: UserService, private angularFireStorage: AngularFireStorage,
+              private tokenService: TokenService) {
   }
 
   ngOnInit(): void {
+    this.idUser = this.tokenService.getJwt().id;
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       // @ts-ignore
       this.id = +paramMap.get('id');
@@ -83,9 +87,13 @@ export class RentComponent implements OnInit {
     console.log(id);
     // @ts-ignore
     this.rentService.deleteRentById(id).subscribe(() => {
-        alert("Thành công!");
-        window.location.reload();
-    })
+        // alert("Thành công!");
+        // window.location.reload();
+      // this.rents = this.rents.filter(rent => rent.id !== id);
+    });
+    for (let i = 0; i < this.rents.length; i++) {
+      if (this.rents[i].id == id) this.rents.splice(i, 1);
+    }
   }
 
 }

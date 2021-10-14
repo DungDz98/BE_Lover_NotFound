@@ -7,6 +7,7 @@ import {AngularFireStorage} from "@angular/fire/storage";
 import {UserService} from "../../../../service/user/user.service";
 import {SelectService} from "../../../../service/select/select.service";
 import {User} from "../../../../models/user/user";
+import {TokenService} from "../../../../service/in-out/token.service";
 
 @Component({
   selector: 'app-edit-ccdv',
@@ -34,18 +35,22 @@ export class EditCcdvComponent implements OnInit {
       price: new FormControl('',[Validators.min(70),Validators.max(500)]),
     })
   id!: number;
+  idUser!: number;
 
   //.
-  constructor(private activeRoute: ActivatedRoute, private router: Router, private http: HttpClient,private storage: AngularFireStorage,private userService: UserService, private select: SelectService) {
+  constructor(private activeRoute: ActivatedRoute, private router: Router, private http: HttpClient,private storage: AngularFireStorage,private userService: UserService, private select: SelectService,
+              private tokenService: TokenService) {
   }
 
   ngOnInit(): void {
-    this.getListCity()
+    this.getListCity();
     // this.activatedRoute.params.subscribe((data) => this.id = data.id);
     this.activeRoute.paramMap.subscribe(data => {
       this.id = parseInt(data.get('id')!)
       this.showEditUser(this.id);
-    })
+    });
+    // @ts-ignore
+    this.idUser = this.tokenService.getJwt().id;
   }
   saveUser(id: number) {
     this.userService.saveUser(id,this.ccdvForm.value).subscribe((data) => {
