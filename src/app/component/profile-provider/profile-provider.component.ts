@@ -12,6 +12,7 @@ import {Category} from "../../model/category/category";
 
 import {RentWithoutServices} from "../../model/RentWithoutServices";
 import {IUserService} from "../../models/userService/iuserService";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile-provider',
@@ -160,6 +161,7 @@ export class ProfileProviderComponent implements OnInit {
   listIdService: String[] = [];
 
   saveRent() {
+
     console.log(this.rentForm.value.service);
     let a = '';
     if (parseInt(this.rentForm.value.startDate) < 10) {
@@ -204,7 +206,11 @@ export class ProfileProviderComponent implements OnInit {
 
     console.log(this.subRent);
     this.rentService.saveSubRent(this.subRent).subscribe(rentResp => {
-      alert("Thuê thành công");
+      Swal.fire(
+        'Thuê thành công!',
+        '',
+        'success'
+      )
       console.log("+++++" + rentResp.services);
       this.getAllRent();
     });

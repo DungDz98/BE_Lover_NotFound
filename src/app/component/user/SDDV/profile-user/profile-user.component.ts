@@ -7,6 +7,7 @@ import {UserService} from "../../../../service/user/user.service";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TokenService} from "../../../../service/in-out/token.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile-user',
@@ -61,9 +62,22 @@ export class ProfileUserComponent implements OnInit {
   }
 
   updateUser(){
-    this.userService.updateUser(this.userForm.value).subscribe((data)=>{
-      alert("oke");
-      this.router.navigate(["/"]);
+    Swal.fire({
+      title: 'Do you want to save the changes?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Save',
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Saved!', '', 'success')
+        this.userService.updateUser(this.userForm.value).subscribe((data)=>{
+          this.router.navigate(["/"]);
+        })
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
     })
   }
 

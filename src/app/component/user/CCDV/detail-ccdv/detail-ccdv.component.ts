@@ -8,6 +8,7 @@ import {AngularFireStorage} from "@angular/fire/storage";
 import {UserService} from "../../../../service/user/user.service";
 import {SelectService} from "../../../../service/select/select.service";
 import {City} from "../../../../models/city";
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -52,7 +53,11 @@ export class DetailCcdvComponent implements OnInit {
   }
   saveUser(id: number) {
     this.userService.saveUser(id,this.ccdvForm.value).subscribe((data) => {
-      alert("Bạn đã trở thành người cung cấp dịch vụ")
+      Swal.fire(
+        'Bạn đã trở thành người cung cấp dịch vụ',
+        '',
+        'success'
+      )
       this.router.navigate(["/serviceccdv"]);
     })
   }

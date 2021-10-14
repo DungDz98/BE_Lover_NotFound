@@ -7,6 +7,7 @@ import {UserTest} from "../../../../models/selectInHome/user-test";
 import {UserService} from "../../../../service/user/user.service";
 import {TokenService} from "../../../../service/in-out/token.service";
 import {User} from "../../../../model/user/user";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-ccdv',
@@ -140,6 +141,15 @@ export class ListCcdvComponent implements OnInit {
       this.listVipUser = data
     })
   }
+  //
+  // open(){
+  //   Swal.fire({
+  //     icon: 'error',
+  //     title: 'Oops...',
+  //     text: 'Something went wrong!',
+  //     footer: '<a href="">Why do I have this issue?</a>'
+  //   })
+  // }
 }
 
 
