@@ -17,6 +17,7 @@
               <th><span>Số tiền</span></th>
               <th><span>Trạng thái</span></th>
               <th><span>Xem chi tiết</span></th>
+              <th><span>Hành động</span></th>
             </tr>
             </thead>
             <tbody>
@@ -37,11 +38,21 @@
               <td class="btn btn-outline-success" *ngIf="item?.status == 2">Đã hoàn thành</td>
               <td class="btn btn-outline-success" *ngIf="item?.status == 3">Đã nhận tiền</td>
               <td class="btn btn-outline-success" *ngIf="item?.status == 4">Đã gửi báo cáo</td>
+              <td class="btn btn-outline-success" *ngIf="item?.status == 5">Đã duyệt báo cáo</td>
+
+
               <td>
                 <button class="btn btn-outline-info" data-toggle="modal" data-target="#detail" (click)="getRentById(item.id)">Xem chi tiết đơn
                   thuê
                 </button>
               </td>
+
+              <td class="btn btn-outline-danger"  *ngIf="item?.status == 0">Chưa gửi báo cáo</td>
+              <td class="btn btn-outline-danger"  *ngIf="item?.status == 1">Chưa gửi báo cáo</td>
+              <td class="btn btn-outline-success" *ngIf="item?.status == 2">Chưa gửi báo cáo</td>
+              <td class="btn btn-outline-success" *ngIf="item?.status == 3">Chưa gửi báo cáo</td>
+              <td class="btn btn-outline-success" *ngIf="item?.status == 4" (click)=changeStatus(item.id,5)>Chờ duyệt báo cáo</td>
+              <td class="btn btn-outline-success" *ngIf="item?.status == 5">Đã duyệt báo cáo</td>
             </tr>
             </tbody>
           </table>

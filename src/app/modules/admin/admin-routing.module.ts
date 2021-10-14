@@ -13,29 +13,13 @@ const routes: Routes = [
     component: ListUserComponent
   },
   {
-    path: '',
-    component: AdminHomeComponent
-  },
-  {
     path: "test",
     component: AdminCategoryComponent
   },
-  {
-    path: '',
-    component: LayoutAdminComponent,
-  },
-  {
-    path: 'rent',
-    component: RentAdminComponent,
-  },
-  {
-    path: 'transaction',
-    component: GdtcAdminComponent,
-  },
-  {
-    path: '',
-    component: LayoutAdminComponent,
-  },
+  // {
+  //   path: '',
+  //   component: LayoutAdminComponent,
+  // },
   {
     path: 'rent',
     component: RentAdminComponent,
