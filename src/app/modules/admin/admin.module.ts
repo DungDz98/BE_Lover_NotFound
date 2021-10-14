@@ -5,7 +5,7 @@ import {AdminRoutingModule} from './admin-routing.module';
 import {LayoutAdminComponent} from "../../component/admin/layout-admin/layout-admin.component";
 import {ListUserComponent} from "../../component/admin/list-user/list-user.component";
 import {NgxPaginationModule} from "ngx-pagination";
-import {NavbarAdminComponent} from "../../component/admin-component/navbar-admin/navbar-admin.component";
+import {NavbarAdminComponent} from "../../component/admin/navbar-admin/navbar-admin.component";
 import {AdminCategoryComponent} from "../../component/admin-component/admin-category/admin-category.component";
 import {SidebarAdminComponent} from "../../component/admin-component/sidebar-admin/sidebar-admin.component";
 import {MatDividerModule} from "@angular/material/divider";
@@ -27,7 +27,6 @@ import {GdtcAdminComponent} from "../../component/admin/gdtc-admin/gdtc-admin.co
     AdminCategoryComponent,
     SidebarAdminComponent,
     AdminHomeComponent,
-    AdminCategoryComponent,
     RentAdminComponent,
     GdtcAdminComponent
   ],

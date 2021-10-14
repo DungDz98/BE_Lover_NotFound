@@ -64,4 +64,9 @@ export class RentService {
     return this.http.get<Rent[]>(RENT_API1+'/transaction');
   }
 
+  getRentByStatusAndId(id: number): Observable<Rent[]>{
+    return this.http.get<Rent[]>(`${RENT_API1}/transaction/${id}`);
+  }
+
+
 }

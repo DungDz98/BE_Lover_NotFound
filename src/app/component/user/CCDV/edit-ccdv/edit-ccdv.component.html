@@ -3,7 +3,7 @@
 
 
 <div *ngIf="id === idUser">
-<h2 style="margin: 4px 0 5px; font-weight: 700;font-size: 30px; color: #f0564a; text-align: center">Đăng ký cung cấp dịch vụ</h2>
+<h2 style="margin: 4px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a; text-align: center">Chỉnh sửa thông tin cá nhân</h2>
 <br>
 <div class="container">
   <form [formGroup]="ccdvForm" (ngSubmit)="saveUser(id)">
@@ -138,8 +138,8 @@
         <td></td>
         <td></td>
         <td style="float: right">
-          <button type="submit" class="btn btn-primary" [disabled]="ccdvForm.invalid">Đăng ký</button>
-          <a class="btn btn-danger ml-3" href="/">Quay lại</a>
+          <a class="btn btn-secondary ml-3" href="/">Quay lại</a>
+          <button type="submit" class="btn btn-primary ml-3" [disabled]="ccdvForm.invalid">Chỉnh sửa</button>
         </td>
       </tr>
     </table>

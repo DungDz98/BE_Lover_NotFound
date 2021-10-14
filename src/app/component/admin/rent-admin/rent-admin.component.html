@@ -1,220 +1,140 @@
-<div class="col-12">
-  <div class="card table-card">
-    <div class="card-header">
-      <h5 style="text-align: center; color: #f0564a;">Danh Sách Đơn Thuê</h5>
-    </div>
-    <div class="card-body px-0 py-0">
-      <div class="table-responsive">
-        <div class="session-scroll" style="height:478px;position:relative;">
-          <table class="table table-hover m-b-0 billlist">
-            <thead>
-            <tr>
-              <th><span>Người Thuê</span></th>
-              <th><span>Người CCDV</span></th>
-              <th><span>Ngày thuê</span></th>
-              <th><span>Giờ bắt đầu</span></th>
-              <th><span>Thời gian thuê</span></th>
-              <th><span>Số tiền</span></th>
-              <th><span>Trạng thái</span></th>
-              <th><span>Xem chi tiết</span></th>
-            </tr>
-            </thead>
-            <tbody>
-            <!--            <tr *ngFor="let item of rents | paginate: {-->
-            <!--            itemsPerPage: 3, currentPage: page, totalItems: totalLength, id: 'first'-->
-            <!--             }; index as i">-->
-            <tr *ngFor="let item of rents">
-              <td>{{item.userRent?.userName}}</td>
-              <td>{{item.user?.userName}}</td>
-              <td>{{item.rentDate | date : 'dd/MM/YYYY' }}</td>
-              <td>{{item.startTime | date : ' hh:mm' }}</td>
-              <td>{{item.time}}  giờ</td>
-              <td>{{item.totalMoney}}.000</td>
-              <!--  // Trạng thái của đơn thuê: 0: chờ CCDV phản hồi, 1: Đã nhận, 2:Đã hoàn thành 3.Đã nhận tiền 4. Đã gửi báo cáo-->
+<div class="container">
+  <div class="container-fluid p-0">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="card">
+          <div class="card-header pb-1">
+            <div class="card-actions float-right">
+              <div class="dropdown show">
+              </div>
+            </div>
+            <!--            <h5 class="card-title mb-0">Danh sách người dùng trong hệ thống</h5>-->
+          </div>
+          <div class="card-body">
+            <table class="table table-hover" style="text-align: center">
+              <thead>
+              <tr>
+                <th><span>Người Thuê</span></th>
+                <th><span>Người CCDV</span></th>
+                <th><span>Ngày thuê</span></th>
+                <th><span>Giờ bắt đầu</span></th>
+                <th><span>Thời gian thuê</span></th>
+                <th><span>Số tiền (VNĐ)</span></th>
+                <th><span>Trạng thái</span></th>
+                <th><span>Xem chi tiết</span></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of rents | paginate : {
+                itemsPerPage: 3,
+                currentPage: page,
+                totalItems: totalLength,
+                id: 'first'
+              };
+        let i = index">
+                <td>{{item.userRent?.userName}}</td>
+                <td>{{item.user?.userName}}</td>
+                <td>{{item.rentDate | date : 'dd/MM/YYYY' }}</td>
+                <td>{{item.startTime | date : ' hh:mm' }}</td>
+                <td>{{item.time}}  giờ</td>
+                <td>{{item.totalMoney}}.000</td>
+                <!--  // Trạng thái của đơn thuê: 0: chờ CCDV phản hồi, 1: Đã nhận, 2:Đã hoàn thành 3.Đã nhận tiền 4. Đã gửi báo cáo-->
 
-              <td class="btn btn-outline-danger" *ngIf="item?.status == 0">Chờ CCDV phản hồi</td>
-              <td class="btn btn-outline-danger" *ngIf="item?.status == 1">Đã tiếp nhận</td>
-              <td class="btn btn-outline-success" *ngIf="item?.status == 2">Đã hoàn thành</td>
-              <td class="btn btn-outline-success" *ngIf="item?.status == 3">Đã nhận tiền</td>
-              <td class="btn btn-outline-success" *ngIf="item?.status == 4">Đã gửi báo cáo</td>
-              <td>
-                <button class="btn btn-outline-info" data-toggle="modal" data-target="#detail"
-                        (click)="getRentById(item.id)">Xem chi tiết đơn
-                  thuê
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-          <!--          <div class="mt-5 d-flex justify-content-center" *ngIf="totalLength > 3">-->
-          <!--            <pagination-controls (pageChange)="page = $event" id='first'></pagination-controls>-->
-          <!--          </div>-->
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--Detail rent-->
-<div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document" style="transform: translateX(-25%);">
-    <div class="modal-content text-center">
-      <div class="modal-header" style="padding-left: 35%;">
-        <h5 class="modal-title" id="exampleModalLabel">Xem chi tiết hoá đơn</h5>
-      </div>
-      <div class="modal-body">
-        <div class="form-group row">
-          <p class="col-sm-4 col-form-label detailKey">Người thuê</p>
-          <p class="col-sm-8">
-            {{rent.userRent?.userName}}
-          </p>
-        </div>
-        <div class="form-group row">
-          <p class="col-sm-4 col-form-label detailKey">Người CCDV</p>
-          <p class="col-sm-8">
-            {{rent.user?.name}}
-          </p>
-        </div>
-        <div class="form-group row">
-          <p class="col-sm-4 col-form-label detailKey">Ngày</p>
-          <p class="col-sm-8">
-            {{rent.rentDate | date : 'dd/MM/YYYY'}}
-          </p>
-        </div>
-        <div class="form-group row">
-          <p class="col-sm-4 col-form-label detailKey">Thời gian bắt đầu (h)</p>
-          <p class="col-sm-8">
-            {{rent.startTime | date : 'hh:mm dd/MM/YYYY'}}
-          </p>
-        </div>
-        <div class="form-group row">
-          <p class="col-sm-4 col-form-label detailKey">Tổng thời gian (h)</p>
-          <p class="col-sm-8">
-            {{rent.time}}
-          </p>
-        </div>
-        <div class="form-group row">
-          <p class="col-sm-4 col-form-label detailKey">Tổng số tiền (VNĐ)</p>
-          <p class="col-sm-8">
-            {{rent.totalMoney}}.000
-          </p>
-        </div>
-        <div class="form-group row">
-          <p class="col-sm-4 col-form-label detailKey">Trạng thái</p>
-          <p class="col-sm-8" *ngIf="rent.status == 0">Chờ phản hồi</p>
-          <p class="col-sm-8" *ngIf="rent.status == 1">Đã tiếp nhận</p>
-          <p class="col-sm-8" *ngIf="rent.status == 2">Đã hoàn thành</p>
-          <p class="col-sm-8" *ngIf="rent.status == 3">Đã thanh toán</p>
-          <p class="col-sm-8" *ngIf="rent.status == 4">Đã báo cáo</p>
-        </div>
-        <div class="form-group row">
-          <p class="col-sm-4 col-form-label detailKey">Các dịch vụ sử dụng</p>
-          <div class="col-sm-8">
-            <p class="col-sm-12" *ngFor="let s of rent.services">+ {{s.name}}</p>
+                <td *ngIf="item?.status == 0">Chờ CCDV phản hồi</td>
+                <td *ngIf="item?.status == 1">Đã tiếp nhận</td>
+                <td *ngIf="item?.status == 2">Đã hoàn thành</td>
+                <td *ngIf="item?.status == 3">Đã nhận tiền</td>
+                <td *ngIf="item?.status == 4">Đã gửi báo cáo</td>
+                <td>
+                  <a class="btn btn-outline-info" data-toggle="modal" data-target="#detail"
+                          (click)="getRentById(item.id)">Xem chi tiết đơn
+                    thuê
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <div class="form-group row">
-          <p class="col-sm-4 col-form-label detailKey">Phản hồi</p>
-          <p class="col-sm-8">{{rent.feedback}}</p>
-        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+
+    <!---->
+
+    <div class="mt-5 d-flex justify-content-center">
+      <pagination-controls (pageChange)="page = $event" id='first'></pagination-controls>
+    </div>
+  </div>
+
+  <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document" style="transform: translateX(-25%);">
+      <div class="modal-content text-center">
+        <div class="modal-header" style="padding-left: 35%;">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: #f0564a">Xem chi tiết hoá đơn</h5>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Người thuê</p>
+            <p class="col-sm-8">
+              {{rent.userRent?.userName}}
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Người CCDV</p>
+            <p class="col-sm-8">
+              {{rent.user?.name}}
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Ngày</p>
+            <p class="col-sm-8">
+              {{rent.rentDate | date : 'dd/MM/YYYY'}}
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Thời gian bắt đầu (h)</p>
+            <p class="col-sm-8">
+              {{rent.startTime | date : 'hh:mm dd/MM/YYYY'}}
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Tổng thời gian (h)</p>
+            <p class="col-sm-8">
+              {{rent.time}}
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Tổng số tiền (VNĐ)</p>
+            <p class="col-sm-8">
+              {{rent.totalMoney}}.000
+            </p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Trạng thái</p>
+            <p class="col-sm-8" *ngIf="rent.status == 0">Chờ phản hồi</p>
+            <p class="col-sm-8" *ngIf="rent.status == 1">Đã tiếp nhận</p>
+            <p class="col-sm-8" *ngIf="rent.status == 2">Đã hoàn thành</p>
+            <p class="col-sm-8" *ngIf="rent.status == 3">Đã thanh toán</p>
+            <p class="col-sm-8" *ngIf="rent.status == 4">Đã báo cáo</p>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Các dịch vụ sử dụng</p>
+            <div class="col-sm-8">
+              <p class="col-sm-12" *ngFor="let s of rent.services">+ {{s.name}}</p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <p class="col-sm-4 col-form-label detailKey">Phản hồi</p>
+            <p class="col-sm-8">{{rent.feedback}}</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-
-<!--&lt;!&ndash; The Modal Feedback &ndash;&gt;-->
-<!--<div class="modal" id="feedbackModal">-->
-<!--  <div class="modal-dialog">-->
-<!--    <div class="modal-content">-->
-
-<!--      &lt;!&ndash; Modal Header &ndash;&gt;-->
-<!--      <div class="modal-header">-->
-<!--        <h4 class="modal-title" style="text-align: center">Báo cáo phản hồi</h4>-->
-<!--        <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-<!--      </div>-->
-
-<!--      &lt;!&ndash; Modal body &ndash;&gt;-->
-<!--      <div class="modal-body">-->
-<!--        <textarea [(ngModel)]="feedback" name="" id="" cols="60" rows="10"></textarea>-->
-<!--      </div>-->
-
-<!--      &lt;!&ndash; Modal footer &ndash;&gt;-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-primary" (click)="changeStatusAndFeedback(idFeedback, 4);">Xong</button>-->
-<!--        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
-<!--      </div>-->
-
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--<div class="col-xl-12 col-md-6" *ngIf="hidden == false">-->
-<!--  <div class="card table-card">-->
-<!--    <div class="card-header">-->
-<!--      <h5 style="text-align: center">Chi tiết đơn hàng</h5>-->
-<!--    </div>-->
-<!--    <div class="card-body px-0 py-0">-->
-<!--      <div class="table-responsive">-->
-<!--        <div class="session-scroll" style="height:478px;position:relative;">-->
-<!--          <table class="table table-hover m-b-0">-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--              <th><span>Người Thuê</span></th>-->
-<!--              <th><span>Ngày <a class="help" data-toggle="popover" title="Popover title"-->
-<!--                                data-content="And here's some amazing content. It's very engaging. Right?"><i-->
-<!--                class="feather icon-help-circle f-16"></i></a></span></th>-->
-<!--              <th><span>Thời gian bắt đầu <a class="help" data-toggle="popover" title="Popover title"-->
-<!--                                             data-content="And here's some amazing content. It's very engaging. Right?"><i-->
-<!--                class="feather icon-help-circle f-16"></i></a></span></th>-->
-<!--              <th><span>Tổng Số Thời gian <a class="help" data-toggle="popover" title="Popover title"-->
-<!--                                             data-content="And here's some amazing content. It's very engaging. Right?"><i-->
-<!--                class="feather icon-help-circle f-16"></i></a></span></th>-->
-<!--              <th><span>Tổng Số Tiền (VNĐ) <a class="help" data-toggle="popover" title="Popover title"-->
-<!--                                              data-content="And here's some amazing content. It's very engaging. Right?"><i-->
-<!--                class="feather icon-help-circle f-16"></i></a></span></th>-->
-<!--              <th><span>Trạng Thái <a class="help" data-toggle="popover" title="Popover title"-->
-<!--                                      data-content="And here's some amazing content. It's very engaging. Right?"><i-->
-<!--                class="feather icon-help-circle f-16"></i></a></span></th>-->
-<!--              <th><span>Các dịch vụ sử dụng <a class="help" data-toggle="popover" title="Popover title"-->
-<!--                                               data-content="And here's some amazing content. It's very engaging. Right?"><i-->
-<!--                class="feather icon-help-circle f-16"></i></a></span></th>-->
-<!--              <th><span>Phản hồi về người thuê <a class="help" data-toggle="popover" title="Popover title"-->
-<!--                                                  data-content="And here's some amazing content. It's very engaging. Right?"><i-->
-<!--                class="feather icon-help-circle f-16"></i></a></span></th>-->
-<!--              <th><span>Tuỳ chọn <a class="help" data-toggle="popover" title="Popover title"-->
-<!--                                    data-content="And here's some amazing content. It's very engaging. Right?"><i-->
-<!--                class="feather icon-help-circle f-16"></i></a></span></th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr>-->
-<!--              <td>{{rent.userRent?.userName}}</td>-->
-<!--              <td>{{rent.rentDate | date : 'dd/MM/YYYY' }}</td>-->
-<!--              <td>{{rent.startTime | date : ' hh:mm dd/MM/YYYY' }}</td>-->
-<!--              <td>{{rent.time}}  giờ</td>-->
-<!--              <td>{{rent.totalMoney}}.000</td>-->
-<!--              <td *ngIf="rent.status == 0">Chờ phản hồi</td>-->
-<!--              <td *ngIf="rent.status == 1">Đã tiếp nhận</td>-->
-<!--              <td *ngIf="rent.status == 2">Đã hoàn thành</td>-->
-<!--              <td *ngIf="rent.status == 3">Đã thanh toán</td>-->
-<!--              <td *ngIf="rent.status == 4">Đã báo cáo</td>-->
-<!--              <td>-->
-<!--                <p *ngFor="let s of rent.services">+ {{s.name}}</p>-->
-<!--              </td>-->
-<!--              <td>{{rent.feedback}}</td>-->
-<!--              <td>-->
-<!--                <button class="btn btn-outline-danger" (click)="viewDetail();">Trở về</button>-->
-<!--              </td>-->
-<!--            </tr>-->
-
-<!--            </tbody>-->
-<!--          </table>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
 

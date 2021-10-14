@@ -1,0 +1,133 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+<div class="header">
+  <div class="header__left">
+    <a href="/"><img
+      src="https://cdn-icons-png.flaticon.com/128/2748/2748558.png"
+      alt=""
+    /></a>
+  </div>
+
+  <div class="header__middle">
+    <div class="header__option" style="padding: 5px 30px 0;!important">
+      <a href="/"><span class="material-icons"> home </span></a>
+    </div>
+  </div>
+
+  <div class="header__right">
+    <!--    <span class="material-icons"> people </span>-->
+    <a><span class="ti-facebook myIcon"></span></a>
+    <div class="dropdown">
+      <img class="dropbtn" [src]="avatar" width="46px" height="46px" style="border-radius: 50%; margin-left: 10px; cursor: pointer">
+      <div class="dropdown-content">
+        <a>Xin chào {{name}}</a>
+        <a (click)="logout()" style="cursor: pointer">Đăng xuất</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" style="text-align: center; margin-top: 30px;">
+  <div class="row">
+<!--    <div class="col-sm-4">-->
+<!--      <div class="card-box bg-orange">-->
+<!--        <div class="inner">-->
+<!--          <p> Số tài khoản </p>-->
+<!--          <h3> {{listUserSystem.length}} tài khoản</h3>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <i class="fa fa-user-plus" aria-hidden="true"></i>-->
+<!--        </div>-->
+<!--        <a routerLink="/admin" class="card-box-footer"> Xem chi tiết <i class="fa fa-arrow-circle-right"></i></a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-sm-4">-->
+<!--      <div class="card-box bg-blue">-->
+<!--        <div class="inner">-->
+<!--          <p> Tổng Số đơn  </p>-->
+<!--          <h3> {{ rents.length}}  đơn </h3>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <i class="fa fa-graduation-cap" aria-hidden="true"></i>-->
+<!--        </div>-->
+<!--        <a routerLink="/admin/rent" class="card-box-footer"> Xem chi tiết<i class="fa fa-arrow-circle-right"></i></a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-sm-4">-->
+<!--      <div class="card-box bg-green">-->
+<!--        <div class="inner">-->
+<!--          <p> Số đơn thành công </p>-->
+<!--          <h3> {{doneRents.length}} đơn </h3>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <i class="fa fa-money" aria-hidden="true"></i>-->
+<!--        </div>-->
+<!--        <a routerLink="/admin/transaction" class="card-box-footer">Xem chi tiết<i class="fa fa-arrow-circle-right"></i></a>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body">
+            <a routerLink="/admin" class="card-box-footer">
+            <div class="media d-flex">
+              <div class="media-body text-left">
+                <h3 class="success">{{listUserSystem.length}}</h3>
+                <span>Số tài khoản</span>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-user success font-large-2 float-right"></i>
+              </div>
+            </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body">
+            <a routerLink="/admin/rent" class="card-box-footer">
+            <div class="media d-flex">
+              <div class="media-body text-left">
+                <h3 class="danger">{{rents.length}}</h3>
+                <span>Tổng số đơn</span>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-rocket danger font-large-2 float-right"></i>
+              </div>
+            </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body">
+            <a routerLink="/admin/transaction" class="card-box-footer">
+            <div class="media d-flex">
+              <div class="media-body text-left">
+                <h3 class="warning">{{doneRents.length}}</h3>
+                <span>Số đơn thành công</span>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-pie-chart warning font-large-2 float-right"></i>
+              </div>
+            </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

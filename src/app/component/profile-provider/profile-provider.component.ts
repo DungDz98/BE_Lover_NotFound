@@ -49,6 +49,8 @@ export class ProfileProviderComponent implements OnInit {
       this.id = +paramMap.get('id');
       console.log(this.id);
       this.getAllRent();
+      this.getAllDoneRent();
+      this.getRentHours();
       this.getUserById(this.id);
       // @ts-ignore
       this.getUserCurrent(this.idUs);
@@ -207,6 +209,8 @@ export class ProfileProviderComponent implements OnInit {
       alert("Thuê thành công");
       console.log("+++++" + rentResp.services);
       this.getAllRent();
+      this.getAllDoneRent();
+      this.getRentHours();
     });
 
 
@@ -280,10 +284,34 @@ export class ProfileProviderComponent implements OnInit {
   }
 
   countRents: number = 0;
+  doneRate: number = 0;
 
+  rentHours: number = 0;
+  rentHour2: number = 0;
   getAllRent() {
     this.rentService.getAllRentForProvider(this.id).subscribe(rents => {
       if (rents != null) this.countRents = rents.length;
     });
+  }
+
+  getRentHours() {
+    this.rentService.getAllRentForProvider(this.id).subscribe(rents => {
+      this.rentHours = 0;
+      if (rents != null) {
+        for (let r of rents) {
+          // @ts-ignore
+          this.rentHours += r.time;
+        }
+      }
+    });
+  }
+
+  getAllDoneRent(){
+    this.rentService.getRentByStatusAndId(this.id).subscribe((data) => {
+      if (this.countRents == 0) this.doneRate = 0;
+      else this.rentService.getAllRentForProvider(this.id).subscribe(rents => {
+        this.doneRate = data.length / rents.length * 100;
+      })
+    })
   }
 }

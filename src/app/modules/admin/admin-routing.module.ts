@@ -6,6 +6,7 @@ import {AdminHomeComponent} from "../../component/admin-component/admin-home/adm
 import {LayoutAdminComponent} from "../../component/admin/layout-admin/layout-admin.component";
 import {RentAdminComponent} from "../../component/admin/rent-admin/rent-admin.component";
 import {GdtcAdminComponent} from "../../component/admin/gdtc-admin/gdtc-admin.component";
+import {LayoutComponent} from "../../component/layout/layout.component";
 
 const routes: Routes = [
   {
@@ -13,18 +14,10 @@ const routes: Routes = [
     component: ListUserComponent
   },
   {
-    path: '',
-    component: AdminHomeComponent
-  },
-  {
     path: "test",
     component: AdminCategoryComponent
   },
   {
-    path: '',
-    component: LayoutAdminComponent,
-  },
-  {
     path: 'rent',
     component: RentAdminComponent,
   },
@@ -33,16 +26,8 @@ const routes: Routes = [
     component: GdtcAdminComponent,
   },
   {
-    path: '',
-    component: LayoutAdminComponent,
-  },
-  {
     path: 'rent',
     component: RentAdminComponent,
-  },
-  {
-    path: 'transaction',
-    component: GdtcAdminComponent,
   },
 ];
 

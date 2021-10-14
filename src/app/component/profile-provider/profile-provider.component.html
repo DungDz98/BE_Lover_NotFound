@@ -133,19 +133,15 @@
               </div>
             </div>
             <div class="nav-player-profile row">
-              <div class="col-md-3 col-xs-6">
-                <div class="item-nav-name"><span>Số người theo dõi</span></div>
-                <div class="item-nav-value">324 <span>người</span></div>
-              </div>
-              <div class="col-md-3 col-xs-6">
+              <div class="col-md-4 col-xs-4">
                 <div class="item-nav-name"><span>Đã được thuê</span></div>
-                <div class="item-nav-value">1467&nbsp;<span>giờ</span></div>
+                <div class="item-nav-value">{{rentHours}}&nbsp;<span>giờ</span></div>
               </div>
-              <div class="col-md-3 col-xs-6">
+              <div class="col-md-4 col-xs-4">
                 <div class="item-nav-name"><span>Tỷ lệ hoàn thành</span></div>
-                <div class="item-nav-value">95.63&nbsp;%</div>
+                <div class="item-nav-value">{{doneRate | number: '1.2-2'}}&nbsp;%</div>
               </div>
-              <div class="col-md-3 col-xs-6">
+              <div class="col-md-4 col-xs-4">
                 <div class="item-nav-name"><span>Số lượt thuê</span></div>
                 <div class="item-nav-value">{{countRents}}</div>
               </div>
@@ -239,7 +235,7 @@
       <!--Test -->
       <div class="modal-content" role="document">
         <div class="modal-header">
-             <h4 class="modal-title" style="padding-left: 30%;">Thuê người yêu</h4>
+             <h4 class="modal-title" style="padding-left: 30%; color: #f0564a;">Thuê người yêu</h4>
         </div>
         <div class="modal-body">
           <table class="table">
@@ -348,8 +344,8 @@
           </table>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn-fill btn btn-danger" (click)="saveRent()" data-dismiss="modal"><span>Thuê</span></button>
           <button type="button" class="btn btn-default" data-dismiss="modal"><span>Đóng</span></button>
+          <button type="button" class="btn-fill btn btn-danger" (click)="saveRent()" data-dismiss="modal"><span>Thuê</span></button>
         </div>
       </div>
 
