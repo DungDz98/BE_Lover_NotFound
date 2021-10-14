@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 import {User} from '../../model/user/user';
 import {SignInForm} from "../../model/in-out/sign-in-form";
 import {JwtResponse} from "../../model/in-out/jwt-response";
+import {error} from "@angular/compiler/src/util";
 
 
 @Component({
@@ -54,7 +55,8 @@ export class SignInComponent implements OnInit {
     console.log(this.signInForm);
     this.authService.login(this.signInForm).subscribe(data => {
         console.log(data)
-        if (data.statusUs === 2){
+
+       if (data.statusUs === 2){
           this.status = 'Tài khoản đã bị khóa';
           console.log("block")
         }else if (data.statusUs === 0){
@@ -102,8 +104,10 @@ export class SignInComponent implements OnInit {
             this.status = 'Đăng nhập thất bại! Vui lòng thử lại!';
           }
         }
+      },error1 => {
+      this.status = "Sai tài khoản hoặc mật khẩu !"
       }
-    ), this.status = 'Sai tài khoản hoặc mật khẩu';
+    )
   }
 
 

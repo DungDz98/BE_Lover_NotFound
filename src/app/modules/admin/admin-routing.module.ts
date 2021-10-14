@@ -24,11 +24,7 @@ const routes: Routes = [
   {
     path: 'transaction',
     component: GdtcAdminComponent,
-  },
-  {
-    path: 'rent',
-    component: RentAdminComponent,
-  },
+  }
 ];
 
 @NgModule({

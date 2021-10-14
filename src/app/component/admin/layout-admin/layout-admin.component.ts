@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenService} from "../../../service/in-out/token.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-layout-admin',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutAdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenService: TokenService,
+              private router: Router) { }
 
   ngOnInit(): void {
+// @ts-ignore
+    if (this.tokenService.getJwt().roles !== "ADMIN"){
+  this.router.navigate(["error-403"])
+}
   }
 
 }
