@@ -16,6 +16,7 @@ import {City} from "../../../../models/city";
   styleUrls: ['./detail-ccdv.component.css']
 })
 export class DetailCcdvComponent implements OnInit {
+  avatar: string = "";
 
   city: City[] = [];
   ccdvForm : FormGroup = new FormGroup(
@@ -48,7 +49,8 @@ export class DetailCcdvComponent implements OnInit {
     this.activeRoute.paramMap.subscribe(data => {
       this.id = parseInt(data.get('id')!)
       // this.showEditUser(this.id);
-    })
+    });
+    this.getAvatar();
   }
   saveUser(id: number) {
     this.userService.saveUser(id,this.ccdvForm.value).subscribe((data) => {
@@ -83,6 +85,11 @@ export class DetailCcdvComponent implements OnInit {
     this.select.findCity().subscribe((data) => {
       this.city = data;
     })
+  }
+
+  getAvatar() {
+    // @ts-ignore
+    this.userService.getUserById(this.id).subscribe(user => this.avatar = user.avatar);
   }
   // selectedFile : File = null;
   // fb: any;
