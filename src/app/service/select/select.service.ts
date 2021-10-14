@@ -42,4 +42,8 @@ export class SelectService {
     return this.httpClient.get<UserTest[]>(API_URL + `/suggestions?gender=` + gender);
   }
 
+  findAllVipUser(): Observable<UserTest[]>{
+    return this.httpClient.get<UserTest[]>(API_URL+ `/vipUser`);
+  }
+
 }

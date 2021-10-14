@@ -24,7 +24,7 @@
           <div class="form-group">
             <h5> Giới tính : </h5>
             <div>
-              <select name="" id="" formControlName="gender" style="width: 250px">
+              <select name="" id="" formControlName="gender" style="width: 250px" class="form-group">
                 <option value="" disabled selected>Chọn giới tính</option>
                 <option value="Nam">Nam</option>
                 <option value="Nu">Nữ</option>
@@ -40,7 +40,7 @@
         <td>
           <div class="form-group">
             <h5>Thành Phố :</h5>
-            <select formControlName="city" style="width: 250px">
+            <select formControlName="city" style="width: 250px" class="form-group">
               <option value="" disabled selected>Chọn thành phố</option>
               <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
             </select>

@@ -1,251 +1,295 @@
 <!--<script src="../../../personalpage/upload.js"></script>-->
 <div class="container">
-  <!--  <div class="row mt-5">-->
-  <!--    <div class="col-2">-->
-  <!--      <div class="input-group">-->
-  <!--        <select class="form-select" id="gender">-->
-  <!--          <option selected>Giới tính</option>-->
-  <!--          <option value="Nam">Nam</option>-->
-  <!--          <option value="Nữ">Nữ</option>-->
-  <!--          <option value="Khác">Khác</option>-->
-  <!--        </select>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--    <div class="col-3">-->
-  <!--      <div class=" input-group">-->
-  <!--        <select class="form-select" id="city">-->
-  <!--          <option selected>Thành Phố</option>-->
-  <!--          <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>-->
-  <!--        </select>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--    <div class="col-2">-->
-  <!--      <div class="range">-->
-  <!--        <input type="text" class="form-control" placeholder="Nhập tên" id="name"/>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--    <div class="col-2">-->
-  <!--      <div class="form-group col-md-3">-->
-  <!--        <button type="submit" class="btn btn-primary" style="width: 100px">Tìm kiếm</button>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--a-->
 
-  <form [formGroup]="userForm">
-    <div class="filter-player">
-      <select class="form-control gender " formControlName="gender" (change)="getByGender()">
-        <option>Giới tính</option>
-        <option value="Nu">Nữ</option>
-        <option value="Nam">Nam</option>
-      </select>
-      <!--    <select class="form-control type ">-->
-      <!--      <option value="">Thể loại</option>-->
-      <!--      <option value="new">Người mới</option>-->
-      <!--      <option value="hot">Hot</option>-->
-      <!--      <option value="vip">Vip</option>-->
-      <!--    </select>-->
-      <select class="form-control city " formControlName="city1" (change)="getByCity()">
-        <option selected>Thành Phố</option>
-        <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
-      </select>
-      <input type="text"
-             class="form-control name"
-             placeholder="Tên"
-             autocomplete="off"
-             maxlength="32"
-             value=""
-             formControlName="name">
-      <button type="button" class="form-control btn-filter btn btn-default" (click)="getAllByName()">
-        <i class="fa fa-search"></i> Tìm kiếm
-      </button>
+  <!--  courosel-->
+
+
+  <div>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="https://is3-ssl.mzstatic.com/image/thumb/Features128/v4/81/73/99/8173991a-23cf-a35b-ccf3-999c070f0ae7/source/4320x1080sr.png"
+            class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="http://lotofcolor.com/wp-content/uploads/2020/11/1920x1080.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNPip3woCAwc2v7L3q3FW4iddgrS1C4xUPNJb4YOvfsWUdaP9cwqduqt_PbsmFDrH4li4&usqp=CAU"
+            class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-    <br>
-  </form>
 
-  <!--  b-->
-<!--  x-->
+    <!--  end courosel-->
 
-  <div *ngIf="status == 'true'">
-    <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Danh Sách Tìm Kiếm</p>
-    <div class="row" *ngIf="listUserCCDV.length !== 0">
-      <div class="col-3 " *ngFor="let userCCDV of listUserCCDV | paginate : {
+
+    <form [formGroup]="userForm">
+      <div class="filter-player">
+        <select class="form-control gender " formControlName="gender" (change)="getByGender()">
+          <option>Giới tính</option>
+          <option value="Nu">Nữ</option>
+          <option value="Nam">Nam</option>
+        </select>
+        <!--    <select class="form-control type ">-->
+        <!--      <option value="">Thể loại</option>-->
+        <!--      <option value="new">Người mới</option>-->
+        <!--      <option value="hot">Hot</option>-->
+        <!--      <option value="vip">Vip</option>-->
+        <!--    </select>-->
+        <select class="form-control city " formControlName="city1" (change)="getByCity()">
+          <option selected>Thành Phố</option>
+          <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
+        </select>
+        <input type="text"
+               class="form-control name"
+               placeholder="Tên"
+               autocomplete="off"
+               maxlength="32"
+               value=""
+               formControlName="name">
+        <button type="button" class="form-control btn-filter btn btn-default" (click)="getAllByName()">
+          <i class="fa fa-search"></i> Tìm kiếm
+        </button>
+      </div>
+      <br>
+    </form>
+
+    <!--  b-->
+    <!--  x-->
+
+    <div *ngIf="status == 'true'">
+      <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Danh Sách Tìm Kiếm</p>
+      <div class="row" *ngIf="listUserCCDV.length !== 0">
+        <div class="col-3 " *ngFor="let userCCDV of listUserCCDV | paginate : {
                 itemsPerPage: 8,
                 currentPage: page,
                 totalItems: size1,
                 id: 'first'
               };">
-        <a style="text-decoration: none; cursor: pointer"
-           [routerLink]="['provider-profile/', userCCDV.id ]" >
-          <div class="card text-black mt-3" style="border-radius: 10px">
-              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover" src="{{userCCDV.avatar}}" [routerLink]="['provider-profile/', userCCDV.id ]">
-            <div class="card-img-overlay">
-              <button class="btn-danger btn-md"
-                      style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userCCDV.price}},000 đ/h
-              </button>
-            </div>
-            <div class="row pl-3 mb-3">
+          <a style="text-decoration: none; cursor: pointer"
+             [routerLink]="['provider-profile/', userCCDV.id ]">
+            <div class="card text-black mt-3" style="border-radius: 10px">
+              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover"
+                   src="{{userCCDV.avatar}}" [routerLink]="['provider-profile/', userCCDV.id ]">
+              <div class="card-img-overlay">
+                <button class="btn-danger btn-md"
+                        style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userCCDV.price}}
+                  ,000 đ/h
+                </button>
+              </div>
+              <div class="row pl-3 mb-3">
 
-              <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>
-              <div class="col-12" style="color: gray; margin-top: -15px">{{userCCDV.description}}</div>
-              <div class="col-12" style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDV.category_name}}</div>
+                <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>
+                <div class="col-12"
+                     style="color: gray; margin-top: -15px; width: 90px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDV.description}}</div>
+                <div class="col-12"
+                     style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDV.category_name}}</div>
 
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-5 d-flex justify-content-center">
+        <pagination-controls (pageChange)="page = $event" id='first'></pagination-controls>
+      </div>
+    </div>
+    <div *ngIf="status == 'falseGender'">
+      <p style="font-family:courier,arial,helvetica; text-align: center">
+        Cak Cak Cak...... <br>
+        Not Found, u should come back if no u are gay
+      </p>
+    </div>
+    <div *ngIf="status == 'falseName'">
+      <p style="font-family:courier,arial,helvetica; text-align: center">
+        Cak Cak Cak...... <br>
+        Có vẻ hiện tại không có ai trùng với tên này rồi!
+      </p>
+    </div>
+
+    <!--z-->
+
+    <!--  danh sách gợi ý-->
+
+    <div *ngIf="listGoiY.length !== 0">
+      <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Gợi ý cho bạn</p>
+      <div class="row">
+        <div class="col-3 " *ngFor="let userCCDVCategory of listGoiY">
+          <a style="text-decoration: none; cursor: pointer"
+             [routerLink]="['provider-profile/', userCCDVCategory.id ]">
+            <div class="card text-black mt-3" style="border-radius: 10px">
+              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover!important;"
+                   src="{{userCCDVCategory.avatar}}">
+              <div class="card-img-overlay">
+                <button class="btn-danger btn-md"
+                        style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userCCDVCategory.price}}
+                  ,000 đ/h
+                </button>
+              </div>
+              <div class="row pl-3 mb-3">
+                <h4 class="col-12 mt-3" style=" color: orangered;">{{userCCDVCategory.name}}</h4>
+                <div class="col-12"
+                     style="color: gray; margin-top: -15px; width: 90px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.description}}</div>
+                <span class="col-12"
+                      style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.category_name}}</span>
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
 
-    <div class="mt-5 d-flex justify-content-center">
-      <pagination-controls (pageChange)="page = $event" id='first'></pagination-controls>
-    </div>
-  </div>
-  <div *ngIf="status == 'falseGender'">
-    <p style = "font-family:courier,arial,helvetica; text-align: center">
-      Cak Cak Cak...... <br>
-      Not Found, u should come back if no u are gay
-    </p>
-  </div>
-  <div *ngIf="status == 'falseName'">
-    <p style = "font-family:courier,arial,helvetica; text-align: center">
-      Cak Cak Cak...... <br>
-      Có vẻ hiện tại không có ai trùng với tên này rồi!
-    </p>
-  </div>
+    <!--  kết thúc danh sách gợi ý-->
 
-<!--z-->
-
-<!--  danh sách gợi ý-->
-
-  <div *ngIf="listGoiY.length !== 0">
-    <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Gợi ý cho bạn</p>
-    <div class="row">
-      <div class="col-3 " *ngFor="let userCCDVCategory of listGoiY">
-        <a style="text-decoration: none; cursor: pointer"
-           [routerLink]="['provider-profile/', userCCDVCategory.id ]">
-          <div class="card text-black mt-3" style="border-radius: 10px">
-            <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover!important;"
-                 src="{{userCCDVCategory.avatar}}">
-            <div class="card-img-overlay">
-              <button class="btn-danger btn-md"
-                      style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userCCDVCategory.price}},000 đ/h
-              </button>
+    <div *ngIf="idTemp" style="margin-top: 50px">
+      <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Rank Vip</p>
+      <div class="row">
+        <div class="col-3 " *ngFor="let userVip of listVipUser">
+          <a style="text-decoration: none; cursor: pointer"
+             [routerLink]="['provider-profile/', userVip.id ]">
+            <div class="card text-black mt-3" style="border-radius: 10px">
+              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover!important;"
+                   src="{{userVip.avatar}}">
+              <div class="card-img-overlay">
+                <button class="btn-danger btn-md"
+                        style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userVip.price}}
+                  ,000 đ/h
+                </button>
+              </div>
+              <div class="row pl-3 mb-3">
+                <h4 class="col-12 mt-3" style=" color: orangered;">{{userVip.name}}</h4>
+                <div class="col-12"
+                     style="color: gray; margin-top: -15px ; width: 90px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userVip.description}}</div>
+                <span class="col-12"
+                      style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userVip.category_name}}</span>
+              </div>
             </div>
-            <div class="row pl-3 mb-3">
-              <h4 class="col-12 mt-3" style=" color: orangered;">{{userCCDVCategory.name}}</h4>
-              <div class="col-12" style="color: gray; margin-top: -15px">{{userCCDVCategory.description}}</div>
-              <span class="col-12" style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.category_name}}</span>
-            </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
 
-<!--  kết thúc danh sách gợi ý-->
+    <!--  danh sách vip user-->
 
-<!--  danh sách khởi đầu-->
-<div style="margin-top: 50px">
-  <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Top Người Yêu Cũ</p>
-  <div class="row" *ngIf="listUserCCDVHaveCategory.length !== 0">
-    <div class="col-3 " *ngFor="let userCCDVCategory of listUserCCDVHaveCategory | paginate : {
+    <!--  kết thúc danh sách vip user-->
+
+    <!--  danh sách khởi đầu-->
+    <div style="margin-top: 50px">
+      <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Top Người Yêu Cũ</p>
+      <div class="row" *ngIf="listUserCCDVHaveCategory.length !== 0">
+        <div class="col-3 " *ngFor="let userCCDVCategory of listUserCCDVHaveCategory | paginate : {
                 itemsPerPage: 12,
                 currentPage: page2,
                 totalItems: size2,
                 id: 'second'
               };">
-      <a style="text-decoration: none; cursor: pointer"
-         [routerLink]="['provider-profile/', userCCDVCategory.id ]">
-        <div class="card text-black mt-3" style="border-radius: 10px">
-          <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover"
-               src="{{userCCDVCategory.avatar}}">
-          <div class="card-img-overlay">
-            <button class="btn-danger btn-md"
-                    style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userCCDVCategory.price}},000 đ/h
-            </button>
-          </div>
-          <div class="row pl-3 mb-3">
-            <h4 class="col-12 mt-3" style=" color: orangered;">{{userCCDVCategory.name}}</h4>
-            <div class="col-12" style="color: gray; margin-top: -15px">{{userCCDVCategory.description}}</div>
-            <span class="col-12" style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.category_name}}</span>
-          </div>
+          <a style="text-decoration: none; cursor: pointer"
+             [routerLink]="['provider-profile/', userCCDVCategory.id ]">
+            <div class="card text-black mt-3" style="border-radius: 10px">
+              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover"
+                   src="{{userCCDVCategory.avatar}}">
+              <div class="card-img-overlay">
+                <button class="btn-danger btn-md"
+                        style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userCCDVCategory.price}}
+                  ,000 đ/h
+                </button>
+              </div>
+              <div class="row pl-3 mb-3">
+                <h4 class="col-12 mt-3" style=" color: orangered;">{{userCCDVCategory.name}}</h4>
+                <div class="col-12"
+                     style="color: gray; margin-top: -15px; ; width: 90px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.description}}</div>
+                <span class="col-12"
+                      style="color: gray; width: 90px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.category_name}}</span>
+              </div>
+            </div>
+          </a>
         </div>
-      </a>
+      </div>
+      <div class="mt-5 d-flex justify-content-center">
+        <pagination-controls (pageChange)="page2 = $event" id='second'></pagination-controls>
+      </div>
     </div>
+    <!--  kết thúc danh sách khởi đầu-->
+
   </div>
-  <div class="mt-5 d-flex justify-content-center">
-    <pagination-controls (pageChange)="page2 = $event" id='second'></pagination-controls>
-  </div>
-</div>
-<!--  kết thúc danh sách khởi đầu-->
 
-</div>
+  <!--...modal update user-->
 
-<!--...modal update user-->
+  <!-- Trigger the modal with a button -->
+  <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
 
-<!-- Trigger the modal with a button -->
-<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
+  <!--&lt;!&ndash; Modal &ndash;&gt;-->
+  <!--<div class="modal fade" id="myModal" role="dialog">-->
+  <!--  <div class="modal-dialog">-->
+  <!--  <div class="modal-content">-->
+  <!--    <div class="modal-header">-->
+  <!--      <h3 class="modal-title" id="exampleModalLabel" style="margin-left: 130px">Nhập thông tin người dùng</h3>-->
+  <!--    </div>-->
+  <!--    <div class="modal-body p-4">-->
+  <!--      <form>-->
+  <!--        &lt;!&ndash; 2 column grid layout with text inputs for the first and last names &ndash;&gt;-->
+  <!--        <div class="row mb-4">-->
+  <!--          <div class="col">-->
+  <!--            <div class="form-outline">-->
+  <!--              <label class="form-label" for="name" style="margin-left: 0px;">Nhập tên(*)</label>-->
+  <!--              <input type="text" id="name" class="form-control" placeholder="Nhập tên">-->
+  <!--              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div></div>-->
+  <!--          </div>-->
+  <!--          <div class="col">-->
+  <!--            <div class="form-outline">-->
+  <!--              <label class="form-label" style="margin-left: 0px;">Chọn giới tính(*)</label>-->
+  <!--              <select class="form-control">-->
+  <!--                <option value="" selected disabled>Giới tính</option>-->
+  <!--                <option value="Nam">Nam</option>-->
+  <!--                <option value="Nu">Nữ</option>-->
+  <!--              </select>-->
+  <!--              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 67.2px;"></div><div class="form-notch-trailing"></div></div></div>-->
+  <!--          </div>-->
+  <!--        </div>-->
 
-<!--&lt;!&ndash; Modal &ndash;&gt;-->
-<!--<div class="modal fade" id="myModal" role="dialog">-->
-<!--  <div class="modal-dialog">-->
-<!--  <div class="modal-content">-->
-<!--    <div class="modal-header">-->
-<!--      <h3 class="modal-title" id="exampleModalLabel" style="margin-left: 130px">Nhập thông tin người dùng</h3>-->
-<!--    </div>-->
-<!--    <div class="modal-body p-4">-->
-<!--      <form>-->
-<!--        &lt;!&ndash; 2 column grid layout with text inputs for the first and last names &ndash;&gt;-->
-<!--        <div class="row mb-4">-->
-<!--          <div class="col">-->
-<!--            <div class="form-outline">-->
-<!--              <label class="form-label" for="name" style="margin-left: 0px;">Nhập tên(*)</label>-->
-<!--              <input type="text" id="name" class="form-control" placeholder="Nhập tên">-->
-<!--              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div></div>-->
-<!--          </div>-->
-<!--          <div class="col">-->
-<!--            <div class="form-outline">-->
-<!--              <label class="form-label" style="margin-left: 0px;">Chọn giới tính(*)</label>-->
-<!--              <select class="form-control">-->
-<!--                <option value="" selected disabled>Giới tính</option>-->
-<!--                <option value="Nam">Nam</option>-->
-<!--                <option value="Nu">Nữ</option>-->
-<!--              </select>-->
-<!--              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 67.2px;"></div><div class="form-notch-trailing"></div></div></div>-->
-<!--          </div>-->
-<!--        </div>-->
+  <!--        &lt;!&ndash; 2 column grid layout with text inputs for the first and last names &ndash;&gt;-->
+  <!--        <div class="row mb-4">-->
+  <!--          <div class="col">-->
+  <!--            <div class="form-outline">-->
+  <!--              <label class="form-label" style="margin-left: 0px;">Chọn thành phố bạn đang sống(*)</label>-->
+  <!--              <select class="form-control">-->
+  <!--                <option value="" selected disabled>Thành phố</option>-->
+  <!--                <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>-->
+  <!--              </select>-->
+  <!--              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div></div>-->
+  <!--          </div>-->
+  <!--          <div class="col">-->
+  <!--            <div class="form-outline">-->
+  <!--              <label class="form-label" style="margin-left: 0px;">Ngày sinh của bạn(*)</label>-->
+  <!--              <input type="date" class="form-control">-->
+  <!--              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 67.2px;"></div><div class="form-notch-trailing"></div></div></div>-->
+  <!--          </div>-->
+  <!--        </div>-->
 
-<!--        &lt;!&ndash; 2 column grid layout with text inputs for the first and last names &ndash;&gt;-->
-<!--        <div class="row mb-4">-->
-<!--          <div class="col">-->
-<!--            <div class="form-outline">-->
-<!--              <label class="form-label" style="margin-left: 0px;">Chọn thành phố bạn đang sống(*)</label>-->
-<!--              <select class="form-control">-->
-<!--                <option value="" selected disabled>Thành phố</option>-->
-<!--                <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>-->
-<!--              </select>-->
-<!--              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div></div>-->
-<!--          </div>-->
-<!--          <div class="col">-->
-<!--            <div class="form-outline">-->
-<!--              <label class="form-label" style="margin-left: 0px;">Ngày sinh của bạn(*)</label>-->
-<!--              <input type="date" class="form-control">-->
-<!--              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 67.2px;"></div><div class="form-notch-trailing"></div></div></div>-->
-<!--          </div>-->
-<!--        </div>-->
+  <!--        &lt;!&ndash; Message input &ndash;&gt;-->
+  <!--        <div class="form-outline mb-4">-->
+  <!--          <label class="form-label" for="description" style="margin-left: 0px;">Miêu tả</label>-->
+  <!--          <textarea class="form-control" id="description" rows="4"></textarea>-->
+  <!--          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 134.4px;"></div><div class="form-notch-trailing"></div></div></div>-->
 
-<!--        &lt;!&ndash; Message input &ndash;&gt;-->
-<!--        <div class="form-outline mb-4">-->
-<!--          <label class="form-label" for="description" style="margin-left: 0px;">Miêu tả</label>-->
-<!--          <textarea class="form-control" id="description" rows="4"></textarea>-->
-<!--          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 134.4px;"></div><div class="form-notch-trailing"></div></div></div>-->
+  <!--        &lt;!&ndash; Submit button &ndash;&gt;-->
+  <!--        <button type="submit" class="btn btn-primary btn-block" data-dismiss="modal">Hoàn thành</button>-->
+  <!--      </form>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
+  <!--</div>-->
 
-<!--        &lt;!&ndash; Submit button &ndash;&gt;-->
-<!--        <button type="submit" class="btn btn-primary btn-block" data-dismiss="modal">Hoàn thành</button>-->
-<!--      </form>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--...end modal-->
+  <!--...end modal-->
