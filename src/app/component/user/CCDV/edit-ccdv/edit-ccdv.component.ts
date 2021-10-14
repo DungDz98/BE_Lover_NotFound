@@ -8,6 +8,7 @@ import {UserService} from "../../../../service/user/user.service";
 import {SelectService} from "../../../../service/select/select.service";
 import {User} from "../../../../models/user/user";
 import {TokenService} from "../../../../service/in-out/token.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-ccdv',
@@ -54,7 +55,11 @@ export class EditCcdvComponent implements OnInit {
   }
   saveUser(id: number) {
     this.userService.saveUser(id,this.ccdvForm.value).subscribe((data) => {
-      alert("Bạn đã chỉnh sửa trang cá nhân thành công");
+      Swal.fire(
+        'Bạn đã chỉnh sửa trang cá nhân thành công',
+        '',
+        'success'
+      )
       this.router.navigate(['/provider-profile/', this.id]);
     })
   }

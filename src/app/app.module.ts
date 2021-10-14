@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { ProfileUserComponent } from './component/user/SDDV/profile-user/profile-user.component';
+import { SocketHomeComponent } from './component/socket/socket-home/socket-home.component';
 import {LayoutModule} from "./modules/layout/layout.module";
 
 
@@ -37,6 +38,7 @@ import {LayoutModule} from "./modules/layout/layout.module";
     ProfileProviderComponent,
     LayoutAdminComponent,
     ProfileUserComponent,
+    SocketHomeComponent,
 
   ],
     imports: [

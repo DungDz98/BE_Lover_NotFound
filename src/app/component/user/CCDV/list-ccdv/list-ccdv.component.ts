@@ -7,6 +7,7 @@ import {UserTest} from "../../../../models/selectInHome/user-test";
 import {UserService} from "../../../../service/user/user.service";
 import {TokenService} from "../../../../service/in-out/token.service";
 import {User} from "../../../../model/user/user";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-ccdv',
@@ -18,6 +19,7 @@ export class ListCcdvComponent implements OnInit {
   listUserCCDV: UserTest[] = [];
   listUserCCDVHaveCategory: UserTest[] = [];
   listGoiY: UserTest[] = [];
+  listVipUser: UserTest[] = [];
   city: City[] = []
   page = 1;
   page2 = 1;
@@ -44,7 +46,8 @@ export class ListCcdvComponent implements OnInit {
     });
     this.idTemp = this.token.getJwt().id;
     this.getAllGoiY();
-    this.test()
+    // this.test()
+    this.findAllVipUser();
   }
 
   getAll() {
@@ -126,16 +129,27 @@ export class ListCcdvComponent implements OnInit {
   }
 
 
-  test(){
-    navigator.geolocation.getCurrentPosition(position => {
-      console.log(position.coords.latitude)
-      console.log(position.coords.longitude)
+  // test(){
+  //   navigator.geolocation.getCurrentPosition(position => {
+  //     console.log(position.coords.latitude)
+  //     console.log(position.coords.longitude)
+  //   })
+  // }
+
+  findAllVipUser(){
+    this.select.findAllVipUser().subscribe((data)=>{
+      this.listVipUser = data
     })
   }
-
-
-
-
+  //
+  // open(){
+  //   Swal.fire({
+  //     icon: 'error',
+  //     title: 'Oops...',
+  //     text: 'Something went wrong!',
+  //     footer: '<a href="">Why do I have this issue?</a>'
+  //   })
+  // }
 }
 
 

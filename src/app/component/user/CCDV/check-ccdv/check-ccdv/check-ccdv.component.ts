@@ -11,6 +11,7 @@ import {CategoryService} from "../../../../../service/category/category.service"
 import {UserService} from "../../../../../service/user/user.service";
 import {Router} from "@angular/router";
 import {Category} from "../../../../../model/category/category";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-check-ccdv',
@@ -87,9 +88,14 @@ export class CheckCcdvComponent implements OnInit {
       // @ts-ignore
       console.log(this.user);
       this.userService.create(this.user_Service).subscribe(() => {
+        Swal.fire(
+          'Chúc mừng bạn đã đăng ký thành công',
+          '',
+          'success'
+        )
+        this.router.navigate(['']);
 
       });
-
       // this.listServiceSelect.push(data)
       // console.log(this.listServiceSelect)
     })
@@ -103,7 +109,7 @@ export class CheckCcdvComponent implements OnInit {
       // @ts-ignore
       this.getById(this.serviceFormGroup.value.services[i])
     }
-    alert("Chúc mừng bạn đã đăng ký thành công");
-    this.router.navigate([""]);
+
+
   }
 }
