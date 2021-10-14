@@ -66,9 +66,6 @@
               padding-right: 15px;
               padding-left: 15px;
             }
-            a, button, div, p, span {
-              font-family: Poppins;
-            }
             *, :after, :before {
               box-sizing: border-box;
             }
@@ -77,17 +74,16 @@
               display: block;
             }
             body {
-              font-family: Source Sans Pro;
+              font-family: Poppins;
               background-color: initial;
             }
             .alert, .brand, .btn-simple, .h1, .h2, .h3, .h4, .h5, .h6, .navbar, .td-name, a, body, button.close, h1, h2, h3, h4, h5, h6, p, td {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              font-family: Poppins,Source Sans Pro,Helvetica Neue,Arial,sans-serif;
               font-weight: 400;
             }
             body {
-              font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+              font-family: Poppins;
               font-size: 14px;
               line-height: 1.42857143;
               color: #333;
@@ -101,7 +97,6 @@
               -webkit-tap-highlight-color: transparent;
             }
             html {
-              font-family: sans-serif;
               -ms-text-size-adjust: 100%;
               -webkit-text-size-adjust: 100%;
             }
@@ -213,14 +208,12 @@
   color: inherit;
 }
 a, button, div, p, span {
-  font-family: Poppins;
 }
 *, :after, :before {
   box-sizing: border-box;
 }
 
 .menu__setting--main .panel-title a {
-  font-family: Poppins;
   color: rgb(53, 64, 82);
   font-size: 14px;
   font-weight: 600;
@@ -296,7 +289,6 @@ a, button, div, p, span {
 .menu__setting--sub .panel-title {
   text-align: left;
   padding: 5px 0px;
-  font-family: Poppins;
   font-size: 14px;
   font-weight: 700;
   font-stretch: normal;
@@ -329,7 +321,6 @@ a, button, div, p, span {
 .menu__setting--sub .panel-title {
   text-align: left;
   padding: 5px 0px;
-  font-family: Poppins;
   font-size: 14px;
   font-weight: 700;
   font-stretch: normal;
@@ -365,7 +356,6 @@ a, button, div, p, span {
   border-radius: 5px;
   padding: 0px 17px;
   width: 100%;
-  font-family: Poppins;
 }
 .fieldGroup input, .fieldGroup select {
   text-align: center;
@@ -379,7 +369,6 @@ a, button, div, p, span {
   margin-bottom: 7px;
 }
 button, input, select, textarea {
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
@@ -401,7 +390,6 @@ input[type="text" i] {
 
 .aside .control-label, .aside label, .aside p {
   text-transform: uppercase;
-  font-family: Poppins;
   font-size: 12px;
   margin-bottom: 10px;
   color: rgb(144, 149, 156);
@@ -414,9 +402,7 @@ input[type="text" i] {
   color: #333;
   font-weight: 700;
 }
-a, button, div, p, span {
-  font-family: Poppins;
-}
+
 p {
   font-size: 14px;
 }
@@ -427,7 +413,6 @@ p {
 .alert, .brand, .btn-simple, .h1, .h2, .h3, .h4, .h5, .h6, .navbar, .td-name, a, body, button.close, h1, h2, h3, h4, h5, h6, p, td {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: Poppins,Source Sans Pro,Helvetica Neue,Arial,sans-serif;
   font-weight: 400;
 }
 p {
@@ -448,9 +433,7 @@ p {
 .aside {
   padding: 30px;
 }
-a, button, div, p, span {
-  font-family: Poppins;
-}
+
 *, :after, :before {
   box-sizing: border-box;
 }
@@ -463,9 +446,7 @@ div {
   margin-right: -15px;
   margin-left: -15px;
 }
-a, button, div, p, span {
-  font-family: Poppins;
-}
+
 *, :after, :before {
   box-sizing: border-box;
 }
@@ -482,9 +463,7 @@ div {
   margin-right: -15px;
   margin-left: -15px;
 }
-a, button, div, p, span {
-  font-family: Poppins;
-}
+
 *, :after, :before {
   box-sizing: border-box;
 }
@@ -499,9 +478,7 @@ div {
 .img-avatar {
   margin: 30px 0px;
 }
-a, button, div, p, span {
-  font-family: Poppins;
-}
+
 *, :after, :before {
   box-sizing: border-box;
 }
@@ -539,9 +516,7 @@ img {
   text-align: left;
 }
 
-a, button, div, p, span {
-  font-family: Poppins;
-}
+
 
 *, :after, :before {
   box-sizing: border-box;
@@ -559,7 +534,6 @@ form {
 
 .aside .control-label, .aside label, .aside p {
   text-transform: uppercase;
-  font-family: Poppins;
   font-size: 12px;
   margin-bottom: 10px;
   color: rgb(144, 149, 156);
@@ -573,9 +547,6 @@ form {
   color: #333;
   font-weight: 700;
 }
-a, button, div, p, span {
-  font-family: Poppins;
-}
 p {
   font-size: 14px;
 }
@@ -586,7 +557,6 @@ p {
 .alert, .brand, .btn-simple, .h1, .h2, .h3, .h4, .h5, .h6, .navbar, .td-name, a, body, button.close, h1, h2, h3, h4, h5, h6, p, td {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: Poppins,Source Sans Pro,Helvetica Neue,Arial,sans-serif;
   font-weight: 400;
 }
 p {
@@ -612,7 +582,6 @@ p {
   border-radius: 5px;
   padding: 0px 17px;
   width: 100%;
-  font-family: Poppins;
 }
 
 .fieldGroup input, .fieldGroup select {
@@ -625,11 +594,7 @@ p {
   padding: 0 10px;
   margin-bottom: 7px;
 }
-button, input, select, textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
+
 input {
   line-height: normal;
 }
@@ -638,9 +603,7 @@ input {
   margin-bottom: 22px;
 }
 
-a, button, div, p, span {
-  font-family: Poppins;
-}
+
 *, :after, :before {
   box-sizing: border-box;
 }
@@ -653,14 +616,10 @@ div {
   display: flex;
 }
 
-a, button, div, p, span {
-  font-family: Poppins;
-}
 .btn-update{
 height: 54px;
 color: #fff;
 border: 0;
-font-family: Poppins;
 border-radius: 5px;
 line-height: 49px;
 font-size: 19px;
@@ -678,7 +637,6 @@ width: 100%;
   text-transform: capitalize;
   position: relative;
   padding-left: 30px;
-  font-family: SegoeUI;
   justify-content: center;
   padding-top: 4px;
   cursor: pointer;
@@ -696,9 +654,6 @@ width: 100%;
   left: 30%;
   top: 6px;
 }
-a, button, div, p, span {
-  font-family: Poppins;
-}
 *, :after, :before {
   box-sizing: border-box;
 }
@@ -714,14 +669,12 @@ a, button, div, p, span {
   text-transform: capitalize;
   position: relative;
   padding-left: 30px;
-  font-family: SegoeUI;
   justify-content: center;
   padding-top: 4px;
   cursor: pointer;
 }
 .aside .control-label, .aside label, .aside p {
   text-transform: uppercase;
-  font-family: Poppins;
   font-size: 12px;
   margin-bottom: 10px;
   color: #90959c;

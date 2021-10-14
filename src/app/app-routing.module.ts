@@ -4,6 +4,7 @@ import {SignInComponent} from "./component/sign-in/sign-in.component";
 import {SignUpComponent} from "./component/sign-up/sign-up.component";
 import {LayoutComponent} from "./component/layout/layout.component";
 import {LayoutAdminComponent} from "./component/admin/layout-admin/layout-admin.component";
+import {SocketHomeComponent} from "./component/socket/socket-home/socket-home.component";
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'create',
     component: SignUpComponent
+  },
+  {
+    path: 'socket',
+    component: SocketHomeComponent
   },
 ];
 
