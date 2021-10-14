@@ -22,6 +22,7 @@
                 <th><span>Số tiền (VNĐ)</span></th>
                 <th><span>Trạng thái</span></th>
                 <th><span>Xem chi tiết</span></th>
+                <th><span>Hành động</span></th>
               </tr>
               </thead>
               <tbody>
@@ -40,21 +41,32 @@
                 <td>{{item.totalMoney}}.000</td>
                 <!--  // Trạng thái của đơn thuê: 0: chờ CCDV phản hồi, 1: Đã nhận, 2:Đã hoàn thành 3.Đã nhận tiền 4. Đã gửi báo cáo-->
 
-                <td *ngIf="item?.status == 0">Chờ CCDV phản hồi</td>
-                <td *ngIf="item?.status == 1">Đã tiếp nhận</td>
-                <td *ngIf="item?.status == 2">Đã hoàn thành</td>
-                <td *ngIf="item?.status == 3">Đã nhận tiền</td>
-                <td *ngIf="item?.status == 4">Đã gửi báo cáo</td>
-                <td>
-                  <a class="btn btn-outline-info" data-toggle="modal" data-target="#detail"
-                          (click)="getRentById(item.id)">Xem chi tiết đơn
-                    thuê
-                  </a>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
+              <td class="btn btn-outline-danger"  *ngIf="item?.status == 0">Chờ CCDV phản hồi</td>
+              <td class="btn btn-outline-danger"  *ngIf="item?.status == 1">Đang tiến hành</td>
+              <td class="btn btn-outline-success" *ngIf="item?.status == 2">Đã hoàn thành</td>
+              <td class="btn btn-outline-success" *ngIf="item?.status == 3">Đã nhận tiền</td>
+              <td class="btn btn-outline-success" *ngIf="item?.status == 4">Đã gửi báo cáo</td>
+              <td class="btn btn-outline-success" *ngIf="item?.status == 5">Đã duyệt báo cáo</td>
+
+
+              <td>
+                <button class="btn btn-outline-info" data-toggle="modal" data-target="#detail" (click)="getRentById(item.id)">Xem chi tiết đơn
+                  thuê
+                </button>
+              </td>
+
+              <td class="btn btn-outline-danger"  *ngIf="item?.status == 0">Chưa gửi báo cáo</td>
+              <td class="btn btn-outline-danger"  *ngIf="item?.status == 1">Chưa gửi báo cáo</td>
+              <td class="btn btn-outline-success" *ngIf="item?.status == 2">Chưa gửi báo cáo</td>
+              <td class="btn btn-outline-success" *ngIf="item?.status == 3">Chưa gửi báo cáo</td>
+              <td class="btn btn-outline-success" *ngIf="item?.status == 4" (click)=changeStatus(item.id,5)>Chờ duyệt báo cáo</td>
+              <td class="btn btn-outline-success" *ngIf="item?.status == 5">Đã duyệt báo cáo</td>
+            </tr>
+            </tbody>
+          </table>
+          <!--          <div class="mt-5 d-flex justify-content-center" *ngIf="totalLength > 3">-->
+          <!--            <pagination-controls (pageChange)="page = $event" id='first'></pagination-controls>-->
+          <!--          </div>-->
         </div>
       </div>
     </div>
@@ -136,5 +148,5 @@
     </div>
   </div>
 </div>
-
+</div>
 

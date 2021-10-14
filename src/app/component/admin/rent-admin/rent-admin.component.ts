@@ -34,12 +34,13 @@ getAllRent(){
     this.rents = data;
   })
 }
-  // getAllRentForProvider(id: number) {
-  //   this.rentService.getAllRentForProvider(id).subscribe(rents => {
-  //     this.rents = rents;
-  //     this.totalLength = rents.length;
-  //   });
-  // }
+  changeStatus(id: any, status: number) {
+    this.rentService.changeStatus(id, status).subscribe(data => {
+      for (let r of this.rents) {
+        if (r.id === id) r.status = data.status;
+      }
+    })
+  }
 
   getRentById(id: any) {
     this.rentService.getRentById(id).subscribe(rent => this.rent = rent);
