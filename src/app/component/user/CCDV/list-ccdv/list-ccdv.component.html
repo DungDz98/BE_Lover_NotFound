@@ -36,7 +36,7 @@
     <form [formGroup]="userForm">
       <div class="filter-player">
         <select class="form-control gender " formControlName="gender" (change)="getByGender()">
-          <option>Giới tính</option>
+          <option disabled>Giới tính</option>
           <option value="Nu">Nữ</option>
           <option value="Nam">Nam</option>
         </select>
@@ -47,7 +47,7 @@
         <!--      <option value="vip">Vip</option>-->
         <!--    </select>-->
         <select class="form-control city " formControlName="city1" (change)="getByCity()">
-          <option selected>Thành Phố</option>
+          <option selected disabled>Thành Phố</option>
           <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
         </select>
         <input type="text"
@@ -89,11 +89,9 @@
               </div>
               <div class="row pl-3 mb-3">
 
-                <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>
-                <div class="col-12"
-                     style="color: gray; margin-top: -15px; width: 90px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDV.description}}</div>
-                <div class="col-12"
-                     style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDV.category_name}}</div>
+                <h4 class="name-user">{{userCCDV.name}}</h4>
+                <div class="col-12 description-user">{{userCCDV.description}}</div>
+                <div class="col-12 category-user">{{userCCDV.category_name}}</div>
 
               </div>
             </div>
@@ -108,7 +106,7 @@
     <div *ngIf="status == 'falseGender'">
       <p style="font-family:courier,arial,helvetica; text-align: center">
         Cak Cak Cak...... <br>
-        Not Found, u should come back if no u are gay
+        Not Found, ...............
       </p>
     </div>
     <div *ngIf="status == 'falseName'">
@@ -138,11 +136,9 @@
                 </button>
               </div>
               <div class="row pl-3 mb-3">
-                <h4 class="col-12 mt-3" style=" color: orangered;">{{userCCDVCategory.name}}</h4>
-                <div class="col-12"
-                     style="color: gray; margin-top: -15px; width: 90px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.description}}</div>
-                <span class="col-12"
-                      style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.category_name}}</span>
+                <h4 class="name-user">{{userCCDVCategory.name}}</h4>
+                <div class="col-12 description-user">{{userCCDVCategory.description}}</div>
+                <span class="col-12 category-user">{{userCCDVCategory.category_name}}</span>
               </div>
             </div>
           </a>
@@ -152,35 +148,31 @@
 
     <!--  kết thúc danh sách gợi ý-->
 
-    <div *ngIf="idTemp" style="margin-top: 50px">
+    <!--  danh sách vip user-->
+
+    <div *ngIf="idTemp" style="margin-top: 50px; ">
       <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Rank Vip</p>
       <div class="row">
         <div class="col-3 " *ngFor="let userVip of listVipUser">
           <a style="text-decoration: none; cursor: pointer"
              [routerLink]="['provider-profile/', userVip.id ]">
             <div class="card text-black mt-3" style="border-radius: 10px">
-              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover!important;"
-                   src="{{userVip.avatar}}">
+              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover!important;" src="{{userVip.avatar}}">
               <div class="card-img-overlay">
-                <button class="btn-danger btn-md"
-                        style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userVip.price}}
+                <button class="btn-danger btn-md" style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userVip.price}}
                   ,000 đ/h
                 </button>
               </div>
               <div class="row pl-3 mb-3">
-                <h4 class="col-12 mt-3" style=" color: orangered;">{{userVip.name}}</h4>
-                <div class="col-12"
-                     style="color: gray; margin-top: -15px ; width: 90px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userVip.description}}</div>
-                <span class="col-12"
-                      style="color: gray; width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userVip.category_name}}</span>
+                <h4 class="name-user">{{userVip.name}}</h4>
+                <div class="col-12 description-user" >{{userVip.description}}</div>
+                <span class="col-12 category-user">{{userVip.category_name}}</span>
               </div>
             </div>
           </a>
         </div>
       </div>
     </div>
-
-    <!--  danh sách vip user-->
 
     <!--  kết thúc danh sách vip user-->
 
@@ -206,11 +198,9 @@
                 </button>
               </div>
               <div class="row pl-3 mb-3">
-                <h4 class="col-12 mt-3" style=" color: orangered;">{{userCCDVCategory.name}}</h4>
-                <div class="col-12"
-                     style="color: gray; margin-top: -15px; ; width: 90px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.description}}</div>
-                <span class="col-12"
-                      style="color: gray; width: 90px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{userCCDVCategory.category_name}}</span>
+                <h4 class="name-user">{{userCCDVCategory.name}}</h4>
+                <div class="col-12 description-user">{{userCCDVCategory.description}}</div>
+                <span class="col-12 category-user">{{userCCDVCategory.category_name}}</span>
               </div>
             </div>
           </a>

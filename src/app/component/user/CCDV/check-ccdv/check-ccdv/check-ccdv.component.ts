@@ -87,13 +87,15 @@ export class CheckCcdvComponent implements OnInit {
       this.user_Service = {category: data, user: this.user}
       // @ts-ignore
       console.log(this.user);
-      this.userService.create(this.user_Service).subscribe(() => {
+      this.userService.create(this.user_Service).subscribe(user => {
+        console.log(user.user?.id)
         Swal.fire(
           'Chúc mừng bạn đã đăng ký thành công',
           '',
           'success'
         )
-        this.router.navigate(['']);
+        this.router.navigate(['/provider-profile/',user.user?.id]);
+        // this.router.navigate(['']);
 
       });
       // this.listServiceSelect.push(data)

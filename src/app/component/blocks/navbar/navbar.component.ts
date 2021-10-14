@@ -3,7 +3,7 @@ import {AuthService} from "../../../service/in-out/auth.service";
 import {TokenService} from "../../../service/in-out/token.service";
 import {UserService} from "../../../service/user/user.service";
 import {Router} from "@angular/router";
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar',
@@ -56,7 +56,11 @@ export class NavbarComponent implements OnInit {
   changeStatusCCDV() {
     // @ts-ignore
     this.userService.changeStatusCCDV(this.idUser).subscribe(resp => {
-      alert('Thay đổi trạng thái thành công');
+      Swal.fire(
+        'Thay đổi trạng thái thành công',
+        '',
+        'success'
+      )
       window.location.reload();
     })
 

@@ -1,39 +1,39 @@
 
+.filter-player {
+  height: 127px;
+}
 
-  .filter-player {
-    height: 127px;
-  }
+.filter-player {
+  margin: 20px 0;
+  height: 32px;
+}
 
-  .filter-player {
-    margin: 20px 0;
-    height: 32px;
-  }
+a, button, div, p, span {
+  font-family: Poppins;
+}
 
-  a, button, div, p, span {
-    font-family: Poppins;
-  }
+*, :after, :before {
+  box-sizing: border-box;
+}
 
-  *, :after, :before {
-    box-sizing: border-box;
-  }
-
-  user agent stylesheet
-  div {
-    display: block;
-  }
+user agent stylesheet
+div {
+  display: block;
+}
 
 
-  .filter-player .form-control.gender {
-    width: 25%;
-  }
-
-  .filter-player .form-control.gender {
-    width: 85px;
-  }
+.filter-player .form-control.gender {
+  width: 25%;
+}
 
 .filter-player .form-control.gender {
   width: 85px;
 }
+
+.filter-player .form-control.gender {
+  width: 85px;
+}
+
 .filter-player .form-control {
   border-radius: 25px;
   font-size: 11px;
@@ -47,21 +47,60 @@
   font-weight: 600;
 }
 
-  .filter-player .form-control.btn-filter {
-    width: 100px;
-    float: right;
-    margin: 0;
-    background: #f0564a;
-    color: #fff;
-    padding-top: 7px;
-  }
+.filter-player .form-control.btn-filter {
+  width: 100px;
+  float: right;
+  margin: 0;
+  background: #f0564a;
+  color: #fff;
+  padding-top: 7px;
+}
 
-  .filter-player .form-control city {
-    width: 85px;
-  }
+.filter-player .form-control city {
+  width: 85px;
+}
 
 
-  img {
-    width:  253px;
-    height: 250px;
-  }
+img {
+  width: 253px;
+  height: 250px;
+}
+
+.img-edit{
+  max-width: 300px;
+  height: auto;
+  border-radius: 10%;
+  margin: 16px 10px 20px 160px;
+  image-rendering: pixelated;
+  object-fit: contain;
+}
+
+.name-user {
+  margin-top: 10px;
+  margin-left: 6px;
+  font-size: 16px;
+  color: orangered;
+}
+
+.description-user{
+  color: gray;
+  margin-top: -3px;
+  margin-left: -6px;
+  font-size: 14px;
+  width: 90px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.category-user {
+  color: gray;
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: -3px;
+  margin-left: -6px;
+  font-size: 14px;
+}
+
