@@ -13,6 +13,7 @@ import {Category} from "../../model/category/category";
 import {RentWithoutServices} from "../../model/RentWithoutServices";
 import {IUserService} from "../../models/userService/iuserService";
 import Swal from 'sweetalert2';
+import {DataService} from "../../service/data/data.service";
 
 @Component({
   selector: 'app-profile-provider',
@@ -31,6 +32,7 @@ export class ProfileProviderComponent implements OnInit {
   serviceDetail: Category = {};
   categories: Category[] = [];
   subRent: RentWithoutServices = {};
+  status: number = 1;
 
   constructor(private rentService: RentService,
               private activatedRoute: ActivatedRoute,
@@ -58,7 +60,6 @@ export class ProfileProviderComponent implements OnInit {
       this.getUserServiceByUserId(this.id);
       if (this.tokenService.getJwt()) {
         this.idUser1 = this.tokenService.getJwt().id;
-        // @ts-ignore
       }
     });
   }
@@ -319,5 +320,20 @@ export class ProfileProviderComponent implements OnInit {
         this.doneRate = data.length / rents.length * 100;
       })
     })
+  }
+
+  changeStatusCCDV() {
+    // @ts-ignore
+    this.userService.changeStatusCCDV(this.id).subscribe(resp => {
+      Swal.fire(
+        'Thay đổi trạng thái thành công',
+        '',
+        'success'
+      );
+      console.log(resp);
+      this.user.statusCCDV = resp.statusCCDV;
+      // window.location.reload();
+    })
+
   }
 }

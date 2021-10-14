@@ -214,6 +214,8 @@
               <button class="btn-my-style red" data-toggle="modal" data-target="#rentModal"
                       data-bs-whatever="@mdo" (click)="rent1()" *ngIf="idUs !== id && user.statusCCDV !== 2">Thuê
               </button>
+              <button class="btn-my-style red" (click)="changeStatusCCDV()" *ngIf="idUs == id">Thay đổi trạng thái
+              </button>
               <!--            <button class="btn-my-style white">Donate</button>-->
               <button class="btn-my-style white" data-bs-toggle="modal" data-bs-target="#exampleModalMessage" *ngIf="idUs !== id">💬 Chat
               </button>
@@ -233,9 +235,10 @@
     <div class="modal-dialog" style="width: max-content">
 
       <!--Test -->
-      <div class="modal-content" role="document">
+      <div class="modal-content" role="document" style="width: 150%;
+    margin-left: -25%;">
         <div class="modal-header">
-             <h4 class="modal-title" style="padding-left: 30%; color: #f0564a;">Thuê người yêu</h4>
+             <h4 class="modal-title" style="padding-left: 36%; color: #f0564a;">Thuê người yêu</h4>
         </div>
         <div class="modal-body">
           <table class="table">
@@ -301,7 +304,7 @@
             <tr>
               <td><span>Danh sách dịch vụ mở rộng</span>:</td>
               <td>
-                <div class="row" *ngFor="let service of listUserService">
+                <div class="row" *ngFor="let service of listUserService" style="display: block;">
                   <div class="row" *ngIf="service.category?.typeService === 'plus'">
                     <div class="col-6">
                       <input type="checkbox" [value]="service.id"
@@ -317,7 +320,7 @@
             <tr>
               <td>Danh sách dịch vụ cơ bản và miễn phí:</td>
               <td>
-                <div class="row" *ngFor="let service of listUserService">
+                <div class="row" *ngFor="let service of listUserService" style="display: block;">
                   <div class="row"
                        *ngIf="service.category?.typeService === 'basic' || service.category?.typeService === 'free'">
                     <div class="col-6">

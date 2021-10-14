@@ -39,7 +39,8 @@
               <td *ngIf="item.status == 1">Đã tiếp nhận</td>
               <td *ngIf="item.status == 2">Đã hoàn thành</td>
               <td *ngIf="item.status == 3">Đã thanh toán</td>
-              <td *ngIf="item.status == 4">Đã báo cáo</td>
+              <td *ngIf="item.status == 4">Chờ duyệt báo cáo</td>
+              <td *ngIf="item.status == 5">Đã báo cáo</td>
               <td>
                 <button class="btn btn-outline-danger" data-toggle="modal" data-target="#detail" (click)="getRentById(item.id)">Xem chi tiết đơn
                   thuê
@@ -69,7 +70,7 @@
   <div class="modal-dialog" role="document"  style="transform: translateX(-25%);">
     <div class="modal-content text-center">
       <div class="modal-header" style="padding-left: 35%;">
-        <h5 class="modal-title" id="exampleModalLabel">Xem chi tiết hoá đơn</h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700;font-size: 25px; color: #f0564a;">Xem chi tiết hoá đơn</h5>
       </div>
       <div class="modal-body">
         <div class="form-group row">
@@ -102,7 +103,8 @@
           <p class="col-sm-8" *ngIf="rent.status == 1">Đã tiếp nhận</p>
           <p class="col-sm-8" *ngIf="rent.status == 2">Đã hoàn thành</p>
           <p class="col-sm-8" *ngIf="rent.status == 3">Đã thanh toán</p>
-          <p class="col-sm-8" *ngIf="rent.status == 4">Đã báo cáo</p>
+          <p class="col-sm-8" *ngIf="rent.status == 4">Chờ duyệt báo cáo</p>
+          <p class="col-sm-8" *ngIf="rent.status == 5">Đã báo cáo</p>
         </div>
         <div class="form-group row">
           <p class="col-sm-4 col-form-label detailKey">Hành động</p>
@@ -162,7 +164,8 @@
               <td *ngIf="rent.status == 1">Đã tiếp nhận</td>
               <td *ngIf="rent.status == 2">Đã hoàn thành</td>
               <td *ngIf="rent.status == 3">Đã thanh toán</td>
-              <td *ngIf="rent.status == 4">Đã báo cáo</td>
+              <td *ngIf="rent.status == 4">Chờ duyệt báo cáo</td>
+              <td *ngIf="rent.status == 5">Đã báo cáo</td>
               <td>
                 <button class="btn btn-outline-danger" (click)="viewDetail();">Trở về</button>
               </td>

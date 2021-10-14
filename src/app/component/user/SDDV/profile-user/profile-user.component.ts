@@ -66,20 +66,19 @@ export class ProfileUserComponent implements OnInit {
 
   updateUser(){
     Swal.fire({
-      title: 'Do you want to save the changes?',
+      title: 'Bạn có chắc muốn cập nhật?',
       showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: 'Save',
-      denyButtonText: `Don't save`,
+      confirmButtonText: 'Cập nhật',
+      denyButtonText: `Không cập nhật`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire('Saved!', '', 'success')
+        Swal.fire('Cập nhật thành công!', '', 'success')
         this.userService.updateUser(this.userForm.value).subscribe((data)=>{
           this.router.navigate(["/"]);
         })
       } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info')
+        Swal.fire('Thay đổi không được lưu', '', 'info')
       }
     })
   }

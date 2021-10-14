@@ -12,6 +12,7 @@ import {UserService} from "../../../../../service/user/user.service";
 import {Router} from "@angular/router";
 import {Category} from "../../../../../model/category/category";
 import Swal from 'sweetalert2';
+import {DataService} from "../../../../../service/data/data.service";
 
 @Component({
   selector: 'app-check-ccdv',
@@ -34,7 +35,8 @@ export class CheckCcdvComponent implements OnInit {
               private formBuilder: FormBuilder,
               private userService: UserServiceService,
               private userSr : UserService,
-              private router :Router
+              private router :Router,
+              private data: DataService
   ) {
     this.serviceFormGroup = this.formBuilder.group({
       services: this.formBuilder.array([], [Validators.required]),
@@ -87,15 +89,18 @@ export class CheckCcdvComponent implements OnInit {
       this.user_Service = {category: data, user: this.user}
       // @ts-ignore
       console.log(this.user);
-      this.userService.create(this.user_Service).subscribe(() => {
+      this.userService.create(this.user_Service).subscribe(resp => {
         Swal.fire(
           'Chúc mừng bạn đã đăng ký thành công',
           '',
           'success'
-        )
+        );
+        // @ts-ignore
+        this.data.changeStatus(resp.user?.statusCCDV);
         this.router.navigate(['']);
 
       });
+
       // this.listServiceSelect.push(data)
       // console.log(this.listServiceSelect)
     })

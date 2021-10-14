@@ -6,6 +6,7 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {UserService} from "../../service/user/user.service";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {TokenService} from "../../service/in-out/token.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-rent-payer',
@@ -60,7 +61,12 @@ export class RentPayerComponent implements OnInit {
     this.rentService.changeStatus(id, status).subscribe(data => {
       for (let r of this.rents) {
         if (r.id === id) r.status = data.status;
-      }
+      };
+      Swal.fire(
+        'Thao tác thành công',
+        '',
+        'success'
+      )
     })
   }
 }

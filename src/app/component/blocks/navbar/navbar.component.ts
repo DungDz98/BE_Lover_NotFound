@@ -3,6 +3,8 @@ import {AuthService} from "../../../service/in-out/auth.service";
 import {TokenService} from "../../../service/in-out/token.service";
 import {UserService} from "../../../service/user/user.service";
 import {Router} from "@angular/router";
+import {DataService} from "../../../service/data/data.service";
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -16,8 +18,10 @@ export class NavbarComponent implements OnInit {
   name!: String | undefined;
   notCCDV: boolean = true;
   avatar: string = '';
+  status: number = 0;
 
-  constructor(private tokenService: TokenService, private userService: UserService, private router: Router) {
+  constructor(private tokenService: TokenService, private userService: UserService, private router: Router,
+              private data: DataService) {
   }
 
   ngOnInit(): void {
@@ -31,10 +35,18 @@ export class NavbarComponent implements OnInit {
 
       // @ts-ignore
       this.userService.getById(this.idUser).subscribe(data => {
-        // @ts-ignore
-        if (data.statusCCDV > 0) {
-          this.notCCDV = false;
-        }
+        this.data.currentStatus.subscribe(status => {
+          if (status != 0) {
+            this.notCCDV = false;
+          } else {
+            // @ts-ignore
+            if (data.statusCCDV > 0) {
+              this.notCCDV = false;
+            }
+          }
+        })
+
+
       })
 
 
@@ -56,8 +68,12 @@ export class NavbarComponent implements OnInit {
   changeStatusCCDV() {
     // @ts-ignore
     this.userService.changeStatusCCDV(this.idUser).subscribe(resp => {
-      alert('Thay đổi trạng thái thành công');
-      window.location.reload();
+      Swal.fire(
+        'Thay đổi trạng thái thành công',
+        '',
+        'success'
+      );
+      // window.location.reload();
     })
 
   }

@@ -6,6 +6,7 @@ import {AngularFireStorage} from "@angular/fire/storage";
 import {User} from "../../model/User";
 import {Rent} from "../../model/Rent";
 import {TokenService} from "../../service/in-out/token.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-rent',
@@ -60,7 +61,13 @@ export class RentComponent implements OnInit {
     this.rentService.changeStatus(id ,status).subscribe(data =>{
       for (let r of this.rents) {
         if (r.id === id) r.status = data.status;
-      }
+      };
+      Swal.fire(
+        'Thao tác thành công',
+        '',
+        'success'
+      )
+
       // alert('Thao tác thành công');
       // window.location.reload()
     })
@@ -70,7 +77,12 @@ export class RentComponent implements OnInit {
       // @ts-ignore
       for (let r of this.rents) {
         if (r.id === id) r.status = data.status;
-      }
+      };
+      Swal.fire(
+        'Bạn đã phản hồi thành công',
+        '',
+        'success'
+      )
       // alert('Thao tác thành công');
       // window.location.reload()
     })
@@ -87,13 +99,19 @@ export class RentComponent implements OnInit {
     console.log(id);
     // @ts-ignore
     this.rentService.deleteRentById(id).subscribe(() => {
+
         // alert("Thành công!");
         // window.location.reload();
       // this.rents = this.rents.filter(rent => rent.id !== id);
     });
     for (let i = 0; i < this.rents.length; i++) {
       if (this.rents[i].id == id) this.rents.splice(i, 1);
-    }
+    };
+    Swal.fire(
+      'Huỷ đơn thành công',
+      '',
+      'success'
+    )
   }
 
 }
