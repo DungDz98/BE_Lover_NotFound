@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 import {User} from '../../model/user/user';
 import {SignInForm} from "../../model/in-out/sign-in-form";
 import {JwtResponse} from "../../model/in-out/jwt-response";
+import {error} from "@angular/compiler/src/util";
 
 
 @Component({
@@ -102,8 +103,8 @@ export class SignInComponent implements OnInit {
             this.status = 'Đăng nhập thất bại! Vui lòng thử lại!';
           }
         }
-      }, error => {
-        this.status = 'Sai tài khoản hoặc mật khẩu';
+      },error1 => {
+      this.status = "Sai tài khoản hoặc mật khẩu !"
       }
     )
   }

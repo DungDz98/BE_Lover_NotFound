@@ -26,6 +26,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import { ProfileUserComponent } from './component/user/SDDV/profile-user/profile-user.component';
 import { SocketHomeComponent } from './component/socket/socket-home/socket-home.component';
 import {LayoutModule} from "./modules/layout/layout.module";
+import { ErrorAuthenticationComponent } from './error-authentication/error-authentication.component';
 
 
 
@@ -39,6 +40,7 @@ import {LayoutModule} from "./modules/layout/layout.module";
     LayoutAdminComponent,
     ProfileUserComponent,
     SocketHomeComponent,
+    ErrorAuthenticationComponent,
 
   ],
     imports: [
