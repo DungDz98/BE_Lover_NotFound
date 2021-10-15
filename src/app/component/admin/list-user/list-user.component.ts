@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../../models/user/user";
 import {UserService} from "../../../service/user/user.service";
+import {TokenService} from "../../../service/in-out/token.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-user',
@@ -13,9 +15,41 @@ export class ListUserComponent implements OnInit {
   page: number = 1;
   // @ts-ignore
   user: User = {};
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private tokenService: TokenService,
+              private router: Router) {
+    this.checkTonken()
+  }
+  roles = [];
+  // @ts-ignore
+  jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
+  checkTonken() {
+    console.log(this.jwt.roles)
+    if (!this.jwt){
+      this.router.navigate([''])
+    }else {
+      // @ts-ignore
+      for (let i = 0; i < this.jwt.roles?.length; i++) {
+        // @ts-ignore
+        if (this.jwt.roles[i].authority === 'ROLE_ADMIN'){
+          // @ts-ignore
+          this.roles.push(this.jwt.roles[i])
+        }
+      }
+      if (this.roles.length != 0){}
+      else {
+        this.router.navigate(['error-403'])
+      }
+
+    }
+  }
 
   ngOnInit(): void {
+    console.log(this.tokenService.getJwt().roles)
+// @ts-ignore
+    if (this.tokenService.getJwt().roles === "ROLE_USER"){
+      this.router.navigate(["error-403"])
+    }
     this.getAllUser();
   }
 

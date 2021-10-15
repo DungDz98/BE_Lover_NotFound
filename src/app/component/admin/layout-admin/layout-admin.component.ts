@@ -9,14 +9,10 @@ import {Router} from "@angular/router";
 })
 export class LayoutAdminComponent implements OnInit {
 
-  constructor(private tokenService: TokenService,
-              private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
-// @ts-ignore
-    if (this.tokenService.getJwt().roles !== "ADMIN"){
-  this.router.navigate(["error-403"])
-}
+
   }
 
 }

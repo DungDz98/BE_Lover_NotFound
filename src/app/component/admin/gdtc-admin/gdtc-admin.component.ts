@@ -5,6 +5,7 @@ import {RentService} from "../../../service/rent/rent.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../../service/user/user.service";
 import {AngularFireStorage} from "@angular/fire/storage";
+import {TokenService} from "../../../service/in-out/token.service";
 
 @Component({
   selector: 'app-gdtc-admin',
@@ -23,7 +24,32 @@ export class GdtcAdminComponent implements OnInit {
   page: number = 1;
 
   constructor(private rentService: RentService, private activatedRoute: ActivatedRoute, private router: Router,
-              private userService: UserService, private angularFireStorage: AngularFireStorage) {
+              private userService: UserService, private angularFireStorage: AngularFireStorage,
+              private tokenService: TokenService) {
+    this.checkTonken()
+  }
+  roles = [];
+  // @ts-ignore
+  jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
+  checkTonken() {
+    console.log(this.jwt.roles)
+    if (!this.jwt){
+      this.router.navigate([''])
+    }else {
+      // @ts-ignore
+      for (let i = 0; i < this.jwt.roles?.length; i++) {
+        // @ts-ignore
+        if (this.jwt.roles[i].authority === 'ROLE_ADMIN'){
+          // @ts-ignore
+          this.roles.push(this.jwt.roles[i])
+        }
+      }
+      if (this.roles.length != 0){}
+      else {
+        this.router.navigate(['error-403'])
+      }
+
+    }
   }
 
   ngOnInit(): void {
