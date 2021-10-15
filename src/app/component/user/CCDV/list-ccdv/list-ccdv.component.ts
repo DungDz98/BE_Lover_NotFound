@@ -9,6 +9,7 @@ import {TokenService} from "../../../../service/in-out/token.service";
 import {User} from "../../../../model/user/user";
 import Swal from 'sweetalert2';
 import {Stomp} from "@stomp/stompjs";
+import {Select} from "../../../../model/select/select";
 
 @Component({
   selector: 'app-list-ccdv',
@@ -32,6 +33,7 @@ export class ListCcdvComponent implements OnInit {
   userForm!: FormGroup;
   idTemp!: number | undefined;
   genderUser!: String | undefined;
+  selectTest!: Select;
 
   // socket
   title = 'grokonez';
@@ -41,7 +43,7 @@ export class ListCcdvComponent implements OnInit {
   private stompClient: any;
   idUserS!: number;
   username!: String;
-  userS! : User
+  userS!: User
   avatar!: string;
 
   messForm!: FormGroup;
@@ -142,16 +144,16 @@ export class ListCcdvComponent implements OnInit {
 
   }
 
-  getAllGoiY(){
-    this.http.get<User>(`http://localhost:8080/ccdv/${this.token.getJwt().id}`).subscribe((data)=>{
-      this.select.getAllGoiY(data.gender).subscribe((data1)=>{
+  getAllGoiY() {
+    this.http.get<User>(`http://localhost:8080/ccdv/${this.token.getJwt().id}`).subscribe((data) => {
+      this.select.getAllGoiY(data.gender).subscribe((data1) => {
         this.listGoiY = data1
       })
     })
   }
 
-  findAllVipUser(){
-    this.select.findAllVipUser().subscribe((data)=>{
+  findAllVipUser() {
+    this.select.findAllVipUser().subscribe((data) => {
       this.listVipUser = data
     })
   }
@@ -208,18 +210,38 @@ export class ListCcdvComponent implements OnInit {
     this.greetings.push(message);
   }
 
-  getTest(id: number){
-    this.userService.getUserTest(id).subscribe((data)=>{
+  getTest(id: number) {
+    this.userService.getUserTest(id).subscribe((data) => {
       this.userS = data;
       console.log(data.userName)
     })
   }
 
-  getAllByField(){
-    this.select.findAllByField(this.userForm.value).subscribe((data)=>{
-      this.listUserCCDV = data;
-      console.log(data)
-    })
+  getAllByField() {
+
+    if (this.userForm.get("city1")?.value == "Thành Phố") {
+      this.userForm.get("city1")?.setValue("");
+    }
+    if (this.userForm.get("gender")?.value == "Giới tính") {
+      this.userForm.get("gender")?.setValue("");
+    }
+    if (this.userForm.get("name")?.value == null) {
+      this.userForm.get("name")?.setValue("");
+    }
+    this.selectTest = this.userForm.value;
+    console.log(this.userForm.value)
+    this.select.findAllByField(this.selectTest).subscribe((data) => {
+        this.listUserCCDV = data;
+        this.size = data.length;
+        this.page = 1;
+        this.status = 'true';
+        if (data.length == 0) {
+          this.status = 'false';
+        }
+      },
+      error => {
+        this.getAll()
+      })
   }
 
 }
