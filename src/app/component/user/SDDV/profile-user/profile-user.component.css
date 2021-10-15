@@ -689,3 +689,19 @@ user agent stylesheet
 label {
   cursor: default;
 }
+
+.img-edit{
+  max-width: 300px;
+  border-radius: 10%;
+  margin: 16px 10px 20px 160px;
+  image-rendering: pixelated;
+  object-fit: cover
+}
+
+.img-test{
+  max-width: 400px;
+  border-radius: 10%;
+  margin: 16px 10px 20px 160px;
+  image-rendering: pixelated;
+  object-fit: cover
+}
