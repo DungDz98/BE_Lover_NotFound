@@ -63,6 +63,8 @@ export class ListCcdvComponent implements OnInit {
       city1: new FormControl('Thành Phố'),
     });
     this.idTemp = this.token.getJwt().id;
+    // @ts-ignore
+    this.getById(this.idTemp);
     this.getAllGoiY();
     // this.test()
     this.findAllVipUser();
@@ -244,6 +246,11 @@ export class ListCcdvComponent implements OnInit {
       error => {
         this.getAll()
       })
+  }
+
+  currUser!: User;
+  getById(id: number) {
+    this.userService.getUserById(id).subscribe(user => this.currUser = user);
   }
 
 }

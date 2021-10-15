@@ -109,7 +109,7 @@ img {
 .slide {
   margin-top: 24px;
   width: 100%;
-  height: 340px;
+  height: 100%;
   border-radius: 8px;
   transition: height .5s;
 }

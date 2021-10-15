@@ -36,7 +36,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let item of rents | paginate: {
-            itemsPerPage: 3, currentPage: page, totalItems: totalLength, id: 'first'
+            itemsPerPage: 5, currentPage: page, totalItems: totalLength, id: 'first'
              }; index as i">
               <td>{{item.userRent?.userName}}</td>
               <td>{{item.rentDate | date : 'dd/MM/YYYY' }}</td>
@@ -77,7 +77,7 @@
 
             </tbody>
           </table>
-          <div class="mt-5 d-flex justify-content-center" *ngIf="totalLength > 3">
+          <div class="mt-5 d-flex justify-content-center" *ngIf="totalLength > 5">
             <pagination-controls (pageChange)="page = $event" id='first'></pagination-controls>
           </div>
         </div>

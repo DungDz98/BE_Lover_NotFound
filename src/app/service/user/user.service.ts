@@ -20,6 +20,11 @@ export class UserService {
     return this.httpClient.get<User[]>(API_URL);
   }
 
+  getAllUser(): Observable<User[]> {
+    return this.httpClient.get<User[]>(USER_API);
+  }
+
+
   saveUser(id: number, user: User): Observable<User> {
     // @ts-ignore
     return this.httpClient.put<User>(API_URL + `/${id}`, user);
