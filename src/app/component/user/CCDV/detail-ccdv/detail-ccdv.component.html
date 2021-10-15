@@ -52,7 +52,7 @@
 
           <div class="form-group">
             <h5>Quốc gia : </h5>
-            <input style="width: 250px" class="form-control" placeholder="Nhập quốc gia" formControlName="nationality">
+            <input style="width: 250px" class="form-control" placeholder="Nhập quốc gia" formControlName="nationality" value="Việt Nam">
             <p *ngIf="!ccdvForm.get('nationality')?.valid && ccdvForm.get('nationality')?.touched" style="color: red">
               không thể để trống</p>
           </div>

@@ -26,7 +26,7 @@ export class DetailCcdvComponent implements OnInit {
       dateOfBirth: new FormControl(),
       gender: new FormControl('',Validators.required),
       city: new FormControl('',Validators.required),
-      nationality: new FormControl('',Validators.required),
+      nationality: new FormControl('Việt Nam',Validators.required),
       avatar: new FormControl(),
       height: new FormControl('',Validators.min(100)),
       weight: new FormControl('',Validators.min(30)),
