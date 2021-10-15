@@ -695,7 +695,11 @@ label {
   border-radius: 10%;
   margin: 16px 10px 20px 160px;
   image-rendering: pixelated;
-  object-fit: cover
+  object-fit: cover;
+}
+
+div:hover .img-edit {
+  cursor: pointer;
 }
 
 .img-test{
@@ -703,5 +707,6 @@ label {
   border-radius: 10%;
   margin: 16px 10px 20px 160px;
   image-rendering: pixelated;
-  object-fit: cover
+  object-fit: cover;
+  cursor: pointer;
 }

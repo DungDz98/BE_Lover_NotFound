@@ -54,10 +54,10 @@ export class SignInComponent implements OnInit {
     console.log(this.signInForm);
     this.authService.login(this.signInForm).subscribe(data => {
         console.log(data)
-        if (data.statusUs === 2){
+        if (data.statusUs === 2) {
           this.status = 'Tài khoản đã bị khóa';
           console.log("block")
-        }else if (data.statusUs === 0){
+        } else if (data.statusUs === 0) {
           this.status = 'Tài khoản chưa được kích hoạt'
           console.log("inactive")
         } else {
@@ -102,8 +102,10 @@ export class SignInComponent implements OnInit {
             this.status = 'Đăng nhập thất bại! Vui lòng thử lại!';
           }
         }
+      }, error => {
+        this.status = 'Sai tài khoản hoặc mật khẩu';
       }
-    ), this.status = 'Sai tài khoản hoặc mật khẩu';
+    )
   }
 
 
