@@ -71,7 +71,7 @@
 
     <form [formGroup]="userForm">
       <div class="filter-player">
-        <select class="form-control gender " formControlName="gender" (change)="getByGender()">
+        <select class="form-control gender " formControlName="gender">
           <option disabled>Giới tính</option>
           <option value="Nu">Nữ</option>
           <option value="Nam">Nam</option>
@@ -82,7 +82,7 @@
         <!--      <option value="hot">Hot</option>-->
         <!--      <option value="vip">Vip</option>-->
         <!--    </select>-->
-        <select class="form-control city " formControlName="city1" (change)="getByCity()">
+        <select class="form-control city " formControlName="city1">
           <option selected disabled>Thành Phố</option>
           <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
         </select>
@@ -93,7 +93,7 @@
                maxlength="32"
                value=""
                formControlName="name">
-        <button type="button" class="form-control btn-filter btn btn-default" (click)="getAllByName()">
+        <button type="button" class="form-control btn-filter btn btn-default" (click)="getAllByField()">
           <i class="fa fa-search"></i> Tìm kiếm
         </button>
       </div>
@@ -322,73 +322,4 @@
     <!--  kết thúc danh sách khởi đầu-->
 
   </div>
-
-  <!--...modal update user-->
-
-  <!-- Trigger the modal with a button -->
-  <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
-
-  <!--&lt;!&ndash; Modal &ndash;&gt;-->
-  <!--<div class="modal fade" id="myModal" role="dialog">-->
-  <!--  <div class="modal-dialog">-->
-  <!--  <div class="modal-content">-->
-  <!--    <div class="modal-header">-->
-  <!--      <h3 class="modal-title" id="exampleModalLabel" style="margin-left: 130px">Nhập thông tin người dùng</h3>-->
-  <!--    </div>-->
-  <!--    <div class="modal-body p-4">-->
-  <!--      <form>-->
-  <!--        &lt;!&ndash; 2 column grid layout with text inputs for the first and last names &ndash;&gt;-->
-  <!--        <div class="row mb-4">-->
-  <!--          <div class="col">-->
-  <!--            <div class="form-outline">-->
-  <!--              <label class="form-label" for="name" style="margin-left: 0px;">Nhập tên(*)</label>-->
-  <!--              <input type="text" id="name" class="form-control" placeholder="Nhập tên">-->
-  <!--              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div></div>-->
-  <!--          </div>-->
-  <!--          <div class="col">-->
-  <!--            <div class="form-outline">-->
-  <!--              <label class="form-label" style="margin-left: 0px;">Chọn giới tính(*)</label>-->
-  <!--              <select class="form-control">-->
-  <!--                <option value="" selected disabled>Giới tính</option>-->
-  <!--                <option value="Nam">Nam</option>-->
-  <!--                <option value="Nu">Nữ</option>-->
-  <!--              </select>-->
-  <!--              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 67.2px;"></div><div class="form-notch-trailing"></div></div></div>-->
-  <!--          </div>-->
-  <!--        </div>-->
-
-  <!--        &lt;!&ndash; 2 column grid layout with text inputs for the first and last names &ndash;&gt;-->
-  <!--        <div class="row mb-4">-->
-  <!--          <div class="col">-->
-  <!--            <div class="form-outline">-->
-  <!--              <label class="form-label" style="margin-left: 0px;">Chọn thành phố bạn đang sống(*)</label>-->
-  <!--              <select class="form-control">-->
-  <!--                <option value="" selected disabled>Thành phố</option>-->
-  <!--                <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>-->
-  <!--              </select>-->
-  <!--              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div></div>-->
-  <!--          </div>-->
-  <!--          <div class="col">-->
-  <!--            <div class="form-outline">-->
-  <!--              <label class="form-label" style="margin-left: 0px;">Ngày sinh của bạn(*)</label>-->
-  <!--              <input type="date" class="form-control">-->
-  <!--              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 67.2px;"></div><div class="form-notch-trailing"></div></div></div>-->
-  <!--          </div>-->
-  <!--        </div>-->
-
-  <!--        &lt;!&ndash; Message input &ndash;&gt;-->
-  <!--        <div class="form-outline mb-4">-->
-  <!--          <label class="form-label" for="description" style="margin-left: 0px;">Miêu tả</label>-->
-  <!--          <textarea class="form-control" id="description" rows="4"></textarea>-->
-  <!--          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 134.4px;"></div><div class="form-notch-trailing"></div></div></div>-->
-
-  <!--        &lt;!&ndash; Submit button &ndash;&gt;-->
-  <!--        <button type="submit" class="btn btn-primary btn-block" data-dismiss="modal">Hoàn thành</button>-->
-  <!--      </form>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--</div>-->
-  <!--</div>-->
-
-  <!--...end modal-->
 </div>
