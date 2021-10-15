@@ -336,4 +336,30 @@ export class ProfileProviderComponent implements OnInit {
     })
 
   }
+
+  // @ts-ignore
+  avatarLink: string;
+  isHidden = true;
+
+
+  editAvatar(){
+    this.isHidden= false;
+  }
+  getImage($event: string){
+    this.avatarLink=$event;
+  }
+  saveAvatar(){
+    const user1= {
+      avatar: this.avatarLink
+    }
+    // @ts-ignore
+    this.userService.editAvatar(user1,this.id).subscribe(()=>{
+      this.isHidden=true;
+      console.log("Đổi ảnh thành công");
+      // this.router.navigate(['/'])
+      window.location.reload();
+    })
+
+  }
+
 }
