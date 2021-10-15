@@ -8,6 +8,7 @@ import {UserService} from "../../../../service/user/user.service";
 import {TokenService} from "../../../../service/in-out/token.service";
 import {User} from "../../../../model/user/user";
 import Swal from 'sweetalert2';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-ccdv',
@@ -32,7 +33,8 @@ export class ListCcdvComponent implements OnInit {
   idTemp!: number | undefined;
   genderUser!: String | undefined;
 
-  constructor(private select: SelectService, private http: HttpClient, private userService: UserService, private token: TokenService) {
+  constructor(private select: SelectService, private http: HttpClient, private userService: UserService, private token: TokenService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -140,6 +142,10 @@ export class ListCcdvComponent implements OnInit {
     this.select.findAllVipUser().subscribe((data)=>{
       this.listVipUser = data
     })
+  }
+
+  isTournamentRoute(url: string) {
+    return this.router.url.includes(url);
   }
   //
   // open(){

@@ -13,10 +13,10 @@ const routes: Routes = [
     path: "",
     component: ListUserComponent
   },
-  {
-    path: "test",
-    component: AdminCategoryComponent
-  },
+  // {
+  //   path: "test",
+  //   component: AdminCategoryComponent
+  // },
   {
     path: 'rent',
     component: RentAdminComponent,

@@ -76,8 +76,28 @@
                 totalItems: size1,
                 id: 'first'
               };">
-          <a style="text-decoration: none; cursor: pointer"
+          <a style="text-decoration: none; cursor: pointer" *ngIf="idTemp"
              [routerLink]="['provider-profile/', userCCDV.id ]">
+            <div class="card text-black mt-3" style="border-radius: 10px">
+              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover"
+                   src="{{userCCDV.avatar}}" [routerLink]="['provider-profile/', userCCDV.id ]">
+              <div class="card-img-overlay">
+                <button class="btn-danger btn-md"
+                        style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userCCDV.price}}
+                  ,000 đ/h
+                </button>
+              </div>
+              <div class="row pl-3 mb-3">
+
+                <h4 class="name-user">{{userCCDV.name}}</h4>
+                <div class="col-12 description-user">{{userCCDV.description}}</div>
+                <div class="col-12 category-user">{{userCCDV.category_name}}</div>
+
+              </div>
+            </div>
+          </a>
+          <a style="text-decoration: none; cursor: pointer" *ngIf="!idTemp"
+             [routerLink]="['/login']">
             <div class="card text-black mt-3" style="border-radius: 10px">
               <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover"
                    src="{{userCCDV.avatar}}" [routerLink]="['provider-profile/', userCCDV.id ]">
@@ -124,8 +144,26 @@
       <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Gợi ý cho bạn</p>
       <div class="row">
         <div class="col-3 " *ngFor="let userCCDVCategory of listGoiY">
-          <a style="text-decoration: none; cursor: pointer"
+          <a style="text-decoration: none; cursor: pointer" *ngIf="idTemp"
              [routerLink]="['provider-profile/', userCCDVCategory.id ]">
+            <div class="card text-black mt-3" style="border-radius: 10px">
+              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover!important;"
+                   src="{{userCCDVCategory.avatar}}">
+              <div class="card-img-overlay">
+                <button class="btn-danger btn-md"
+                        style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userCCDVCategory.price}}
+                  ,000 đ/h
+                </button>
+              </div>
+              <div class="row pl-3 mb-3">
+                <h4 class="name-user">{{userCCDVCategory.name}}</h4>
+                <div class="col-12 description-user">{{userCCDVCategory.description}}</div>
+                <span class="col-12 category-user">{{userCCDVCategory.category_name}}</span>
+              </div>
+            </div>
+          </a>
+          <a style="text-decoration: none; cursor: pointer" *ngIf="!idTemp"
+             [routerLink]="['/login' ]">
             <div class="card text-black mt-3" style="border-radius: 10px">
               <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover!important;"
                    src="{{userCCDVCategory.avatar}}">
@@ -154,8 +192,24 @@
       <p style="margin: 6px 0 5px; font-weight: 700;font-size: 25px; color: #f0564a;">Người yêu Vip</p>
       <div class="row">
         <div class="col-3 " *ngFor="let userVip of listVipUser">
-          <a style="text-decoration: none; cursor: pointer"
+          <a style="text-decoration: none; cursor: pointer" *ngIf="idTemp"
              [routerLink]="['provider-profile/', userVip.id ]">
+            <div class="card text-black mt-3" style="border-radius: 10px">
+              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover!important;" src="{{userVip.avatar}}">
+              <div class="card-img-overlay">
+                <button class="btn-danger btn-md" style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userVip.price}}
+                  ,000 đ/h
+                </button>
+              </div>
+              <div class="row pl-3 mb-3">
+                <h4 class="name-user">{{userVip.name}}</h4>
+                <div class="col-12 description-user" >{{userVip.description}}</div>
+                <span class="col-12 category-user">{{userVip.category_name}}</span>
+              </div>
+            </div>
+          </a>
+          <a style="text-decoration: none; cursor: pointer" *ngIf="!idTemp"
+             [routerLink]="['/login']">
             <div class="card text-black mt-3" style="border-radius: 10px">
               <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover!important;" src="{{userVip.avatar}}">
               <div class="card-img-overlay">
@@ -187,7 +241,26 @@
                 id: 'second'
               };">
           <a style="text-decoration: none; cursor: pointer"
-             [routerLink]="['provider-profile/', userCCDVCategory.id ]">
+             *ngIf="idTemp" [routerLink]="['provider-profile/', userCCDVCategory.id ]">
+            <div class="card text-black mt-3" style="border-radius: 10px">
+              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover"
+                   src="{{userCCDVCategory.avatar}}">
+              <div class="card-img-overlay">
+                <button class="btn-danger btn-md"
+                        style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userCCDVCategory.price}}
+                  ,000 đ/h
+                </button>
+              </div>
+              <div class="row pl-3 mb-3">
+                <h4 class="name-user">{{userCCDVCategory.name}}</h4>
+                <div class="col-12 description-user">{{userCCDVCategory.description}}</div>
+                <span class="col-12 category-user">{{userCCDVCategory.category_name}}</span>
+              </div>
+            </div>
+          </a>
+          <a style="text-decoration: none; cursor: pointer"
+             *ngIf="!idTemp"
+             routerLink="/login">
             <div class="card text-black mt-3" style="border-radius: 10px">
               <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover"
                    src="{{userCCDVCategory.avatar}}">
