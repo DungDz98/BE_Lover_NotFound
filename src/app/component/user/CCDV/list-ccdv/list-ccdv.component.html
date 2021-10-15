@@ -32,6 +32,42 @@
 
     <!--  end courosel-->
 
+    <!--    chat-div-->
+
+    <div class="container container" *ngIf="idTemp">
+      <form [formGroup]="messForm" (ngSubmit)="sendName()">
+        <div class="slide normal">
+          <div class="global-chat">
+            <div class="global-chat-display" >
+              <div class="global_message__item media" *ngFor="let greeting of greetings">
+                <div class="media-left">
+                  <a target="_blank" href="#">
+                    <div class="avt avt-sm">
+                      <img src="https://firebasestorage.googleapis.com/v0/b/tinder-fake-7fc95.appspot.com/o/123.jpg?alt=media&token=6ab480b4-be89-441a-ab6e-1b4db8d6e079" class="avt-img" alt="PD">
+                    </div>
+                  </a>
+                </div>
+                <div class="media-body"><p class="chat-name">
+                  <a target="_blank" href="#"></a>
+                  <strong class="name-player-review color-name" >
+                    <span class="cursor-pointer">{{greeting}}</span>
+                  </strong></p>
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group">
+            <span class="input-group">
+            <input placeholder="Enter để gửi tin nhắn!" maxlength="255" type="text" id="formChatText"
+                   class="form-control" value="" style="width: 1060px" formControlName="messing">
+            </span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!--    end-chat-div-->
 
     <form [formGroup]="userForm">
       <div class="filter-player">

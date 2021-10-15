@@ -15,8 +15,6 @@
 
   <form class="form-inline" style="margin-top: 20px;">
     <div class="form-group">
-      <label for="name">User's Name:</label>
-      <input type="text" id="name" name="name" class="form-control" [(ngModel)]="name" />
       <input type="text" name="name" class="form-control" [(ngModel)]="message" />
     </div>
     <button id="send" class="btn btn-default" type="button" (click)="sendName()">Send</button>

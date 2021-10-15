@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Stomp} from "@stomp/stompjs";
+import {UserService} from "../../../service/user/user.service";
+import {User} from 'src/app/models/user/user';
+import {TokenService} from "../../../service/in-out/token.service";
+
 
 @Component({
   selector: 'app-socket-home',
@@ -13,10 +17,12 @@ export class SocketHomeComponent implements OnInit {
 
   greetings: string[] = [];
   disabled = true;
-  name: string | undefined;
   private stompClient: any;
+  id!: number ;
 
-  constructor() {
+  user!: User;
+
+  constructor(private userService: UserService, private token: TokenService) {
   }
 
   setConnected(connected: boolean) {
@@ -57,7 +63,7 @@ export class SocketHomeComponent implements OnInit {
       '/gkz/hello',
       {},
       // Dữ liệu được gửi đi
-      JSON.stringify({'name': this.name, 'message': this.message})
+      JSON.stringify({'name': this.user.userName, 'message': this.message})
     );
   }
 
@@ -66,5 +72,17 @@ export class SocketHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // @ts-ignore
+    this.id = this.token.getJwt().id
+    this.getTest(this.id)
   }
+
+  getTest(id: number){
+    this.userService.getUserTest(id).subscribe((data)=>{
+      this.user = data;
+    })
+  }
+
 }
+
+

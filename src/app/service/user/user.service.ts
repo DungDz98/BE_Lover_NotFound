@@ -53,4 +53,8 @@ export class UserService {
     return this.httpClient.put<User>(USER_API+"/"+id+"/editAvatar",user)
   }
 
+  getUserTest(id: number): Observable<User> {
+    return this.httpClient.get<User>(`${USER_API}/${id}`);
+  }
+
 }
