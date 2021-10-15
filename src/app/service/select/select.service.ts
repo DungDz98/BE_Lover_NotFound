@@ -5,6 +5,7 @@ import {User} from "../../models/user/user";
 import {Observable} from "rxjs";
 import {City} from "../../models/city";
 import {UserTest} from "../../models/selectInHome/user-test";
+import {Select} from "../../model/select/select";
 
 const API_URL = environment.API_URL + '/selectByRequests'
 @Injectable({
@@ -44,6 +45,10 @@ export class SelectService {
 
   findAllVipUser(): Observable<UserTest[]>{
     return this.httpClient.get<UserTest[]>(API_URL+ `/vipUser`);
+  }
+
+  findAllByField(select: Select): Observable<UserTest[]>{
+    return this.httpClient.post<UserTest[]>(API_URL + `/getManyFiled`, select);
   }
 
 }

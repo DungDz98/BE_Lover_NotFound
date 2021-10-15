@@ -12,7 +12,8 @@
             class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="https://elead.com.vn/wp-content/uploads/2020/04/13624171783_9f287bafdb_o.jpg" class="d-block w-100" alt="...">
+          <img src="https://elead.com.vn/wp-content/uploads/2020/04/13624171783_9f287bafdb_o.jpg" class="d-block w-100"
+               alt="...">
         </div>
         <div class="carousel-item">
           <img
@@ -32,6 +33,42 @@
 
     <!--  end courosel-->
 
+    <!--    chat-div-->
+
+    <div class="container container" *ngIf="idTemp">
+      <form [formGroup]="messForm" (ngSubmit)="sendName()">
+        <div class="slide normal">
+          <div class="global-chat">
+            <div class="global-chat-display" >
+              <div class="global_message__item media" *ngFor="let greeting of greetings">
+                <div class="media-left">
+                  <a target="_blank" href="#">
+                    <div class="avt avt-sm">
+                      <img src="https://firebasestorage.googleapis.com/v0/b/tinder-fake-7fc95.appspot.com/o/123.jpg?alt=media&token=6ab480b4-be89-441a-ab6e-1b4db8d6e079" class="avt-img" alt="PD">
+                    </div>
+                  </a>
+                </div>
+                <div class="media-body"><p class="chat-name">
+                  <a target="_blank" href="#"></a>
+                  <strong class="name-player-review color-name" >
+                    <span class="cursor-pointer">{{greeting}}</span>
+                  </strong></p>
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group">
+            <span class="input-group">
+            <input placeholder="Enter để gửi tin nhắn!" maxlength="255" type="text" id="formChatText"
+                   class="form-control" value="" style="width: 1060px" formControlName="messing">
+            </span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!--    end-chat-div-->
 
     <form [formGroup]="userForm">
       <div class="filter-player">
@@ -157,15 +194,17 @@
           <a style="text-decoration: none; cursor: pointer"
              [routerLink]="['provider-profile/', userVip.id ]">
             <div class="card text-black mt-3" style="border-radius: 10px">
-              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover!important;" src="{{userVip.avatar}}">
+              <img style="height: 255px; width: 255px ; border-radius: 10px 10px 0 0; object-fit: cover!important;"
+                   src="{{userVip.avatar}}">
               <div class="card-img-overlay">
-                <button class="btn-danger btn-md" style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userVip.price}}
+                <button class="btn-danger btn-md"
+                        style="border-radius: 20px; margin-top: 85%; margin-left: 70%; width: 110px; position: absolute; bottom: 120px; right: 0">{{userVip.price}}
                   ,000 đ/h
                 </button>
               </div>
               <div class="row pl-3 mb-3">
                 <h4 class="name-user">{{userVip.name}}</h4>
-                <div class="col-12 description-user" >{{userVip.description}}</div>
+                <div class="col-12 description-user">{{userVip.description}}</div>
                 <span class="col-12 category-user">{{userVip.category_name}}</span>
               </div>
             </div>
