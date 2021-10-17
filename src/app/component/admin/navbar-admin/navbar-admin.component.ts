@@ -20,6 +20,7 @@ export class NavbarAdminComponent implements OnInit {
   name!: String | undefined;
   avatar: string = '';
   users: User[] = [];
+  idUser!: number;
 
 //
   constructor(private userService: UserService, private rentService: RentService, private categoryService: CategoryService,
@@ -30,6 +31,8 @@ export class NavbarAdminComponent implements OnInit {
     if (this.tokenService.getJwt()) {
       // @ts-ignore
       this.name = localStorage.getItem('userName');
+      // @ts-ignore
+      this.idUser = this.tokenService.getJwt().id;
       // @ts-ignore
       this.getAvatar(this.idUser);
     }
